@@ -1,0 +1,56 @@
+{
+  "name": "@web-portfolio/icons-sanity",
+  "version": "0.1.0",
+  "description": "Sanity Studio icon picker input, backed by the same bundled registry as @web-portfolio/icons.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": ["dist"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "pnpm --filter @web-portfolio/icons-core generate-registry && pnpm build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@sanity/ui": ">=2",
+    "react": ">=18",
+    "sanity": ">=3",
+    "styled-components": ">=6"
+  },
+  "dependencies": {
+    "@web-portfolio/icons-core": "workspace:*"
+  },
+  "devDependencies": {
+    "@sanity/ui": "^2.10.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@types/react": "^18.3.0",
+    "jsdom": "^25.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sanity": "^3.68.0",
+    "styled-components": "^6.1.13",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jatinrao/icons.git",
+    "directory": "packages/sanity-plugin"
+  }
+}
