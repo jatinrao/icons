@@ -26,15 +26,16 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - name: Set up a local test database
+      - run: pnpm lint
+      - run: pnpm typecheck
+      # All DB-touching unit tests use an in-memory libSQL instance, so this
+      # doesn't need the seeded ci.db.
+      - run: pnpm test
+
+      - name: Set up a local test database (right before build, which reads it)
         run: |
           pnpm --filter @web-portfolio/icons-db db:migrate
           pnpm --filter @web-portfolio/icons-db seed-devicon
+          pnpm generate-registry
 
-      - name: Generate the icon registry
-        run: pnpm generate-registry
-
-      - run: pnpm lint
-      - run: pnpm typecheck
-      - run: pnpm test
       - run: pnpm build
