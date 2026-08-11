@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+env:
+  # apps/admin and apps/gallery read icons at build time (ISR/static params),
+  # so `next build` needs a real (if empty) database to hit — a fresh local
+  # libSQL file, migrated + seeded from devicon, keeps this hermetic.
+  TURSO_DATABASE_URL: file:${{ github.workspace }}/ci.db
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Set up a local test database
+        run: |
+          pnpm --filter @web-portfolio/icons-db db:migrate
+          pnpm --filter @web-portfolio/icons-db seed-devicon
+
+      - name: Generate the icon registry
+        run: pnpm generate-registry
+
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
