@@ -11,8 +11,16 @@ import { Footer } from '@/components/Footer'
 export const revalidate = 3600
 
 export async function generateStaticParams() {
-  const icons = await getAllIcons(db)
-  return icons.map((icon) => ({ name: icon.name }))
+  try {
+    const icons = await getAllIcons(db)
+    return icons.map((icon) => ({ name: icon.name }))
+  } catch (error) {
+    // A build-time DB hiccup shouldn't fail the whole deploy — pages just
+    // render on demand at request time (and get cached by ISR) instead of
+    // being pre-rendered at build time.
+    console.warn('[gallery] generateStaticParams: falling back to no pre-rendered paths', error)
+    return []
+  }
 }
 
 export async function generateMetadata({

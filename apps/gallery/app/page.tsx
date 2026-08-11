@@ -7,7 +7,10 @@ import { Footer } from '@/components/Footer'
 export const revalidate = 3600
 
 export default async function HomePage() {
-  const icons = await getAllIcons(db)
+  const icons = await getAllIcons(db).catch((error) => {
+    console.warn('[gallery] HomePage: failed to load icons', error)
+    return []
+  })
   icons.sort((a, b) => a.name.localeCompare(b.name))
 
   return (
