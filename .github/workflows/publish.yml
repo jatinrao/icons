@@ -1,0 +1,64 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_bump:
+        description: 'Version bump type'
+        required: true
+        default: patch
+        type: choice
+        options: [patch, minor, major]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+      TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm test
+
+      - name: Regenerate the icon registry from the live database
+        run: pnpm generate-registry
+
+      - name: Bump package versions
+        run: |
+          pnpm --filter @web-portfolio/icons version ${{ inputs.version_bump }} --no-git-tag-version
+          pnpm --filter @web-portfolio/icons-sanity version ${{ inputs.version_bump }} --no-git-tag-version
+
+      - name: Build packages
+        run: |
+          pnpm --filter @web-portfolio/icons build
+          pnpm --filter @web-portfolio/icons-sanity build
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          pnpm --filter @web-portfolio/icons publish --no-git-checks --access public
+          pnpm --filter @web-portfolio/icons-sanity publish --no-git-checks --access public
+
+      - name: Commit the regenerated registry and version bumps
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add packages/core/src/registry.generated.ts packages/react/package.json packages/sanity-plugin/package.json
+          git commit -m "chore: publish icon packages [skip ci]" || echo "Nothing to commit"
+          git push
