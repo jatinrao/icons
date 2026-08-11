@@ -38,4 +38,9 @@ jobs:
           pnpm --filter @web-portfolio/icons-db seed-devicon
           pnpm generate-registry
 
-      - run: pnpm build
+      # apps/admin and apps/gallery both open the same local libSQL file
+      # concurrently during `next build`'s page-data collection; serialize
+      # to rule out a race in the native libsql binding under concurrent
+      # access (this reproduced reliably on the Linux runner, never
+      # locally on macOS with more available cores / different scheduling).
+      - run: pnpm exec turbo run build --concurrency=1
