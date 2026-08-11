@@ -14,7 +14,16 @@ describe('session tokens', () => {
 
   it('rejects a tampered token', async () => {
     const token = await createSessionToken('secret-a')
-    const tampered = `${token.slice(0, -1)}x`
+    const [payload, signature] = token.split('.')
+
+    // Flip the signature's first base64url character. Unlike the last
+    // character of a 32-byte digest (which can sit on a padding boundary
+    // and leave the decoded bytes unchanged for some substitutions), the
+    // first character always encodes a full 6 bits of real signature data,
+    // so this is guaranteed to change the decoded bytes.
+    const flipped = signature[0] === 'A' ? 'B' : 'A'
+    const tampered = `${payload}.${flipped}${signature.slice(1)}`
+
     expect(await verifySessionToken(tampered, 'secret-a')).toBe(false)
   })
 
