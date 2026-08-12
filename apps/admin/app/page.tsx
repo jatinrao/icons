@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { db } from '@/lib/db'
-import { listIcons } from '@/lib/icons'
+import { getCategories, listIcons } from '@/lib/icons'
+import { SearchAndFilterForm } from '@/components/SearchAndFilterForm'
 import { logoutAction } from './actions'
 
 export const dynamic = 'force-dynamic'
@@ -8,10 +9,11 @@ export const dynamic = 'force-dynamic'
 export default async function IconsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>
+  searchParams: Promise<{ q?: string; category?: string }>
 }) {
-  const { q } = await searchParams
-  const icons = await listIcons(db, q)
+  const { q, category } = await searchParams
+  const [icons, allIcons] = await Promise.all([listIcons(db, q, category), listIcons(db)])
+  const categories = getCategories(allIcons)
 
   return (
     <div className="page">
@@ -29,18 +31,10 @@ export default async function IconsPage({
         </div>
       </div>
 
-      <form>
-        <input
-          type="search"
-          name="q"
-          defaultValue={q ?? ''}
-          placeholder="Search by name, label, or tag…"
-          className="search"
-        />
-      </form>
+      <SearchAndFilterForm query={q} category={category} categories={categories} />
 
       {icons.length === 0 ? (
-        <p className="empty">No icons found.</p>
+        <p className="empty">No icons match your filters.</p>
       ) : (
         <div className="icon-grid">
           {icons.map((icon) => (

@@ -158,6 +158,9 @@ importers:
       '@libsql/client':
         specifier: ^0.14.0
         version: 0.14.0
+      '@material-symbols/svg-400':
+        specifier: ^0.45.10
+        version: 0.45.10
       devicon:
         specifier: ^2.16.0
         version: 2.17.0
@@ -167,6 +170,9 @@ importers:
       nanoid:
         specifier: ^5.0.9
         version: 5.1.16
+      simple-icons:
+        specifier: ^16.28.0
+        version: 16.28.0
     devDependencies:
       drizzle-kit:
         specifier: ^0.30.0
@@ -2366,6 +2372,9 @@ packages:
     resolution: {integrity: sha512-7pJzOWzPm6oJUxml+PCDRzYQ4A1hTMHAciTAHfFK4fkbDZX33nWPVG7Y3vqdKtslcwAzwmrNDc6sXy2nwWnbiw==}
     cpu: [x64]
     os: [win32]
+
+  '@material-symbols/svg-400@0.45.10':
+    resolution: {integrity: sha512-tHxhd8cAquFQYpTdtxJbGFF023WW1RuScL9Lig5SZVrvP3RkogrVf26RC3pmFtNWiFOvooFWVBgMReeRcOG8Tg==}
 
   '@mux/mux-data-google-ima@0.3.17':
     resolution: {integrity: sha512-4wpH6dYybyZhqLn9qGn/+67Z8MZnQRAdqTFEEZw2bx61M9q01uPYYHxd8qwOnYtUGEeafsdTwVHVxKHGD3oc1A==}
@@ -6480,6 +6489,10 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
+  simple-icons@16.28.0:
+    resolution: {integrity: sha512-sQPR5AtK/ijRjou7zw7mlLp08oB6FH7i0lOy5XJ2zp9mJs/yejgiOn7KvQoe2q4YJIx6VmgUSW5AOefebPt5kg==}
+    engines: {node: '>=0.12.18'}
+
   simple-wcswidth@1.1.2:
     resolution: {integrity: sha512-j7piyCjAeTDSjzTSQ7DokZtMNwNlEAyxqSZeCS+CXH7fJ4jx3FuJ/mTW3mE+6JLs4VJBbcll0Kjn+KXI5t21Iw==}
 
@@ -9268,6 +9281,8 @@ snapshots:
 
   '@libsql/win32-x64-msvc@0.4.7':
     optional: true
+
+  '@material-symbols/svg-400@0.45.10': {}
 
   '@mux/mux-data-google-ima@0.3.17':
     dependencies:
@@ -14133,6 +14148,8 @@ snapshots:
   signal-exit@3.0.7: {}
 
   signal-exit@4.1.0: {}
+
+  simple-icons@16.28.0: {}
 
   simple-wcswidth@1.1.2: {}
 

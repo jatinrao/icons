@@ -37,3 +37,24 @@ export function matchesQuery(icon: Pick<GalleryIcon, 'name' | 'label' | 'tags'>,
     icon.tags.some((tag) => tag.toLowerCase().includes(q))
   )
 }
+
+/** `category` of "all" (the dropdown's default) matches every icon. */
+export function matchesCategory(icon: Pick<GalleryIcon, 'category'>, category: string): boolean {
+  return category === 'all' || icon.category === category
+}
+
+export function getCategories(icons: Pick<GalleryIcon, 'category'>[]): string[] {
+  const set = new Set<string>()
+  for (const icon of icons) {
+    if (icon.category) set.add(icon.category)
+  }
+  return Array.from(set).sort()
+}
+
+export function formatCategoryLabel(category: string): string {
+  return category
+    .split(/[-_]/)
+    .filter(Boolean)
+    .map((word) => word[0].toUpperCase() + word.slice(1))
+    .join(' ')
+}

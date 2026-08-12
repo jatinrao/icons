@@ -10,14 +10,16 @@ import {
   type IconInput,
 } from '@web-portfolio/icons-db'
 
-const NAME_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/
+// Allows hyphens (our own convention) and underscores (Material Symbols'
+// canonical names, e.g. "arrow_back") as word separators.
+const NAME_PATTERN = /^[a-z0-9]+([-_][a-z0-9]+)*$/
 
 export class ValidationError extends Error {}
 
 export function validateIconInput(input: { name: string; label: string; svg: string }): void {
   if (!NAME_PATTERN.test(input.name)) {
     throw new ValidationError(
-      'Name must be lowercase letters, numbers, and hyphens only (e.g. "my-icon").',
+      'Name must be lowercase letters, numbers, hyphens, or underscores (e.g. "my-icon" or "arrow_back").',
     )
   }
   if (!input.label.trim()) {
@@ -28,12 +30,13 @@ export function validateIconInput(input: { name: string; label: string; svg: str
   }
 }
 
-export async function listIcons(db: Db, query?: string): Promise<Icon[]> {
+export async function listIcons(db: Db, query?: string, category?: string): Promise<Icon[]> {
   const all = await dbListIcons(db)
-  if (!query?.trim()) return all
-
-  const q = query.trim().toLowerCase()
   return all.filter((icon) => {
+    if (category && category !== 'all' && icon.category !== category) return false
+    if (!query?.trim()) return true
+
+    const q = query.trim().toLowerCase()
     const tags = JSON.parse(icon.tags) as string[]
     return (
       icon.name.toLowerCase().includes(q) ||
@@ -41,6 +44,22 @@ export async function listIcons(db: Db, query?: string): Promise<Icon[]> {
       tags.some((tag) => tag.toLowerCase().includes(q))
     )
   })
+}
+
+export function getCategories(icons: Pick<Icon, 'category'>[]): string[] {
+  const set = new Set<string>()
+  for (const icon of icons) {
+    if (icon.category) set.add(icon.category)
+  }
+  return Array.from(set).sort()
+}
+
+export function formatCategoryLabel(category: string): string {
+  return category
+    .split(/[-_]/)
+    .filter(Boolean)
+    .map((word) => word[0].toUpperCase() + word.slice(1))
+    .join(' ')
 }
 
 export async function createIcon(db: Db, input: IconInput): Promise<Icon> {
