@@ -3,6 +3,18 @@
   "version": "0.1.0",
   "description": "Sanity Studio icon picker input, backed by the same bundled registry as @web-portfolio/icons.",
   "license": "MIT",
+  "keywords": [
+    "sanity",
+    "sanity-plugin",
+    "sanity-io",
+    "icon-picker",
+    "icons",
+    "cms"
+  ],
+  "homepage": "https://github.com/jatinrao/icons#readme",
+  "bugs": {
+    "url": "https://github.com/jatinrao/icons/issues"
+  },
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -18,9 +30,10 @@
   "sideEffects": false,
   "scripts": {
     "build": "tsup",
-    "prepublishOnly": "pnpm --filter @web-portfolio/icons-core generate-registry && pnpm build",
+    "prepublishOnly": "pnpm --filter @web-portfolio/icons-core generate-registry && pnpm build && pnpm verify-package",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "verify-package": "node scripts/verify-package.mjs"
   },
   "peerDependencies": {
     "@sanity/ui": ">=2",

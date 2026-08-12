@@ -5,3 +5,17 @@ allowBuilds:
   esbuild: true
   sharp: true
   unrs-resolver: true
+# Hardening per https://github.com/lirantal/npm-security-best-practices
+# SECURITY: only esbuild/sharp/unrs-resolver above may run install scripts —
+# any *other* dependency (present or future) that tries to run one now fails
+# the install instead of silently warning.
+strictDepBuilds: true
+# SECURITY: transitive (non-direct) dependencies can't be sourced from git
+# repos or raw tarball URLs, which bypass registry security scanning.
+blockExoticSubdeps: true
+# SECURITY: skip installing a package version published in the last day,
+# giving the community a little time to catch a compromised release before
+# it lands here. A longer window (Snyk defaults to 21 days) is stronger but
+# was too disruptive for an actively-developed repo where tooling deps get
+# bumped daily; raise it if this becomes a stable/low-churn project.
+minimumReleaseAge: 1440

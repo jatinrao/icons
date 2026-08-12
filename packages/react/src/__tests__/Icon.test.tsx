@@ -10,6 +10,13 @@ vi.mock('@web-portfolio/icons-core', () => ({
       label: 'React',
       tags: ['framework'],
     },
+    'stroke-icon': {
+      viewBox: '0 0 24 24',
+      innerHTML:
+        '<path d="M1 1" stroke="#000000" stroke-width="2"/><path d="M2 2" fill="currentColor"/>',
+      label: 'Stroke Icon',
+      tags: ['test'],
+    },
   },
 }))
 
@@ -57,5 +64,26 @@ describe('Icon', () => {
     const svg = container.querySelector('svg')
     expect(svg?.getAttribute('class')).toBe('my-icon')
     expect(svg?.getAttribute('data-testid')).toBe('icon')
+  })
+
+  it('sets stroke/strokeWidth on the root svg for elements with no stroke of their own', () => {
+    const { container } = render(<Icon name="stroke-icon" stroke="#00ff00" strokeWidth={4} />)
+    const svg = container.querySelector('svg')
+    expect(svg?.getAttribute('stroke')).toBe('#00ff00')
+    expect(svg?.getAttribute('stroke-width')).toBe('4')
+  })
+
+  it('rewrites an element that already declares its own stroke/stroke-width', () => {
+    const { container } = render(<Icon name="stroke-icon" stroke="#00ff00" strokeWidth={4} />)
+    const strokedPath = container.querySelector('path[d="M1 1"]')
+    expect(strokedPath?.getAttribute('stroke')).toBe('#00ff00')
+    expect(strokedPath?.getAttribute('stroke-width')).toBe('4')
+  })
+
+  it('is a no-op on an icon with no stroke anywhere when stroke props are omitted', () => {
+    const { container } = render(<Icon name="react" />)
+    const svg = container.querySelector('svg')
+    expect(svg?.hasAttribute('stroke')).toBe(false)
+    expect(svg?.hasAttribute('stroke-width')).toBe(false)
   })
 })

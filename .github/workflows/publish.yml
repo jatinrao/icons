@@ -15,6 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      # SECURITY: required for `npm publish --provenance` to mint a Sigstore-
+      # signed attestation linking the published tarball back to this exact
+      # workflow run and commit — https://docs.npmjs.com/generating-provenance-statements
+      id-token: write
     env:
       TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
       TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
@@ -52,8 +56,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          pnpm --filter @web-portfolio/icons publish --no-git-checks --access public
-          pnpm --filter @web-portfolio/icons-sanity publish --no-git-checks --access public
+          pnpm --filter @web-portfolio/icons publish --no-git-checks --access public --provenance
+          pnpm --filter @web-portfolio/icons-sanity publish --no-git-checks --access public --provenance
 
       - name: Commit the regenerated registry and version bumps
         run: |
