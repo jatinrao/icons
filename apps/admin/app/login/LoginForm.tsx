@@ -1,6 +1,7 @@
 'use client'
 
-import { useFormState, useFormStatus } from 'react-dom'
+import { useActionState } from 'react'
+import { useFormStatus } from 'react-dom'
 import { loginAction } from '../actions'
 
 function SubmitButton() {
@@ -13,7 +14,7 @@ function SubmitButton() {
 }
 
 export function LoginForm({ from }: { from?: string }) {
-  const [state, formAction] = useFormState(loginAction, undefined as { error?: string } | undefined)
+  const [state, formAction] = useActionState(loginAction, undefined as { error?: string } | undefined)
 
   return (
     <form action={formAction} className="card" style={{ maxWidth: 360, margin: '4rem auto' }}>
