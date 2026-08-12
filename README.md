@@ -58,9 +58,34 @@ needs `TURSO_DATABASE_URL`) pointed at the **same** local db file, e.g.:
 TURSO_DATABASE_URL=file:/absolute/path/to/icons/packages/db/local.db
 ```
 
-`apps/admin` additionally needs `ADMIN_USER`, `ADMIN_PASSWORD_HASH` (generate
-with `pnpm --filter admin hash-password '<password>'`), and `SESSION_SECRET`
-(any long random string).
+### Admin credentials
+
+`apps/admin` additionally needs three env vars, none of which are ever
+committed to this repo:
+
+- `ADMIN_USER` — whatever username you want to log in with (e.g. `admin`).
+- `ADMIN_PASSWORD_HASH` — **not** the password itself, its scrypt hash.
+  Generate it from a password of your choosing:
+
+  ```bash
+  cd apps/admin
+  pnpm hash-password '<your password>'
+  # -> prints something like  a1b2c3...:d4e5f6...
+  ```
+
+  Paste that output as `ADMIN_PASSWORD_HASH`. Save the actual password
+  somewhere (password manager) — it's only usable once as input to the
+  command above, and there's no way to recover it from the hash.
+- `SESSION_SECRET` — any long random string, used to sign the login session
+  cookie:
+
+  ```bash
+  openssl rand -hex 32
+  ```
+
+Add all three to `apps/admin/.env.local` for local dev, and to your
+deployment host's env vars (e.g. Vercel project settings) for production —
+never to a file that gets committed.
 
 ## Deploying
 
