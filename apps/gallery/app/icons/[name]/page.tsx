@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { db } from '@/lib/db'
 import { getAllIcons, getIconByName } from '@/lib/icons'
-import { CopyDownloadActions } from '@/components/CopyDownloadActions'
+import { IconCustomizer } from '@/components/IconCustomizer'
 import { UsageSnippet } from '@/components/UsageSnippet'
 import { DarkModeToggle } from '@/components/DarkModeToggle'
 import { Footer } from '@/components/Footer'
@@ -52,7 +52,6 @@ export default async function IconDetailPage({ params }: { params: Promise<{ nam
       </div>
 
       <div className="detail-card">
-        <div className="detail-glyph" dangerouslySetInnerHTML={{ __html: icon.svg }} />
         <div>
           <h1 style={{ margin: '0 0 0.35rem' }}>{icon.label}</h1>
           <p style={{ margin: 0, color: 'var(--muted)', fontFamily: 'ui-monospace, monospace' }}>
@@ -70,7 +69,7 @@ export default async function IconDetailPage({ params }: { params: Promise<{ nam
           </div>
         )}
 
-        <CopyDownloadActions name={icon.name} svg={icon.svg} />
+        <IconCustomizer name={icon.name} svg={icon.svg} />
         <UsageSnippet name={icon.name} />
       </div>
 
