@@ -20,18 +20,21 @@ describe('package.json (public npm package correctness)', () => {
   })
 
   it('has zero real runtime dependencies (everything is bundled or a peer)', () => {
-    // The one entry here is an internal, unpublished workspace package that
-    // tsup inlines at build time (see tsup.config.ts's `noExternal`) — it
-    // never appears in what a consumer's package manager actually installs.
-    // This is what keeps this package's dependency tree — and its exposure
-    // to transitive supply-chain vulnerabilities — at zero.
-    expect(Object.keys(pkg.dependencies ?? {})).toEqual(['@web-portfolio/icons-core'])
-    expect(pkg.dependencies['@web-portfolio/icons-core']).toMatch(/^workspace:/)
+    // @web-portfolio/icons-core is private/unpublished and fully inlined into
+    // dist at build time via tsup's noExternal. It must live in
+    // devDependencies (for local workspace builds only), never in
+    // dependencies — pnpm rewrites `workspace:*` to a real version number at
+    // publish time, and since icons-core is never published, a real
+    // dependency entry would 404 for every consumer's `npm install`.
+    expect((pkg as Record<string, unknown>).dependencies).toBeUndefined()
+  })
+
+  it('keeps the internal icons-core package as a devDependency, not published', () => {
+    expect(pkg.devDependencies['@web-portfolio/icons-core']).toMatch(/^workspace:/)
   })
 
   it('declares react only as a peer dependency, never bundled or duplicated', () => {
     expect(pkg.peerDependencies?.react).toBeTruthy()
-    expect(pkg.dependencies).not.toHaveProperty('react')
   })
 
   it('exports map covers ESM, CJS, and types, all pointing into dist/', () => {

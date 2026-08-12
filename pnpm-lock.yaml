@@ -188,10 +188,6 @@ importers:
         version: 2.1.9(@types/node@22.20.1)(jsdom@28.1.0(supports-color@8.1.1))(supports-color@8.1.1)
 
   packages/react:
-    dependencies:
-      '@web-portfolio/icons-core':
-        specifier: workspace:*
-        version: link:../core
     devDependencies:
       '@testing-library/react':
         specifier: ^16.1.0
@@ -202,6 +198,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.7(@types/react@18.3.31)
+      '@web-portfolio/icons-core':
+        specifier: workspace:*
+        version: link:../core
       jsdom:
         specifier: ^25.0.1
         version: 25.0.1(supports-color@8.1.1)
@@ -222,10 +221,6 @@ importers:
         version: 2.1.9(@types/node@22.20.1)(jsdom@25.0.1(supports-color@8.1.1))(supports-color@8.1.1)
 
   packages/sanity-plugin:
-    dependencies:
-      '@web-portfolio/icons-core':
-        specifier: workspace:*
-        version: link:../core
     devDependencies:
       '@sanity/ui':
         specifier: ^2.10.0
@@ -242,6 +237,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.7(@types/react@18.3.31)
+      '@web-portfolio/icons-core':
+        specifier: workspace:*
+        version: link:../core
       jsdom:
         specifier: ^25.0.1
         version: 25.0.1(supports-color@8.1.1)
