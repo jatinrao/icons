@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation'
 import { db } from '@/lib/db'
 import * as icons from '@/lib/icons'
 import { verifyPassword } from '@/lib/password'
+import { safeRedirectTarget } from '@/lib/safe-redirect'
 import { createSessionToken, SESSION_COOKIE_NAME } from '@/lib/session'
 
 export async function loginAction(_prevState: unknown, formData: FormData) {
@@ -33,7 +34,7 @@ export async function loginAction(_prevState: unknown, formData: FormData) {
     maxAge: 60 * 60 * 24 * 7,
   })
 
-  redirect('/')
+  redirect(safeRedirectTarget(formData.get('from')))
 }
 
 export async function logoutAction() {

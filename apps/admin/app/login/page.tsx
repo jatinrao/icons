@@ -1,9 +1,15 @@
 import { LoginForm } from './LoginForm'
 
-export default function LoginPage() {
+export default async function LoginPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ from?: string }>
+}) {
+  const { from } = await searchParams
+
   return (
     <div className="page">
-      <LoginForm />
+      <LoginForm from={from} />
     </div>
   )
 }

@@ -12,12 +12,14 @@ function SubmitButton() {
   )
 }
 
-export function LoginForm() {
+export function LoginForm({ from }: { from?: string }) {
   const [state, formAction] = useFormState(loginAction, undefined as { error?: string } | undefined)
 
   return (
     <form action={formAction} className="card" style={{ maxWidth: 360, margin: '4rem auto' }}>
       <h1 style={{ marginTop: 0, fontSize: '1.1rem' }}>Icons Admin</h1>
+
+      {from && <input type="hidden" name="from" value={from} />}
 
       <div className="field">
         <label htmlFor="username">Username</label>
