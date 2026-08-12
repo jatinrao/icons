@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { useFormState, useFormStatus } from 'react-dom'
+import { useActionState, useState } from 'react'
+import { useFormStatus } from 'react-dom'
 
 export interface IconFormValues {
   name: string
@@ -29,7 +29,7 @@ function SubmitButton({ label }: { label: string }) {
 }
 
 export function IconForm({ action, initialValues = emptyValues, submitLabel }: IconFormProps) {
-  const [state, formAction] = useFormState(action, undefined as { error?: string } | undefined)
+  const [state, formAction] = useActionState(action, undefined as { error?: string } | undefined)
   const [svg, setSvg] = useState(initialValues.svg)
 
   return (
