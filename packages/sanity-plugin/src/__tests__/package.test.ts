@@ -20,17 +20,23 @@ describe('package.json (public npm package correctness)', () => {
   })
 
   it('has zero real runtime dependencies (everything is bundled or a peer)', () => {
-    // Same reasoning as packages/react: the only entry is an internal,
-    // unpublished workspace package inlined at build time.
-    expect(Object.keys(pkg.dependencies ?? {})).toEqual(['@web-portfolio/icons-core'])
-    expect(pkg.dependencies['@web-portfolio/icons-core']).toMatch(/^workspace:/)
+    // @web-portfolio/icons-core is private/unpublished and fully inlined into
+    // dist at build time via tsup's noExternal. It must live in
+    // devDependencies (for local workspace builds only), never in
+    // dependencies — pnpm rewrites `workspace:*` to a real version number at
+    // publish time, and since icons-core is never published, a real
+    // dependency entry would 404 for every consumer's `npm install`.
+    expect((pkg as Record<string, unknown>).dependencies).toBeUndefined()
+  })
+
+  it('keeps the internal icons-core package as a devDependency, not published', () => {
+    expect(pkg.devDependencies['@web-portfolio/icons-core']).toMatch(/^workspace:/)
   })
 
   it('declares sanity/@sanity/ui/react/styled-components only as peers, never bundled', () => {
     const peerDependencies: Record<string, string> = pkg.peerDependencies
     for (const name of ['sanity', '@sanity/ui', 'react', 'styled-components']) {
       expect(peerDependencies[name]).toBeTruthy()
-      expect(pkg.dependencies).not.toHaveProperty(name)
     }
   })
 
