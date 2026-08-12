@@ -21,8 +21,19 @@ admin dashboard to manage icons and a public gallery to browse and copy them.
 
 ## Attribution
 
-The initial icon set (578 icons) is seeded from
-[devicon](https://github.com/devicons/devicon) (MIT licensed).
+The icon set (622 icons) is seeded from three sources:
+
+- [devicon](https://github.com/devicons/devicon) (MIT licensed) — 578 tech/tool
+  logos. `pnpm --filter @web-portfolio/icons-db seed-devicon`
+- [Material Symbols](https://github.com/marella/material-symbols) (Apache-2.0
+  licensed) — 32 curated communication and navigation/utility icons.
+  `pnpm --filter @web-portfolio/icons-db seed-material-icons`
+- [Simple Icons](https://simpleicons.org) (CC0-1.0, public domain) — 12 social
+  platform logos devicon doesn't cover (Instagram, YouTube, WhatsApp, etc. —
+  devicon already has Facebook, Twitter, LinkedIn, GitHub, GitLab, Slack, and
+  Behance). `pnpm --filter @web-portfolio/icons-db seed-social-icons`
+
+Run all three with `pnpm --filter @web-portfolio/icons-db seed-all`.
 
 ## Local development
 
@@ -37,9 +48,9 @@ falls back to a local libSQL file (`file:./local.db`, relative to whichever
 process's cwd), so nothing needs to be installed or provisioned to develop.
 
 ```bash
-# One-time: create the schema and seed it from devicon
+# One-time: create the schema and seed all three icon sources
 pnpm --filter @web-portfolio/icons-db db:migrate
-pnpm --filter @web-portfolio/icons-db seed-devicon
+pnpm --filter @web-portfolio/icons-db seed-all
 
 # Build the registry the two published packages embed
 pnpm generate-registry

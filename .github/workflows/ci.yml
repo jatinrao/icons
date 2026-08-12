@@ -35,7 +35,7 @@ jobs:
       - name: Set up a local test database (right before build, which reads it)
         run: |
           pnpm --filter @web-portfolio/icons-db db:migrate
-          pnpm --filter @web-portfolio/icons-db seed-devicon
+          pnpm --filter @web-portfolio/icons-db seed-all
           pnpm generate-registry
 
       - run: pnpm build

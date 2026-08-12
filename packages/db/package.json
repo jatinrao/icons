@@ -7,6 +7,9 @@
   "types": "src/index.ts",
   "scripts": {
     "seed-devicon": "tsx scripts/seed-devicon.ts",
+    "seed-material-icons": "tsx scripts/seed-material-icons.ts",
+    "seed-social-icons": "tsx scripts/seed-social-icons.ts",
+    "seed-all": "pnpm seed-devicon && pnpm seed-material-icons && pnpm seed-social-icons",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx scripts/migrate.ts",
     "db:studio": "drizzle-kit studio",
@@ -15,9 +18,11 @@
   },
   "dependencies": {
     "@libsql/client": "^0.14.0",
+    "@material-symbols/svg-400": "^0.45.10",
     "devicon": "^2.16.0",
     "drizzle-orm": "^0.38.0",
-    "nanoid": "^5.0.9"
+    "nanoid": "^5.0.9",
+    "simple-icons": "^16.28.0"
   },
   "devDependencies": {
     "drizzle-kit": "^0.30.0",
