@@ -32,6 +32,15 @@ jobs:
       # doesn't need the seeded ci.db.
       - run: pnpm test
 
+      # Informational only (never blocks CI): our two published packages
+      # ship zero real dependencies (verified by verify-package below and
+      # package.test.ts), so nothing here can affect what consumers install.
+      # Findings are almost always in dev/build tooling or the Next.js apps
+      # — surfaced for visibility, not gated on, to avoid noisy failures on
+      # advisories we can't act on without an upstream fix.
+      - name: Audit dependencies (informational)
+        run: pnpm audit --audit-level=critical || true
+
       - name: Set up a local test database (right before build, which reads it)
         run: |
           pnpm --filter @web-portfolio/icons-db db:migrate
@@ -39,3 +48,10 @@ jobs:
           pnpm generate-registry
 
       - run: pnpm build
+
+      # Exercises the actual built tarballs (real ESM/CJS imports, real
+      # renders) rather than source or mocks — see packages/*/scripts/verify-package.mjs.
+      - name: Verify published package contents
+        run: |
+          pnpm --filter @web-portfolio/icons verify-package
+          pnpm --filter @web-portfolio/icons-sanity verify-package

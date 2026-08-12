@@ -8,10 +8,20 @@ export interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'name' | 'color
   size?: number | string
   /**
    * Fill color. Only takes effect for monochrome icons (seeded from
-   * devicon's "plain"/"line" variants) — multi-color brand marks keep
-   * their original colors regardless of this prop.
+   * devicon's "plain"/"line" variants, or Material Symbols/Simple Icons) —
+   * multi-color brand marks keep their original colors regardless of this
+   * prop.
    */
   color?: string
+  /**
+   * Stroke color. Rewrites any stroke this icon's markup already declares
+   * (most devicon/Material/Simple Icons glyphs are fill-only and have none,
+   * so this is a no-op for them) and sets it on the root <svg> so elements
+   * without their own stroke can still inherit it.
+   */
+  stroke?: string
+  /** Stroke width, applied the same way as `stroke`. */
+  strokeWidth?: number | string
   /** Accessible name. Omit for a purely decorative icon. */
   title?: string
 }
@@ -24,7 +34,35 @@ function escapeHtml(value: string): string {
     .replace(/"/g, '&quot;')
 }
 
-export function Icon({ name, size = 24, color = 'currentColor', title, ...rest }: IconProps) {
+/**
+ * An element with its own explicit stroke/stroke-width ignores whatever the
+ * root <svg> declares, so `stroke`/`strokeWidth` props need to rewrite those
+ * in place for the customization to actually take effect everywhere.
+ */
+function applyStroke(
+  innerHTML: string,
+  stroke: string | undefined,
+  strokeWidth: number | string | undefined,
+): string {
+  let result = innerHTML
+  if (stroke !== undefined) {
+    result = result.replace(/(\sstroke=")(?!none")[^"]*(")/gi, `$1${stroke}$2`)
+  }
+  if (strokeWidth !== undefined) {
+    result = result.replace(/(\sstroke-width=")[^"]*(")/gi, `$1${strokeWidth}$2`)
+  }
+  return result
+}
+
+export function Icon({
+  name,
+  size = 24,
+  color = 'currentColor',
+  stroke,
+  strokeWidth,
+  title,
+  ...rest
+}: IconProps) {
   const entry = registry[name]
 
   if (!entry) {
@@ -34,7 +72,8 @@ export function Icon({ name, size = 24, color = 'currentColor', title, ...rest }
     return null
   }
 
-  const markup = title ? `<title>${escapeHtml(title)}</title>${entry.innerHTML}` : entry.innerHTML
+  const innerHTML = applyStroke(entry.innerHTML, stroke, strokeWidth)
+  const markup = title ? `<title>${escapeHtml(title)}</title>${innerHTML}` : innerHTML
 
   return (
     <svg
@@ -42,6 +81,8 @@ export function Icon({ name, size = 24, color = 'currentColor', title, ...rest }
       width={size}
       height={size}
       fill={color}
+      stroke={stroke}
+      strokeWidth={strokeWidth}
       role={title ? 'img' : 'presentation'}
       aria-hidden={title ? undefined : true}
       xmlns="http://www.w3.org/2000/svg"
