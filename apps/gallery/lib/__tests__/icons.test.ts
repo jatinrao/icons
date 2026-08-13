@@ -1,7 +1,28 @@
 import { describe, expect, it } from 'vitest'
-import { formatCategoryLabel, getCategories, matchesCategory, matchesQuery } from '../icons'
+import { formatCategoryLabel, getAllIcons, getCategories, getIconByName, matchesCategory, matchesQuery } from '../icons'
 
 const icon = { name: 'react', label: 'React', tags: ['framework', 'frontend'] }
+
+describe('getAllIcons', () => {
+  it('reads every icon from the bundled registry, not a database', () => {
+    const icons = getAllIcons()
+    expect(icons.length).toBeGreaterThan(600)
+    expect(icons.every((i) => typeof i.svg === 'string' && i.svg.startsWith('<svg'))).toBe(true)
+  })
+})
+
+describe('getIconByName', () => {
+  it('reassembles a full <svg> string from the registry\'s split viewBox/innerHTML', () => {
+    const react = getIconByName('react')
+    expect(react).toBeDefined()
+    expect(react!.svg).toContain('<svg xmlns="http://www.w3.org/2000/svg" viewBox="')
+    expect(react!.svg).toMatch(/<\/svg>$/)
+  })
+
+  it('returns undefined for an unknown name', () => {
+    expect(getIconByName('totally-not-a-real-icon')).toBeUndefined()
+  })
+})
 
 describe('matchesQuery', () => {
   it('matches on name, label, or tags (case-insensitive)', () => {

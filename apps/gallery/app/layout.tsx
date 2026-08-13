@@ -1,9 +1,36 @@
 import type { Metadata } from 'next'
+import { SITE_NAME, SITE_URL, siteDescription } from '@/lib/site'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Icons Gallery',
-  description: 'Browse and copy tech icons, seeded from devicon.',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} — Free SVG icons for React, portfolios & design`,
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: siteDescription(),
+  keywords: [
+    'svg icons',
+    'react icons',
+    'icon library',
+    'free icons',
+    'developer icons',
+    'portfolio icons',
+    'tech stack icons',
+    'social media icons',
+  ],
+  openGraph: {
+    type: 'website',
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — Free SVG icons for React, portfolios & design`,
+    description: siteDescription(),
+    url: SITE_URL,
+  },
+  twitter: {
+    card: 'summary',
+    title: `${SITE_NAME} — Free SVG icons for React, portfolios & design`,
+    description: siteDescription(),
+  },
 }
 
 // Reads the persisted theme before hydration so there's no flash of the

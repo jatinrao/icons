@@ -60,6 +60,7 @@ export function buildRegistryEntry(icon: IconLike): RegistryEntry {
     innerHTML: isMonochrome ? normalizeToCurrentColor(innerHTML) : innerHTML,
     label: icon.label,
     tags: JSON.parse(icon.tags) as string[],
+    category: icon.category,
   }
 }
 

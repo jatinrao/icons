@@ -10,8 +10,8 @@ import {
   type GalleryIcon,
 } from '@/lib/icons'
 
-export function IconGrid({ icons }: { icons: GalleryIcon[] }) {
-  const [query, setQuery] = useState('')
+export function IconGrid({ icons, initialQuery = '' }: { icons: GalleryIcon[]; initialQuery?: string }) {
+  const [query, setQuery] = useState(initialQuery)
   const [category, setCategory] = useState('all')
 
   const categories = useMemo(() => getCategories(icons), [icons])

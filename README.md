@@ -1,23 +1,29 @@
 # icons
 
-A dynamic, database-backed icon library: a React component
-(`@web-portfolio/icons`) and a Sanity Studio icon picker plugin
-(`@web-portfolio/icons-sanity`), both built from one bundled registry, plus an
-admin dashboard to manage icons and a public gallery to browse and copy them.
+An icon library: a React component (`@web-portfolio/icons`) and a Sanity
+Studio icon picker plugin (`@web-portfolio/icons-sanity`), both built from one
+bundled registry, plus a database-backed admin dashboard to manage icons and a
+fully static public gallery to browse and copy them.
 
 ## Packages & apps
 
 - `packages/db` — Drizzle schema + Turso/libSQL client (private, internal).
+  Used by `apps/admin` and by the seed scripts — never by `apps/gallery` or
+  the published npm packages at runtime.
 - `packages/core` — shared icon registry + the `generate-registry` build script
-  (private, internal; bundled into the two published packages via tsup).
+  (private, internal; bundled into the two published packages via tsup, and
+  imported directly by `apps/gallery`).
 - `packages/react` — **`@web-portfolio/icons`**, published to npm. `<Icon
   name="react" />`.
 - `packages/sanity-plugin` — **`@web-portfolio/icons-sanity`**, published to
   npm. A Sanity Studio input component for picking an icon by name.
 - `apps/admin` — credential-gated CRUD dashboard for adding/editing/removing
-  icons ([apps/admin/README setup](#local-development)).
-- `apps/gallery` — public site to search, preview, and copy/download icons as
-  SVG or PNG, modeled on [techicons.dev](https://techicons.dev).
+  icons, backed by Turso ([apps/admin/README setup](#local-development)).
+- `apps/gallery` — public site to search, preview, customize, and copy/download
+  icons as SVG or PNG, modeled on [techicons.dev](https://techicons.dev).
+  **Fully static** — built directly from `packages/core`'s bundled registry,
+  no database at request time or build time. Admin edits show up here after
+  the next `pnpm generate-registry` + redeploy, not live.
 
 ## Attribution
 
@@ -73,13 +79,17 @@ pnpm test    # turbo run test — all packages/apps
 pnpm build   # turbo run build
 ```
 
-`apps/admin` and `apps/gallery` each need their own `.env.local` (see
-`apps/admin/.env.example` / there's no separate example for gallery — it only
-needs `TURSO_DATABASE_URL`) pointed at the **same** local db file, e.g.:
+`apps/admin` needs its own `.env.local` (see `apps/admin/.env.example`)
+pointed at the local db file, e.g.:
 
 ```
 TURSO_DATABASE_URL=file:/absolute/path/to/icons/packages/db/local.db
 ```
+
+`apps/gallery` needs no env vars at all — it only ever reads
+`packages/core/src/registry.generated.ts`, so as long as you've run
+`pnpm generate-registry` at least once, `pnpm --filter gallery dev` works
+with zero setup.
 
 ### Admin credentials
 
@@ -112,12 +122,20 @@ never to a file that gets committed.
 
 ## Deploying
 
-- **Database**: create a [Turso](https://turso.tech) database
-  (`turso auth login && turso db create`), then set `TURSO_DATABASE_URL` /
-  `TURSO_AUTH_TOKEN` wherever `apps/admin`, `apps/gallery`, and the
-  `publish.yml` GitHub Actions secrets are configured.
-- **apps/admin** and **apps/gallery**: deploy independently to Vercel (or any
-  Next.js host). Set the env vars above per app.
+- **apps/gallery**: deploy to Vercel with **no environment variables at
+  all**. Import the repo, set Root Directory to `apps/gallery`, deploy.
+  It's a pure static build off the committed `registry.generated.ts` — no
+  database, no Turso account needed. To publish a new icon set, run
+  `pnpm generate-registry` against whichever database has the latest data
+  and redeploy (or just let a normal push through CI regenerate it, since
+  `ci.yml` already does this before every build).
+- **apps/admin**: optional, and separate from the above — only needed if you
+  want a hosted UI for editing icons instead of running it locally. Create a
+  [Turso](https://turso.tech) database (`turso auth login && turso db
+  create`) first, then deploy to Vercel with `TURSO_DATABASE_URL`,
+  `TURSO_AUTH_TOKEN`, and the three [admin credential](#admin-credentials)
+  env vars set.
 - **Publishing the npm packages**: run the "Publish" GitHub Actions workflow
   (`.github/workflows/publish.yml`, manual `workflow_dispatch`). Needs repo
-  secrets `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`, and `NPM_TOKEN`.
+  secrets `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN` (to regenerate the
+  registry from the latest data before publishing), and `NPM_TOKEN`.

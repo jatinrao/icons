@@ -18,18 +18,26 @@ vi.mock('@web-portfolio/icons-core', () => ({
       innerHTML: '<circle cx="64" cy="64" r="10" fill="currentColor"/>',
       label: 'React',
       tags: ['framework', 'frontend'],
+      category: 'original',
     },
     docker: {
       viewBox: '0 0 128 128',
       innerHTML: '<path d="M1 1" fill="currentColor"/>',
       label: 'Docker',
       tags: ['platform', 'deploy'],
+      category: 'plain',
     },
   },
 }))
 
 describe('matchesQuery', () => {
-  const entry = { viewBox: '', innerHTML: '', label: 'React', tags: ['framework', 'frontend'] }
+  const entry = {
+    viewBox: '',
+    innerHTML: '',
+    label: 'React',
+    tags: ['framework', 'frontend'],
+    category: 'original',
+  }
 
   it('matches on name, label, or tags (case-insensitive)', () => {
     expect(matchesQuery('react', entry, 'REACT')).toBe(true)

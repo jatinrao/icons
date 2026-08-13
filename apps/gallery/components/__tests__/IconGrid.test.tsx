@@ -58,4 +58,11 @@ describe('IconGrid', () => {
 
     expect(screen.getByText(/No icons match/)).toBeInTheDocument()
   })
+
+  it('pre-filters from an initialQuery, e.g. a shared /?q= link', () => {
+    render(<IconGrid icons={icons} initialQuery="docker" />)
+    expect(screen.queryByText('React')).not.toBeInTheDocument()
+    expect(screen.getByText('Docker')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('Search by name, label, or tag…')).toHaveValue('docker')
+  })
 })

@@ -52,12 +52,18 @@ describe('buildRegistryEntry', () => {
     expect(entry.viewBox).toBe('0 0 128 128')
     expect(entry.label).toBe('Docker')
     expect(entry.tags).toEqual(['platform', 'deploy'])
+    expect(entry.category).toBe('plain')
   })
 
   it('leaves colors untouched for a multi-color ("original") brand mark', () => {
     const entry = buildRegistryEntry(brandIcon)
     expect(entry.innerHTML.toLowerCase()).toContain('fill="#61dafb"')
     expect(entry.innerHTML).not.toContain('currentColor')
+  })
+
+  it('carries a null category through unchanged', () => {
+    const entry = buildRegistryEntry({ ...monochromeIcon, category: null })
+    expect(entry.category).toBeNull()
   })
 })
 
