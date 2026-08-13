@@ -1,26 +1,15 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { db } from '@/lib/db'
 import { getAllIcons, getIconByName } from '@/lib/icons'
+import { SITE_NAME, SITE_URL } from '@/lib/site'
 import { IconCustomizer } from '@/components/IconCustomizer'
 import { UsageSnippet } from '@/components/UsageSnippet'
 import { DarkModeToggle } from '@/components/DarkModeToggle'
 import { Footer } from '@/components/Footer'
 
-export const revalidate = 3600
-
-export async function generateStaticParams() {
-  try {
-    const icons = await getAllIcons(db)
-    return icons.map((icon) => ({ name: icon.name }))
-  } catch (error) {
-    // A build-time DB hiccup shouldn't fail the whole deploy — pages just
-    // render on demand at request time (and get cached by ISR) instead of
-    // being pre-rendered at build time.
-    console.warn('[gallery] generateStaticParams: falling back to no pre-rendered paths', error)
-    return []
-  }
+export function generateStaticParams() {
+  return getAllIcons().map((icon) => ({ name: icon.name }))
 }
 
 export async function generateMetadata({
@@ -29,21 +18,41 @@ export async function generateMetadata({
   params: Promise<{ name: string }>
 }): Promise<Metadata> {
   const { name } = await params
-  const icon = await getIconByName(db, name)
+  const icon = getIconByName(name)
   if (!icon) return {}
   return {
-    title: `${icon.label} icon — Icons Gallery`,
-    description: `Copy or download the ${icon.label} icon as SVG or PNG.`,
+    // The root layout's title.template already appends " — Icons Gallery".
+    title: `${icon.label} icon (free SVG)`,
+    description: `Free ${icon.label} SVG icon for your React app, portfolio, or design. Copy or download as SVG/PNG, or install @web-portfolio/icons and use <Icon name="${icon.name}" />.`,
+    alternates: { canonical: `${SITE_URL}/icons/${icon.name}` },
   }
 }
 
 export default async function IconDetailPage({ params }: { params: Promise<{ name: string }> }) {
   const { name } = await params
-  const icon = await getIconByName(db, name)
+  const icon = getIconByName(name)
   if (!icon) notFound()
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    name: `${icon.label} icon`,
+    description: `${icon.label} SVG icon, free to use, from ${SITE_NAME}.`,
+    contentUrl: `${SITE_URL}/icons/${icon.name}`,
+    url: `${SITE_URL}/icons/${icon.name}`,
+    encodingFormat: 'image/svg+xml',
+    keywords: icon.tags.join(', '),
+    isPartOf: {
+      '@type': 'Collection',
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+  }
 
   return (
     <div className="page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
       <div className="topbar">
         <Link href="/" className="button">
           ← All icons

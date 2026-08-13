@@ -81,15 +81,9 @@ importers:
 
   apps/gallery:
     dependencies:
-      '@libsql/client':
-        specifier: ^0.14.0
-        version: 0.14.0
-      '@web-portfolio/icons-db':
+      '@web-portfolio/icons-core':
         specifier: workspace:*
-        version: link:../../packages/db
-      libsql:
-        specifier: ^0.4.7
-        version: 0.4.7
+        version: link:../../packages/core
       next:
         specifier: ^15.1.0
         version: 15.5.23(@babel/core@7.29.7(supports-color@8.1.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)

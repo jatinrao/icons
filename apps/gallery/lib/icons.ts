@@ -1,4 +1,4 @@
-import { getIconByName as dbGetIconByName, listIcons as dbListIcons, type Db, type Icon } from '@web-portfolio/icons-db'
+import { registry, type RegistryEntry } from '@web-portfolio/icons-core'
 
 export interface GalleryIcon {
   name: string
@@ -8,24 +8,33 @@ export interface GalleryIcon {
   category: string | null
 }
 
-function toGalleryIcon(icon: Icon): GalleryIcon {
+/**
+ * The registry stores viewBox/innerHTML split apart (that's what the React
+ * component and Sanity picker need); the gallery's copy/download/customize
+ * flows all work on a raw `<svg>...</svg>` string instead, so this
+ * reassembles one.
+ */
+function toSvgString(entry: RegistryEntry): string {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${entry.viewBox}">${entry.innerHTML}</svg>`
+}
+
+function toGalleryIcon(name: string, entry: RegistryEntry): GalleryIcon {
   return {
-    name: icon.name,
-    label: icon.label,
-    svg: icon.svg,
-    tags: JSON.parse(icon.tags) as string[],
-    category: icon.category,
+    name,
+    label: entry.label,
+    svg: toSvgString(entry),
+    tags: entry.tags,
+    category: entry.category,
   }
 }
 
-export async function getAllIcons(db: Db): Promise<GalleryIcon[]> {
-  const icons = await dbListIcons(db)
-  return icons.map(toGalleryIcon)
+export function getAllIcons(): GalleryIcon[] {
+  return Object.entries(registry).map(([name, entry]) => toGalleryIcon(name, entry))
 }
 
-export async function getIconByName(db: Db, name: string): Promise<GalleryIcon | undefined> {
-  const icon = await dbGetIconByName(db, name)
-  return icon ? toGalleryIcon(icon) : undefined
+export function getIconByName(name: string): GalleryIcon | undefined {
+  const entry = registry[name]
+  return entry ? toGalleryIcon(name, entry) : undefined
 }
 
 export function matchesQuery(icon: Pick<GalleryIcon, 'name' | 'label' | 'tags'>, query: string): boolean {

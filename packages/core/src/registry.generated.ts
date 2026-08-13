@@ -13,7 +13,8 @@ export const registry: Registry = {
       "language",
       "ARM",
       "arm64"
-    ]
+    ],
+    "category": "plain"
   },
   "add": {
     "viewBox": "0 -960 960 960",
@@ -22,7 +23,8 @@ export const registry: Registry = {
     "tags": [
       "navigation",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "adonisjs": {
     "viewBox": "0 0 128 128",
@@ -32,7 +34,8 @@ export const registry: Registry = {
       "nodejs",
       "framework",
       "adonis"
-    ]
+    ],
+    "category": "original"
   },
   "aerospike": {
     "viewBox": "0 0 128 128",
@@ -42,7 +45,8 @@ export const registry: Registry = {
       "data",
       "database",
       "nosql"
-    ]
+    ],
+    "category": "original"
   },
   "aframe": {
     "viewBox": "0 0 128 128",
@@ -55,7 +59,8 @@ export const registry: Registry = {
       "js",
       "web",
       "a-frame"
-    ]
+    ],
+    "category": "plain"
   },
   "aftereffects": {
     "viewBox": "0 0 128 128",
@@ -66,7 +71,8 @@ export const registry: Registry = {
       "editor",
       "adobeaftereffects",
       "ae"
-    ]
+    ],
+    "category": "plain"
   },
   "akka": {
     "viewBox": "0 0 128 128",
@@ -78,7 +84,8 @@ export const registry: Registry = {
       "scala",
       "open-source",
       "akka-framework"
-    ]
+    ],
+    "category": "original"
   },
   "algolia": {
     "viewBox": "0 0 128 128",
@@ -89,7 +96,8 @@ export const registry: Registry = {
       "api",
       "documentation",
       "tool"
-    ]
+    ],
+    "category": "original"
   },
   "almalinux": {
     "viewBox": "0 0 128 128",
@@ -100,7 +108,8 @@ export const registry: Registry = {
       "os",
       "open-source",
       "AlmaLinux OS"
-    ]
+    ],
+    "category": "plain"
   },
   "alpinejs": {
     "viewBox": "0 0 128 128",
@@ -110,7 +119,8 @@ export const registry: Registry = {
       "framework",
       "javascript",
       "Alpine"
-    ]
+    ],
+    "category": "original"
   },
   "alternate_email": {
     "viewBox": "0 -960 960 960",
@@ -121,7 +131,8 @@ export const registry: Registry = {
       "email",
       "contact",
       "at"
-    ]
+    ],
+    "category": "material"
   },
   "amazonwebservices": {
     "viewBox": "0 0 128 128",
@@ -132,7 +143,8 @@ export const registry: Registry = {
       "hosting",
       "server",
       "aws"
-    ]
+    ],
+    "category": "original-wordmark"
   },
   "anaconda": {
     "viewBox": "0 0 128 128",
@@ -141,7 +153,8 @@ export const registry: Registry = {
     "tags": [
       "python",
       "data-science"
-    ]
+    ],
+    "category": "original"
   },
   "android": {
     "viewBox": "0 0 128 128",
@@ -150,7 +163,8 @@ export const registry: Registry = {
     "tags": [
       "os",
       "mobile"
-    ]
+    ],
+    "category": "plain"
   },
   "androidstudio": {
     "viewBox": "0 0 128 128",
@@ -163,7 +177,8 @@ export const registry: Registry = {
       "ide",
       "android",
       "mobile"
-    ]
+    ],
+    "category": "plain"
   },
   "angular": {
     "viewBox": "0 0 128 128",
@@ -172,7 +187,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "javascript"
-    ]
+    ],
+    "category": "plain"
   },
   "angularjs": {
     "viewBox": "0 0 128 128",
@@ -181,7 +197,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "javascript"
-    ]
+    ],
+    "category": "plain"
   },
   "angularmaterial": {
     "viewBox": "0 0 128 128",
@@ -190,7 +207,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "javascript"
-    ]
+    ],
+    "category": "plain"
   },
   "ansible": {
     "viewBox": "0 0 128 128",
@@ -201,7 +219,8 @@ export const registry: Registry = {
       "provisioning",
       "deployment",
       "continuous-delivery"
-    ]
+    ],
+    "category": "plain"
   },
   "ansys": {
     "viewBox": "0 0 128 128",
@@ -209,7 +228,8 @@ export const registry: Registry = {
     "label": "Ansys",
     "tags": [
       "simulation"
-    ]
+    ],
+    "category": "plain"
   },
   "antdesign": {
     "viewBox": "0 0 128 128",
@@ -219,7 +239,8 @@ export const registry: Registry = {
       "reactjs",
       "design",
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "apache": {
     "viewBox": "0 0 128 128",
@@ -228,7 +249,8 @@ export const registry: Registry = {
     "tags": [
       "php",
       "The Apache Software Foundation"
-    ]
+    ],
+    "category": "plain"
   },
   "apacheairflow": {
     "viewBox": "0 0 128 128",
@@ -240,7 +262,8 @@ export const registry: Registry = {
       "orchestrator",
       "open-source",
       "Airflow"
-    ]
+    ],
+    "category": "plain"
   },
   "apachekafka": {
     "viewBox": "0 0 128 128",
@@ -249,7 +272,8 @@ export const registry: Registry = {
     "tags": [
       "streaming",
       "open-source"
-    ]
+    ],
+    "category": "original"
   },
   "apachespark": {
     "viewBox": "0 0 128 128",
@@ -259,7 +283,8 @@ export const registry: Registry = {
       "data-processing",
       "data-science",
       "machine-learning"
-    ]
+    ],
+    "category": "original"
   },
   "apex": {
     "viewBox": "0 0 128 128",
@@ -267,7 +292,8 @@ export const registry: Registry = {
     "label": "Apex",
     "tags": [
       "language"
-    ]
+    ],
+    "category": "original"
   },
   "apl": {
     "viewBox": "0 0 128 128",
@@ -279,7 +305,8 @@ export const registry: Registry = {
       "open-source",
       "cross-platform",
       "A Programming Language"
-    ]
+    ],
+    "category": "plain"
   },
   "apollographql": {
     "viewBox": "0 0 128 128",
@@ -290,7 +317,8 @@ export const registry: Registry = {
       "graphql",
       "api",
       "Apollo"
-    ]
+    ],
+    "category": "original"
   },
   "appcelerator": {
     "viewBox": "0 0 128 128",
@@ -299,7 +327,8 @@ export const registry: Registry = {
     "tags": [
       "app",
       "mobile"
-    ]
+    ],
+    "category": "original"
   },
   "apple": {
     "viewBox": "0 0 128 128",
@@ -308,7 +337,8 @@ export const registry: Registry = {
     "tags": [
       "brand",
       "mobile"
-    ]
+    ],
+    "category": "original"
   },
   "appwrite": {
     "viewBox": "0 0 128 128",
@@ -318,7 +348,8 @@ export const registry: Registry = {
       "cloud",
       "platform",
       "server"
-    ]
+    ],
+    "category": "original"
   },
   "archlinux": {
     "viewBox": "0 0 128 128",
@@ -328,7 +359,8 @@ export const registry: Registry = {
       "linux",
       "distribution",
       "desktop"
-    ]
+    ],
+    "category": "plain"
   },
   "arduino": {
     "viewBox": "0 0 128 128",
@@ -337,7 +369,8 @@ export const registry: Registry = {
     "tags": [
       "microcontroller",
       "hardware"
-    ]
+    ],
+    "category": "plain"
   },
   "argocd": {
     "viewBox": "0 0 128 128",
@@ -346,7 +379,8 @@ export const registry: Registry = {
     "tags": [
       "gitops",
       "continuous-delivery"
-    ]
+    ],
+    "category": "plain"
   },
   "arrow_back": {
     "viewBox": "0 -960 960 960",
@@ -356,7 +390,8 @@ export const registry: Registry = {
       "navigation",
       "arrow",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "arrow_downward": {
     "viewBox": "0 -960 960 960",
@@ -366,7 +401,8 @@ export const registry: Registry = {
       "navigation",
       "arrow",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "arrow_forward": {
     "viewBox": "0 -960 960 960",
@@ -376,7 +412,8 @@ export const registry: Registry = {
       "navigation",
       "arrow",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "arrow_upward": {
     "viewBox": "0 -960 960 960",
@@ -386,7 +423,8 @@ export const registry: Registry = {
       "navigation",
       "arrow",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "artixlinux": {
     "viewBox": "0 0 128 128",
@@ -398,7 +436,8 @@ export const registry: Registry = {
       "distribution",
       "desktop",
       "artix"
-    ]
+    ],
+    "category": "plain"
   },
   "astro": {
     "viewBox": "0 0 128 128",
@@ -408,7 +447,8 @@ export const registry: Registry = {
       "static site generator",
       "framework",
       "web-development"
-    ]
+    ],
+    "category": "plain"
   },
   "atom": {
     "viewBox": "0 0 128 128",
@@ -416,7 +456,8 @@ export const registry: Registry = {
     "label": "Atom",
     "tags": [
       "editor"
-    ]
+    ],
+    "category": "original"
   },
   "awk": {
     "viewBox": "0 0 128 128",
@@ -427,7 +468,8 @@ export const registry: Registry = {
       "language",
       "unix",
       "the awk programming language"
-    ]
+    ],
+    "category": "original"
   },
   "axios": {
     "viewBox": "0 0 128 128",
@@ -437,7 +479,8 @@ export const registry: Registry = {
       "http",
       "promise",
       "nodejs"
-    ]
+    ],
+    "category": "plain"
   },
   "azure": {
     "viewBox": "0 0 128 128",
@@ -447,7 +490,8 @@ export const registry: Registry = {
       "cloud",
       "devops",
       "microsoftazure"
-    ]
+    ],
+    "category": "plain"
   },
   "azuredevops": {
     "viewBox": "0 0 128 128",
@@ -460,7 +504,8 @@ export const registry: Registry = {
       "version control",
       "vcs",
       "azure-devops"
-    ]
+    ],
+    "category": "original"
   },
   "azuresqldatabase": {
     "viewBox": "0 0 128 128",
@@ -472,7 +517,8 @@ export const registry: Registry = {
       "tool",
       "sql",
       "azure-sql-database"
-    ]
+    ],
+    "category": "original"
   },
   "babel": {
     "viewBox": "0 0 128 128",
@@ -482,7 +528,8 @@ export const registry: Registry = {
       "javascript",
       "transpiler",
       "babeljs"
-    ]
+    ],
+    "category": "plain"
   },
   "babylonjs": {
     "viewBox": "0 0 128 128",
@@ -494,7 +541,8 @@ export const registry: Registry = {
       "library",
       "web",
       "babylon.js"
-    ]
+    ],
+    "category": "plain"
   },
   "backbonejs": {
     "viewBox": "0 0 128 128",
@@ -503,7 +551,8 @@ export const registry: Registry = {
     "tags": [
       "javascript",
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "ballerina": {
     "viewBox": "0 0 128 128",
@@ -515,7 +564,8 @@ export const registry: Registry = {
       "server",
       "networking",
       "bal"
-    ]
+    ],
+    "category": "original"
   },
   "bamboo": {
     "viewBox": "0 0 128 128",
@@ -526,7 +576,8 @@ export const registry: Registry = {
       "integration",
       "server",
       "atlassianbamboo"
-    ]
+    ],
+    "category": "original"
   },
   "bash": {
     "viewBox": "0 0 128 128",
@@ -537,7 +588,8 @@ export const registry: Registry = {
       "command",
       "scripting",
       "bourneagainshell"
-    ]
+    ],
+    "category": "plain"
   },
   "bazel": {
     "viewBox": "0 0 128 128",
@@ -548,7 +600,8 @@ export const registry: Registry = {
       "automation",
       "open-source",
       "buildtoolbazel"
-    ]
+    ],
+    "category": "plain"
   },
   "beats": {
     "viewBox": "0 0 128 128",
@@ -557,7 +610,8 @@ export const registry: Registry = {
     "tags": [
       "elastic",
       "data-transfer"
-    ]
+    ],
+    "category": "original"
   },
   "behance": {
     "viewBox": "0 0 128 128",
@@ -566,7 +620,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "website"
-    ]
+    ],
+    "category": "plain"
   },
   "bevyengine": {
     "viewBox": "0 0 128 128",
@@ -579,7 +634,8 @@ export const registry: Registry = {
       "open-source",
       "bevy engine",
       "bevy"
-    ]
+    ],
+    "category": "plain"
   },
   "biome": {
     "viewBox": "0 0 128 128",
@@ -594,7 +650,8 @@ export const registry: Registry = {
       "format",
       "tool",
       "biomejs"
-    ]
+    ],
+    "category": "original"
   },
   "bitbucket": {
     "viewBox": "0 0 128 128",
@@ -603,7 +660,8 @@ export const registry: Registry = {
     "tags": [
       "version-control",
       "atlassianbitbucket"
-    ]
+    ],
+    "category": "original"
   },
   "blazor": {
     "viewBox": "0 0 128 128",
@@ -615,7 +673,8 @@ export const registry: Registry = {
       "framework",
       "design",
       "ui"
-    ]
+    ],
+    "category": "original"
   },
   "blender": {
     "viewBox": "0 0 128 128",
@@ -626,7 +685,8 @@ export const registry: Registry = {
       "python",
       "3d",
       "animation"
-    ]
+    ],
+    "category": "original"
   },
   "bootstrap": {
     "viewBox": "0 0 128 128",
@@ -638,7 +698,8 @@ export const registry: Registry = {
       "html",
       "javascript",
       "library"
-    ]
+    ],
+    "category": "plain"
   },
   "bower": {
     "viewBox": "0 0 128 128",
@@ -647,7 +708,8 @@ export const registry: Registry = {
     "tags": [
       "package",
       "manager"
-    ]
+    ],
+    "category": "plain"
   },
   "browserstack": {
     "viewBox": "0 0 128 128",
@@ -658,7 +720,8 @@ export const registry: Registry = {
       "app",
       "testing",
       "tool"
-    ]
+    ],
+    "category": "plain"
   },
   "bulma": {
     "viewBox": "0 0 128 128",
@@ -668,7 +731,8 @@ export const registry: Registry = {
       "css",
       "framework",
       "bulmacss"
-    ]
+    ],
+    "category": "plain"
   },
   "bun": {
     "viewBox": "0 0 128 128",
@@ -678,7 +742,8 @@ export const registry: Registry = {
       "javascript",
       "zig",
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "c": {
     "viewBox": "0 0 128 128",
@@ -686,7 +751,8 @@ export const registry: Registry = {
     "label": "C",
     "tags": [
       "language"
-    ]
+    ],
+    "category": "original"
   },
   "cairo": {
     "viewBox": "0 0 128 128",
@@ -698,7 +764,8 @@ export const registry: Registry = {
       "c",
       "open-source",
       "cairographics"
-    ]
+    ],
+    "category": "plain"
   },
   "cakephp": {
     "viewBox": "0 0 128 128",
@@ -706,7 +773,8 @@ export const registry: Registry = {
     "label": "Cakephp",
     "tags": [
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "call": {
     "viewBox": "0 -960 960 960",
@@ -716,7 +784,8 @@ export const registry: Registry = {
       "communication",
       "phone",
       "contact"
-    ]
+    ],
+    "category": "material"
   },
   "canva": {
     "viewBox": "0 0 128 128",
@@ -724,7 +793,8 @@ export const registry: Registry = {
     "label": "Canva",
     "tags": [
       "design"
-    ]
+    ],
+    "category": "original"
   },
   "capacitor": {
     "viewBox": "0 0 128 128",
@@ -737,7 +807,8 @@ export const registry: Registry = {
       "framework",
       "universal",
       "capacitorjs"
-    ]
+    ],
+    "category": "plain"
   },
   "carbon": {
     "viewBox": "0 0 128 128",
@@ -747,7 +818,8 @@ export const registry: Registry = {
       "programming",
       "language",
       "Carbon Language"
-    ]
+    ],
+    "category": "original"
   },
   "cassandra": {
     "viewBox": "0 0 128 128",
@@ -758,7 +830,8 @@ export const registry: Registry = {
       "database",
       "open-source",
       "Apache Cassandra"
-    ]
+    ],
+    "category": "plain"
   },
   "centos": {
     "viewBox": "0 0 128 128",
@@ -767,7 +840,8 @@ export const registry: Registry = {
     "tags": [
       "server",
       "linux"
-    ]
+    ],
+    "category": "plain"
   },
   "ceylon": {
     "viewBox": "0 0 128 128",
@@ -777,7 +851,8 @@ export const registry: Registry = {
       "language",
       "eclipseceylon",
       "ceylonlang"
-    ]
+    ],
+    "category": "plain"
   },
   "chakraui": {
     "viewBox": "0 0 128 128",
@@ -787,7 +862,8 @@ export const registry: Registry = {
       "ui",
       "library",
       "chakra ui"
-    ]
+    ],
+    "category": "plain"
   },
   "chartjs": {
     "viewBox": "0 0 128 128",
@@ -798,7 +874,8 @@ export const registry: Registry = {
       "chart",
       "framework",
       "chart.js"
-    ]
+    ],
+    "category": "plain"
   },
   "chat": {
     "viewBox": "0 -960 960 960",
@@ -808,7 +885,8 @@ export const registry: Registry = {
       "communication",
       "message",
       "contact"
-    ]
+    ],
+    "category": "material"
   },
   "check": {
     "viewBox": "0 -960 960 960",
@@ -817,7 +895,8 @@ export const registry: Registry = {
     "tags": [
       "navigation",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "chevron_left": {
     "viewBox": "0 -960 960 960",
@@ -827,7 +906,8 @@ export const registry: Registry = {
       "navigation",
       "arrow",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "chevron_right": {
     "viewBox": "0 -960 960 960",
@@ -837,7 +917,8 @@ export const registry: Registry = {
       "navigation",
       "arrow",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "chrome": {
     "viewBox": "0 0 128 128",
@@ -846,7 +927,8 @@ export const registry: Registry = {
     "tags": [
       "browser",
       "googlechrome"
-    ]
+    ],
+    "category": "plain"
   },
   "circleci": {
     "viewBox": "0 0 128 128",
@@ -855,7 +937,8 @@ export const registry: Registry = {
     "tags": [
       "integration",
       "platform"
-    ]
+    ],
+    "category": "plain"
   },
   "clarity": {
     "viewBox": "0 0 128 128",
@@ -866,7 +949,8 @@ export const registry: Registry = {
       "language",
       "blockchain",
       "clarity-lang"
-    ]
+    ],
+    "category": "plain"
   },
   "clickhouse": {
     "viewBox": "0 0 128 128",
@@ -877,7 +961,8 @@ export const registry: Registry = {
       "column-oriented",
       "database",
       "warehouse"
-    ]
+    ],
+    "category": "plain"
   },
   "clion": {
     "viewBox": "0 0 128 128",
@@ -890,7 +975,8 @@ export const registry: Registry = {
       "c++",
       "cpp",
       "cplusplus"
-    ]
+    ],
+    "category": "plain"
   },
   "clojure": {
     "viewBox": "0 0 128 128",
@@ -899,7 +985,8 @@ export const registry: Registry = {
     "tags": [
       "language",
       "jvm"
-    ]
+    ],
+    "category": "original"
   },
   "clojurescript": {
     "viewBox": "0 0 128 128",
@@ -907,7 +994,8 @@ export const registry: Registry = {
     "label": "Clojurescript",
     "tags": [
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "close": {
     "viewBox": "0 -960 960 960",
@@ -916,7 +1004,8 @@ export const registry: Registry = {
     "tags": [
       "navigation",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "cloudflare": {
     "viewBox": "0 0 128 128",
@@ -928,7 +1017,8 @@ export const registry: Registry = {
       "dns",
       "proxy",
       "security"
-    ]
+    ],
+    "category": "plain"
   },
   "cloudflareworkers": {
     "viewBox": "0 0 128 128",
@@ -941,7 +1031,8 @@ export const registry: Registry = {
       "performance",
       "javascript",
       "Cloudflare Workers"
-    ]
+    ],
+    "category": "plain"
   },
   "cloudrun": {
     "viewBox": "0 0 128 128",
@@ -953,7 +1044,8 @@ export const registry: Registry = {
       "deploy",
       "cloud-computing-platform",
       "Cloud Run"
-    ]
+    ],
+    "category": "plain"
   },
   "cmake": {
     "viewBox": "0 0 128 128",
@@ -961,7 +1053,8 @@ export const registry: Registry = {
     "label": "Cmake",
     "tags": [
       "build"
-    ]
+    ],
+    "category": "plain"
   },
   "cobol": {
     "viewBox": "0 0 128 128",
@@ -969,7 +1062,8 @@ export const registry: Registry = {
     "label": "Cobol",
     "tags": [
       "language"
-    ]
+    ],
+    "category": "original"
   },
   "codeac": {
     "viewBox": "0 0 128 128",
@@ -979,7 +1073,8 @@ export const registry: Registry = {
       "platform",
       "integration",
       "codeacio"
-    ]
+    ],
+    "category": "original"
   },
   "codecov": {
     "viewBox": "0 0 128 128",
@@ -988,7 +1083,8 @@ export const registry: Registry = {
     "tags": [
       "platform",
       "integration"
-    ]
+    ],
+    "category": "plain"
   },
   "codeigniter": {
     "viewBox": "0 0 128 128",
@@ -997,7 +1093,8 @@ export const registry: Registry = {
     "tags": [
       "php",
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "codepen": {
     "viewBox": "0 0 128 128",
@@ -1007,7 +1104,8 @@ export const registry: Registry = {
       "social",
       "website",
       "editor"
-    ]
+    ],
+    "category": "original"
   },
   "coffeescript": {
     "viewBox": "0 0 128 128",
@@ -1017,7 +1115,8 @@ export const registry: Registry = {
       "javascript",
       "transpiler",
       "language"
-    ]
+    ],
+    "category": "original"
   },
   "composer": {
     "viewBox": "0 0 128 128",
@@ -1027,7 +1126,8 @@ export const registry: Registry = {
       "package",
       "manager",
       "php"
-    ]
+    ],
+    "category": "original"
   },
   "confluence": {
     "viewBox": "0 0 128 128",
@@ -1038,7 +1138,8 @@ export const registry: Registry = {
       "documentation",
       "wiki",
       "atlassianconfluence"
-    ]
+    ],
+    "category": "plain"
   },
   "connected_tv": {
     "viewBox": "0 -960 960 960",
@@ -1049,7 +1150,8 @@ export const registry: Registry = {
       "tv",
       "streaming",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "consul": {
     "viewBox": "0 0 128 128",
@@ -1061,7 +1163,8 @@ export const registry: Registry = {
       "security",
       "tool",
       "HashiCorp Consul"
-    ]
+    ],
+    "category": "original"
   },
   "contao": {
     "viewBox": "0 0 128 128",
@@ -1069,7 +1172,8 @@ export const registry: Registry = {
     "label": "Contao",
     "tags": [
       "cms"
-    ]
+    ],
+    "category": "original"
   },
   "corejs": {
     "viewBox": "0 0 128 128",
@@ -1082,7 +1186,8 @@ export const registry: Registry = {
       "tool",
       "core-js",
       "core.js"
-    ]
+    ],
+    "category": "original"
   },
   "cosmosdb": {
     "viewBox": "0 0 128 128",
@@ -1094,7 +1199,8 @@ export const registry: Registry = {
       "cloud",
       "azure",
       "azurecosmosdb"
-    ]
+    ],
+    "category": "plain"
   },
   "couchbase": {
     "viewBox": "0 0 128 128",
@@ -1104,7 +1210,8 @@ export const registry: Registry = {
       "database",
       "nosql",
       "cloud"
-    ]
+    ],
+    "category": "original"
   },
   "couchdb": {
     "viewBox": "0 0 128 128",
@@ -1113,7 +1220,8 @@ export const registry: Registry = {
     "tags": [
       "database",
       "apachecouchdb"
-    ]
+    ],
+    "category": "plain"
   },
   "cpanel": {
     "viewBox": "0 0 128 128",
@@ -1124,7 +1232,8 @@ export const registry: Registry = {
       "web hosting",
       "server",
       "control panel"
-    ]
+    ],
+    "category": "original"
   },
   "cplusplus": {
     "viewBox": "0 0 128 128",
@@ -1134,7 +1243,8 @@ export const registry: Registry = {
       "language",
       "c++",
       "cpp"
-    ]
+    ],
+    "category": "plain"
   },
   "crystal": {
     "viewBox": "0 0 128 128",
@@ -1144,7 +1254,8 @@ export const registry: Registry = {
       "programming",
       "language",
       "crystallang"
-    ]
+    ],
+    "category": "original"
   },
   "csharp": {
     "viewBox": "0 0 128 128",
@@ -1153,7 +1264,8 @@ export const registry: Registry = {
     "tags": [
       "language",
       "c#"
-    ]
+    ],
+    "category": "plain"
   },
   "css3": {
     "viewBox": "0 0 128 128",
@@ -1163,7 +1275,8 @@ export const registry: Registry = {
       "language",
       "programming",
       "cascadingstylesheets3"
-    ]
+    ],
+    "category": "plain"
   },
   "cucumber": {
     "viewBox": "0 0 128 128",
@@ -1172,7 +1285,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "cucumberjs"
-    ]
+    ],
+    "category": "plain"
   },
   "cypressio": {
     "viewBox": "0 0 128 128",
@@ -1182,13 +1296,15 @@ export const registry: Registry = {
       "testing",
       "framework",
       "cypress"
-    ]
+    ],
+    "category": "plain"
   },
   "d3js": {
     "viewBox": "0 0 128 128",
     "innerHTML": "<linearGradient id=\"a\" x1=\"85.24\" x2=\"91.053\" y1=\"97.604\" y2=\"-49.515\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0\" stop-color=\"#f9a03c\"/><stop offset=\"1\" stop-color=\"#f7974e\"/></linearGradient><path fill=\"currentColor\" d=\"M118.16 63.966c5.223-6.256 8.368-14.217 8.368-22.98C126.528 21.097 110.352 5 90.464 5H47.986c10.375 7 18.966 16 24.82 26h17.658c5.55 0 10.064 4.45 10.064 10s-4.515 10-10.064 10H80.047c.82 5 1.26 8.62 1.26 13.098 0 4.41-.433 8.902-1.224 12.902h10.382c5.55 0 10.064 4.95 10.064 10.5S96.013 98 90.464 98H72.92c-1.315 2-2.79 4.74-4.38 6.98C63.137 112.59 56.253 119 48.29 124h42.173c19.335 0 35.16-15.746 36.024-34.876-.017.31-.043.39-.066.698.062-.848.107-1.813.107-2.678-.002-8.766-3.148-16.92-8.37-23.178z\"/><linearGradient id=\"b\" x1=\"33.627\" x2=\"39.382\" y1=\"97.714\" y2=\"-47.925\" gradientUnits=\"userSpaceOnUse\"><stop offset=\"0\" stop-color=\"#f9a03c\"/><stop offset=\"1\" stop-color=\"#f7974e\"/></linearGradient><path fill=\"currentColor\" d=\"m61.03 97.543.003-.18c.07-.1.138-.292.207-.39.077-.118.152-.275.228-.392.002-.002 0-.03.003-.034 6.14-9.33 9.727-20.41 9.727-32.39C71.197 31.5 44.624 5 11.962 5H1v26h10.962c18.32 0 33.23 14.823 33.23 33.144 0 4.984-1.113 9.675-3.088 13.924-.006.013-.013.36-.02.374C36.79 89.782 25.283 98 11.963 98H1v26h10.962c20.396 0 38.41-10.722 49.068-26.457\"/>",
     "label": "D3js",
-    "tags": []
+    "tags": [],
+    "category": "plain"
   },
   "dart": {
     "viewBox": "0 0 128 128",
@@ -1198,7 +1314,8 @@ export const registry: Registry = {
       "programming",
       "language",
       "googledart"
-    ]
+    ],
+    "category": "plain"
   },
   "datadog": {
     "viewBox": "0 0 128 128",
@@ -1208,7 +1325,8 @@ export const registry: Registry = {
       "monitoring",
       "platform",
       "integration"
-    ]
+    ],
+    "category": "original"
   },
   "datagrip": {
     "viewBox": "0 0 128 128",
@@ -1219,7 +1337,8 @@ export const registry: Registry = {
       "ide",
       "sql",
       "database"
-    ]
+    ],
+    "category": "plain"
   },
   "dataspell": {
     "viewBox": "0 0 128 128",
@@ -1230,7 +1349,8 @@ export const registry: Registry = {
       "ide",
       "jupyter notebook",
       "data science"
-    ]
+    ],
+    "category": "plain"
   },
   "datatables": {
     "viewBox": "0 0 128 128",
@@ -1242,7 +1362,8 @@ export const registry: Registry = {
       "html",
       "javascript",
       "library"
-    ]
+    ],
+    "category": "original"
   },
   "dbeaver": {
     "viewBox": "0 0 128 128",
@@ -1251,7 +1372,8 @@ export const registry: Registry = {
     "tags": [
       "tool",
       "database"
-    ]
+    ],
+    "category": "original"
   },
   "debian": {
     "viewBox": "0 0 128 128",
@@ -1260,7 +1382,8 @@ export const registry: Registry = {
     "tags": [
       "os",
       "server"
-    ]
+    ],
+    "category": "plain"
   },
   "delphi": {
     "viewBox": "0 0 128 128",
@@ -1269,7 +1392,8 @@ export const registry: Registry = {
     "tags": [
       "language",
       "embarcadero"
-    ]
+    ],
+    "category": "plain"
   },
   "denojs": {
     "viewBox": "0 0 128 128",
@@ -1279,7 +1403,8 @@ export const registry: Registry = {
       "javascript",
       "rust",
       "runtime"
-    ]
+    ],
+    "category": "original"
   },
   "detaspace": {
     "viewBox": "0 0 128 128",
@@ -1291,7 +1416,8 @@ export const registry: Registry = {
       "server",
       "Deta",
       "Deta Space"
-    ]
+    ],
+    "category": "original"
   },
   "devicon": {
     "viewBox": "0 0 128 128",
@@ -1299,7 +1425,8 @@ export const registry: Registry = {
     "label": "Devicon",
     "tags": [
       "iconset"
-    ]
+    ],
+    "category": "plain"
   },
   "digitalocean": {
     "viewBox": "0 0 128 128",
@@ -1310,7 +1437,8 @@ export const registry: Registry = {
       "hosting",
       "database",
       "storage"
-    ]
+    ],
+    "category": "original"
   },
   "discloud": {
     "viewBox": "0 0 128 128",
@@ -1321,7 +1449,8 @@ export const registry: Registry = {
       "hosting",
       "database",
       "storage"
-    ]
+    ],
+    "category": "original"
   },
   "discord": {
     "viewBox": "0 0 24 24",
@@ -1330,7 +1459,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "brand"
-    ]
+    ],
+    "category": "social"
   },
   "discordjs": {
     "viewBox": "0 0 128 128",
@@ -1340,13 +1470,15 @@ export const registry: Registry = {
       "wrapper",
       "api_wrapper",
       "nodejs"
-    ]
+    ],
+    "category": "plain"
   },
   "django": {
     "viewBox": "0 0 128 128",
     "innerHTML": "<path d=\"M59.448 0h20.93v96.88c-10.737 2.04-18.62 2.855-27.181 2.855-25.551-.001-38.87-11.551-38.87-33.705 0-21.338 14.135-35.2 36.015-35.2 3.398 0 5.98.272 9.106 1.087zm0 48.765c-2.446-.815-4.485-1.086-7.067-1.086-10.6 0-16.717 6.523-16.717 17.939 0 11.145 5.845 17.26 16.582 17.26 2.309 0 4.212-.136 7.202-.542z\"/><path d=\"M113.672 32.321V80.84c0 16.717-1.224 24.735-4.893 31.666-3.398 6.661-7.883 10.873-17.124 15.494l-19.435-9.241c9.242-4.35 13.726-8.153 16.58-14 2.99-5.979 3.943-12.91 3.943-31.122V32.321zM92.742.111h20.93v21.474h-20.93z\"/>",
     "label": "Django",
-    "tags": []
+    "tags": [],
+    "category": "plain"
   },
   "djangorest": {
     "viewBox": "0 0 128 128",
@@ -1359,7 +1491,8 @@ export const registry: Registry = {
       "python",
       "web",
       "Django REST framework"
-    ]
+    ],
+    "category": "plain"
   },
   "docker": {
     "viewBox": "0 0 128 128",
@@ -1368,13 +1501,15 @@ export const registry: Registry = {
     "tags": [
       "platform",
       "deploy"
-    ]
+    ],
+    "category": "plain"
   },
   "doctrine": {
     "viewBox": "0 0 128 128",
     "innerHTML": "<path fill=\"currentColor\" d=\"M112.3 79.1c-.1-3.1-.6-6.1-1.4-9-2.1-7.8-6.2-14.6-11.5-20.6-4.2-4.8-8.6-9.4-12.9-14.2L61.9 8.5c-1.6-1.8-3.3-3.5-5.2-5.1-3.4-2.8-7.3-3.2-11.5-2-1.2.4-2.3 1-3.4 1.6-.7.4-1.4 1-2 1.7-2.3 2.7-2.7 5.9-2.3 9.2.3 2.8 1.7 5.1 3.5 7.1 3.6 3.9 7.2 7.8 10.7 11.7l3.1 3.4-.2.2-.8.4c-7.4 3.5-14.2 7.9-20.1 13.6-3.9 3.8-7.3 7.9-9.7 12.9-3.7 7.8-4.7 16-4.1 24.4.3 3.6 1.1 7 2.4 10.3 2.1 5.5 5.3 10.2 9.3 14.5 8.4 9 18.8 13.9 31.1 14.6 2.4.1 4.8 0 7.2-.1 3.2-.2 6.3-.7 9.5-1.5 8.8-2.2 16.1-6.9 21.8-13.9 8-9.3 11.6-20.2 11.1-32.4m-17.9 5c-1.4 3.7-3.7 6.9-6.6 9.6-5.9 5.6-11.8 11.2-17.8 16.8-1.3 1.2-2.6 2.4-4 3.4-3.7 2.6-9.8.8-11.5-4-.6-1.6-.3-3.3.5-4.9 1.1-2.3 2.7-4.3 4.5-6.1 2.7-2.8 5.5-5.5 8.3-8.3l.6-.6h-9.9c-2.4 0-4.8.1-7.3.1-3.1 0-6.3-.1-9.4-.3-1.1 0-2.3-.1-3.4-.3-3.1-.7-4.9-2.8-5.4-5.8-.6-3.2.1-6.1 2.5-8.4 1.3-1.2 2.9-1.8 4.6-1.9 2.8-.1 5.7-.1 8.5-.1h19.8c-1-1-2-2.1-3-3.2-2.8-2.8-5.7-5.5-8.5-8.4-1.7-1.8-2.8-3.9-3-6.4-.1-1.2.3-2.3.9-3.4 1.6-2.6 4-3.8 7-4 2.8-.2 5.1 1 7.1 2.9 3.2 3 6.2 6.2 9.3 9.3 3.3 3.3 6.5 6.5 9.7 9.8 2.1 2.1 4 4.4 5.5 7 .8 1.4 1.4 2.9 1.5 4.6-.1 1-.2 1.9-.5 2.6\"/>",
     "label": "Doctrine",
-    "tags": []
+    "tags": [],
+    "category": "plain"
   },
   "dot-net": {
     "viewBox": "0 0 128 128",
@@ -1384,7 +1519,8 @@ export const registry: Registry = {
       "framework",
       "dotnet",
       ".net"
-    ]
+    ],
+    "category": "plain"
   },
   "dotnetcore": {
     "viewBox": "0 0 128 128",
@@ -1393,7 +1529,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       ".netcore"
-    ]
+    ],
+    "category": "plain"
   },
   "dovecot": {
     "viewBox": "0 0 128 128",
@@ -1403,7 +1540,8 @@ export const registry: Registry = {
       "imap",
       "pop3",
       "e-mail"
-    ]
+    ],
+    "category": "plain"
   },
   "download": {
     "viewBox": "0 -960 960 960",
@@ -1412,7 +1550,8 @@ export const registry: Registry = {
     "tags": [
       "navigation",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "dreamweaver": {
     "viewBox": "0 0 128 128",
@@ -1424,7 +1563,8 @@ export const registry: Registry = {
       "software",
       "tool",
       "Adobe Dreamweaver"
-    ]
+    ],
+    "category": "plain"
   },
   "dribbble": {
     "viewBox": "0 0 24 24",
@@ -1433,7 +1573,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "brand"
-    ]
+    ],
+    "category": "social"
   },
   "dropwizard": {
     "viewBox": "0 0 128 128",
@@ -1442,7 +1583,8 @@ export const registry: Registry = {
     "tags": [
       "java",
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "drupal": {
     "viewBox": "0 0 128 128",
@@ -1450,7 +1592,8 @@ export const registry: Registry = {
     "label": "Drupal",
     "tags": [
       "cms"
-    ]
+    ],
+    "category": "plain"
   },
   "duckdb": {
     "viewBox": "0 0 128 128",
@@ -1459,7 +1602,8 @@ export const registry: Registry = {
     "tags": [
       "database",
       "sql"
-    ]
+    ],
+    "category": "plain"
   },
   "dyalog": {
     "viewBox": "0 0 128 128",
@@ -1467,7 +1611,8 @@ export const registry: Registry = {
     "label": "Dyalog",
     "tags": [
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "dynamodb": {
     "viewBox": "0 0 128 128",
@@ -1477,7 +1622,8 @@ export const registry: Registry = {
       "key-value",
       "database",
       "java"
-    ]
+    ],
+    "category": "plain"
   },
   "dynatrace": {
     "viewBox": "0 0 128 128",
@@ -1487,7 +1633,8 @@ export const registry: Registry = {
       "monitoring",
       "performance",
       "cloud"
-    ]
+    ],
+    "category": "plain"
   },
   "eclipse": {
     "viewBox": "0 0 128 128",
@@ -1497,7 +1644,8 @@ export const registry: Registry = {
       "editor",
       "IDE",
       "Eclipse IDE"
-    ]
+    ],
+    "category": "original"
   },
   "ecto": {
     "viewBox": "0 0 128 128",
@@ -1508,7 +1656,8 @@ export const registry: Registry = {
       "elixir",
       "integration",
       "query"
-    ]
+    ],
+    "category": "original"
   },
   "elasticsearch": {
     "viewBox": "0 0 128 128",
@@ -1518,7 +1667,8 @@ export const registry: Registry = {
       "elastic",
       "data",
       "logs"
-    ]
+    ],
+    "category": "plain"
   },
   "electron": {
     "viewBox": "0 0 128 128",
@@ -1527,7 +1677,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "electronjs"
-    ]
+    ],
+    "category": "original"
   },
   "eleventy": {
     "viewBox": "0 0 128 128",
@@ -1537,7 +1688,8 @@ export const registry: Registry = {
       "ssg",
       "static site generator",
       "11ty"
-    ]
+    ],
+    "category": "plain"
   },
   "elixir": {
     "viewBox": "0 0 128 128",
@@ -1546,7 +1698,8 @@ export const registry: Registry = {
     "tags": [
       "language",
       "elexirlang"
-    ]
+    ],
+    "category": "plain"
   },
   "elm": {
     "viewBox": "0 0 128 128",
@@ -1555,7 +1708,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "elmlang"
-    ]
+    ],
+    "category": "plain"
   },
   "emacs": {
     "viewBox": "0 0 128 128",
@@ -1564,7 +1718,8 @@ export const registry: Registry = {
     "tags": [
       "editor",
       "editingmacros"
-    ]
+    ],
+    "category": "original"
   },
   "embeddedc": {
     "viewBox": "0 0 128 128",
@@ -1573,7 +1728,8 @@ export const registry: Registry = {
     "tags": [
       "language",
       "programming"
-    ]
+    ],
+    "category": "plain"
   },
   "ember": {
     "viewBox": "0 0 128 128",
@@ -1586,7 +1742,8 @@ export const registry: Registry = {
       "build",
       "ember.js",
       "emberjs"
-    ]
+    ],
+    "category": "plain"
   },
   "entityframeworkcore": {
     "viewBox": "0 0 128 128",
@@ -1599,7 +1756,8 @@ export const registry: Registry = {
       "database",
       "ef core",
       "entity framework core"
-    ]
+    ],
+    "category": "plain"
   },
   "envoy": {
     "viewBox": "0 0 128 128",
@@ -1609,13 +1767,15 @@ export const registry: Registry = {
       "proxy",
       "cloud",
       "envoyproxy"
-    ]
+    ],
+    "category": "original"
   },
   "erlang": {
     "viewBox": "0 0 128 128",
     "innerHTML": "<path fill=\"currentColor\" d=\"M18.2 24.1 1 24v80h19.7v-.1C11 93.6 5.2 79.2 5.3 62.1 5.2 47 10 33.9 18.2 24.1M127 24h-16.4c6.2 9 9.6 19.3 9.1 32.1.1 1.2.1 1.9 0 4.9H46.3c0 22 7.7 38.3 27.3 38.4 13.5-.1 23.2-10.1 29.9-20.9l19 9.5c-3.4 6.1-7.2 11-11.4 16H127zm-61.9 1.6c-9 0-16.8 7.4-17.6 16.4H81c-.3-9-6.8-16.4-15.9-16.4\"/>",
     "label": "Erlang",
-    "tags": []
+    "tags": [],
+    "category": "plain"
   },
   "eslint": {
     "viewBox": "0 0 128 128",
@@ -1626,7 +1786,8 @@ export const registry: Registry = {
       "javascript",
       "code-quality",
       "coding-style"
-    ]
+    ],
+    "category": "plain"
   },
   "expo": {
     "viewBox": "0 0 128 128",
@@ -1636,7 +1797,8 @@ export const registry: Registry = {
       "framework",
       "react",
       "react-native"
-    ]
+    ],
+    "category": "original"
   },
   "express": {
     "viewBox": "0 0 128 128",
@@ -1645,7 +1807,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "expressjs"
-    ]
+    ],
+    "category": "original"
   },
   "facebook": {
     "viewBox": "0 0 128 128",
@@ -1653,7 +1816,8 @@ export const registry: Registry = {
     "label": "Facebook",
     "tags": [
       "auth"
-    ]
+    ],
+    "category": "plain"
   },
   "fastapi": {
     "viewBox": "0 0 128 128",
@@ -1662,7 +1826,8 @@ export const registry: Registry = {
     "tags": [
       "python",
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "fastify": {
     "viewBox": "0 0 128 128",
@@ -1674,7 +1839,8 @@ export const registry: Registry = {
       "node.js",
       "javascript",
       "performance"
-    ]
+    ],
+    "category": "plain"
   },
   "faunadb": {
     "viewBox": "0 0 128 128",
@@ -1683,7 +1849,8 @@ export const registry: Registry = {
     "tags": [
       "database",
       "fauna"
-    ]
+    ],
+    "category": "original"
   },
   "feathersjs": {
     "viewBox": "0 0 128 128",
@@ -1692,7 +1859,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "rest"
-    ]
+    ],
+    "category": "original"
   },
   "fedora": {
     "viewBox": "0 0 128 128",
@@ -1702,7 +1870,8 @@ export const registry: Registry = {
       "linux",
       "distribution",
       "desktop"
-    ]
+    ],
+    "category": "plain"
   },
   "fiber": {
     "viewBox": "0 0 128 128",
@@ -1713,7 +1882,8 @@ export const registry: Registry = {
       "go",
       "web",
       "GoFiber"
-    ]
+    ],
+    "category": "plain"
   },
   "figma": {
     "viewBox": "0 0 128 128",
@@ -1721,7 +1891,8 @@ export const registry: Registry = {
     "label": "Figma",
     "tags": [
       "design"
-    ]
+    ],
+    "category": "plain"
   },
   "filamentphp": {
     "viewBox": "0 0 128 128",
@@ -1730,7 +1901,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "laravel"
-    ]
+    ],
+    "category": "original"
   },
   "filezilla": {
     "viewBox": "0 0 128 128",
@@ -1738,7 +1910,8 @@ export const registry: Registry = {
     "label": "Filezilla",
     "tags": [
       "ftp"
-    ]
+    ],
+    "category": "plain"
   },
   "firebase": {
     "viewBox": "0 0 128 128",
@@ -1749,7 +1922,8 @@ export const registry: Registry = {
       "hosting",
       "storage",
       "cloud"
-    ]
+    ],
+    "category": "plain"
   },
   "firebird": {
     "viewBox": "0 0 128 128",
@@ -1757,7 +1931,8 @@ export const registry: Registry = {
     "label": "Firebird",
     "tags": [
       "database"
-    ]
+    ],
+    "category": "plain"
   },
   "firefox": {
     "viewBox": "0 0 128 128",
@@ -1766,7 +1941,8 @@ export const registry: Registry = {
     "tags": [
       "browser",
       "mozillafirefox"
-    ]
+    ],
+    "category": "plain"
   },
   "first_page": {
     "viewBox": "0 -960 960 960",
@@ -1775,7 +1951,8 @@ export const registry: Registry = {
     "tags": [
       "navigation",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "flask": {
     "viewBox": "0 0 128 128",
@@ -1784,7 +1961,8 @@ export const registry: Registry = {
     "tags": [
       "python",
       "framework"
-    ]
+    ],
+    "category": "original"
   },
   "flutter": {
     "viewBox": "0 0 128 128",
@@ -1793,7 +1971,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "sdk"
-    ]
+    ],
+    "category": "plain"
   },
   "forgejo": {
     "viewBox": "0 0 128 128",
@@ -1803,7 +1982,8 @@ export const registry: Registry = {
       "software",
       "git",
       "version-control"
-    ]
+    ],
+    "category": "plain"
   },
   "fortran": {
     "viewBox": "0 0 128 128",
@@ -1812,7 +1992,8 @@ export const registry: Registry = {
     "tags": [
       "programming",
       "language"
-    ]
+    ],
+    "category": "original"
   },
   "forum": {
     "viewBox": "0 -960 960 960",
@@ -1821,7 +2002,8 @@ export const registry: Registry = {
     "tags": [
       "communication",
       "discussion"
-    ]
+    ],
+    "category": "material"
   },
   "foundation": {
     "viewBox": "0 0 128 128",
@@ -1830,7 +2012,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "css"
-    ]
+    ],
+    "category": "plain"
   },
   "framermotion": {
     "viewBox": "0 0 128 128",
@@ -1843,7 +2026,8 @@ export const registry: Registry = {
       "animation",
       "framer-motion",
       "framer"
-    ]
+    ],
+    "category": "original"
   },
   "framework7": {
     "viewBox": "0 0 128 128",
@@ -1857,7 +2041,8 @@ export const registry: Registry = {
       "android",
       "ios",
       "open-source"
-    ]
+    ],
+    "category": "original"
   },
   "fsharp": {
     "viewBox": "0 0 128 128",
@@ -1866,7 +2051,8 @@ export const registry: Registry = {
     "tags": [
       "language",
       "f#"
-    ]
+    ],
+    "category": "plain"
   },
   "fusion": {
     "viewBox": "0 0 128 128",
@@ -1876,7 +2062,8 @@ export const registry: Registry = {
       "design",
       "Autodesk Fusion",
       "Autodesk Fusion 360"
-    ]
+    ],
+    "category": "plain"
   },
   "gardener": {
     "viewBox": "0 0 128 128",
@@ -1885,7 +2072,8 @@ export const registry: Registry = {
     "tags": [
       "kubernetes",
       "cloud"
-    ]
+    ],
+    "category": "plain"
   },
   "gatling": {
     "viewBox": "0 0 128 128",
@@ -1894,7 +2082,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "testing"
-    ]
+    ],
+    "category": "original"
   },
   "gatsby": {
     "viewBox": "0 0 128 128",
@@ -1904,7 +2093,8 @@ export const registry: Registry = {
       "reactjs",
       "framework",
       "gatsbyjs"
-    ]
+    ],
+    "category": "original"
   },
   "gazebo": {
     "viewBox": "0 0 128 128",
@@ -1913,7 +2103,8 @@ export const registry: Registry = {
     "tags": [
       "robotics",
       "3d"
-    ]
+    ],
+    "category": "plain"
   },
   "gcc": {
     "viewBox": "0 0 128 128",
@@ -1923,7 +2114,8 @@ export const registry: Registry = {
       "compiler",
       "linux",
       "gnucompilercollection"
-    ]
+    ],
+    "category": "plain"
   },
   "gentoo": {
     "viewBox": "0 0 128 128",
@@ -1933,7 +2125,8 @@ export const registry: Registry = {
       "linux",
       "distribution",
       "desktop"
-    ]
+    ],
+    "category": "plain"
   },
   "ghost": {
     "viewBox": "0 0 128 128",
@@ -1941,7 +2134,8 @@ export const registry: Registry = {
     "label": "Ghost",
     "tags": [
       "cms"
-    ]
+    ],
+    "category": "original"
   },
   "gimp": {
     "viewBox": "0 0 128 128",
@@ -1949,7 +2143,8 @@ export const registry: Registry = {
     "label": "Gimp",
     "tags": [
       "graphic"
-    ]
+    ],
+    "category": "plain"
   },
   "git": {
     "viewBox": "0 0 128 128",
@@ -1957,7 +2152,8 @@ export const registry: Registry = {
     "label": "Git",
     "tags": [
       "version-control"
-    ]
+    ],
+    "category": "plain"
   },
   "gitbook": {
     "viewBox": "0 0 128 128",
@@ -1968,7 +2164,8 @@ export const registry: Registry = {
       "pages",
       "git",
       "markup"
-    ]
+    ],
+    "category": "original"
   },
   "github": {
     "viewBox": "0 0 128 128",
@@ -1976,7 +2173,8 @@ export const registry: Registry = {
     "label": "Github",
     "tags": [
       "version-control"
-    ]
+    ],
+    "category": "original"
   },
   "githubactions": {
     "viewBox": "0 0 128 128",
@@ -1986,7 +2184,8 @@ export const registry: Registry = {
       "devops",
       "integration",
       "GitHub Actions"
-    ]
+    ],
+    "category": "plain"
   },
   "githubcodespaces": {
     "viewBox": "0 0 128 128",
@@ -1999,7 +2198,8 @@ export const registry: Registry = {
       "browser",
       "cloud",
       "GitHub Codespaces"
-    ]
+    ],
+    "category": "plain"
   },
   "gitkraken": {
     "viewBox": "0 0 128 128",
@@ -2008,7 +2208,8 @@ export const registry: Registry = {
     "tags": [
       "git",
       "version-control"
-    ]
+    ],
+    "category": "original"
   },
   "gitlab": {
     "viewBox": "0 0 128 128",
@@ -2016,7 +2217,8 @@ export const registry: Registry = {
     "label": "Gitlab",
     "tags": [
       "version-control"
-    ]
+    ],
+    "category": "plain"
   },
   "gitpod": {
     "viewBox": "0 0 128 128",
@@ -2028,7 +2230,8 @@ export const registry: Registry = {
       "cloud",
       "IDE",
       "gitpod-io"
-    ]
+    ],
+    "category": "plain"
   },
   "gitter": {
     "viewBox": "0 0 128 128",
@@ -2037,7 +2240,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "chat"
-    ]
+    ],
+    "category": "plain"
   },
   "gleam": {
     "viewBox": "0 0 128 128",
@@ -2046,7 +2250,8 @@ export const registry: Registry = {
     "tags": [
       "language",
       "programming"
-    ]
+    ],
+    "category": "plain"
   },
   "glitch": {
     "viewBox": "0 0 128 128",
@@ -2057,7 +2262,8 @@ export const registry: Registry = {
       "online-platform",
       "programming-environment",
       "collaborative-environment"
-    ]
+    ],
+    "category": "plain"
   },
   "go": {
     "viewBox": "0 0 128 128",
@@ -2066,7 +2272,8 @@ export const registry: Registry = {
     "tags": [
       "language",
       "golang"
-    ]
+    ],
+    "category": "plain"
   },
   "godot": {
     "viewBox": "0 0 128 128",
@@ -2075,7 +2282,8 @@ export const registry: Registry = {
     "tags": [
       "game-engine",
       "open-source"
-    ]
+    ],
+    "category": "plain"
   },
   "goland": {
     "viewBox": "0 0 128 128",
@@ -2085,7 +2293,8 @@ export const registry: Registry = {
       "jetbrains",
       "ide",
       "go"
-    ]
+    ],
+    "category": "plain"
   },
   "google": {
     "viewBox": "0 0 128 128",
@@ -2093,7 +2302,8 @@ export const registry: Registry = {
     "label": "Google",
     "tags": [
       "auth"
-    ]
+    ],
+    "category": "plain"
   },
   "googleanalytics": {
     "viewBox": "0 0 24 24",
@@ -2103,7 +2313,8 @@ export const registry: Registry = {
       "analytics",
       "google",
       "brand"
-    ]
+    ],
+    "category": "tools"
   },
   "googlecloud": {
     "viewBox": "0 0 128 128",
@@ -2112,7 +2323,8 @@ export const registry: Registry = {
     "tags": [
       "google",
       "cloud"
-    ]
+    ],
+    "category": "plain"
   },
   "googlecolab": {
     "viewBox": "0 0 128 128",
@@ -2126,7 +2338,8 @@ export const registry: Registry = {
       "python",
       "virtual machine",
       "googlecolaboratory"
-    ]
+    ],
+    "category": "plain"
   },
   "gradle": {
     "viewBox": "0 0 128 128",
@@ -2137,7 +2350,8 @@ export const registry: Registry = {
       "task-runner",
       "apachegradle",
       "gradlebuildtool"
-    ]
+    ],
+    "category": "original"
   },
   "grafana": {
     "viewBox": "0 0 128 128",
@@ -2150,7 +2364,8 @@ export const registry: Registry = {
       "logs",
       "visualization",
       "web-application"
-    ]
+    ],
+    "category": "plain"
   },
   "grails": {
     "viewBox": "0 0 128 128",
@@ -2163,7 +2378,8 @@ export const registry: Registry = {
       "jvm",
       "build",
       "Grails Framework"
-    ]
+    ],
+    "category": "plain"
   },
   "graphql": {
     "viewBox": "0 0 128 128",
@@ -2173,7 +2389,8 @@ export const registry: Registry = {
       "language",
       "data",
       "query"
-    ]
+    ],
+    "category": "plain"
   },
   "groovy": {
     "viewBox": "0 0 128 128",
@@ -2185,7 +2402,8 @@ export const registry: Registry = {
       "jvm",
       "groovylang",
       "apachegroovy"
-    ]
+    ],
+    "category": "plain"
   },
   "grpc": {
     "viewBox": "0 0 128 128",
@@ -2200,7 +2418,8 @@ export const registry: Registry = {
       "library",
       "grpcio",
       "Google Remote Procedure Call"
-    ]
+    ],
+    "category": "plain"
   },
   "grunt": {
     "viewBox": "0 0 128 128",
@@ -2210,7 +2429,8 @@ export const registry: Registry = {
       "task-runner",
       "nodejs",
       "gruntjs"
-    ]
+    ],
+    "category": "plain"
   },
   "gulp": {
     "viewBox": "0 0 128 128",
@@ -2220,7 +2440,8 @@ export const registry: Registry = {
       "task-runner",
       "nodejs",
       "gulpjs"
-    ]
+    ],
+    "category": "plain"
   },
   "hadoop": {
     "viewBox": "0 0 128 128",
@@ -2234,7 +2455,8 @@ export const registry: Registry = {
       "library",
       "java",
       "Apache Hadoop"
-    ]
+    ],
+    "category": "plain"
   },
   "handlebars": {
     "viewBox": "0 0 128 128",
@@ -2243,7 +2465,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "handlebarsjs"
-    ]
+    ],
+    "category": "original"
   },
   "harbor": {
     "viewBox": "0 0 128 128",
@@ -2254,7 +2477,8 @@ export const registry: Registry = {
       "artifact",
       "oci",
       "registry"
-    ]
+    ],
+    "category": "plain"
   },
   "hardhat": {
     "viewBox": "0 0 128 128",
@@ -2266,7 +2490,8 @@ export const registry: Registry = {
       "solidity",
       "javascript",
       "typescript"
-    ]
+    ],
+    "category": "plain"
   },
   "harvester": {
     "viewBox": "0 0 128 128",
@@ -2278,7 +2503,8 @@ export const registry: Registry = {
       "hypervisor",
       "rancher",
       "harvesterhci"
-    ]
+    ],
+    "category": "original"
   },
   "haskell": {
     "viewBox": "0 0 128 128",
@@ -2287,7 +2513,8 @@ export const registry: Registry = {
     "tags": [
       "language",
       "functional"
-    ]
+    ],
+    "category": "plain"
   },
   "haxe": {
     "viewBox": "0 0 128 128",
@@ -2295,7 +2522,8 @@ export const registry: Registry = {
     "label": "Haxe",
     "tags": [
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "helm": {
     "viewBox": "0 0 128 128",
@@ -2305,7 +2533,8 @@ export const registry: Registry = {
       "package",
       "manager",
       "kubernetes"
-    ]
+    ],
+    "category": "original"
   },
   "heroku": {
     "viewBox": "0 0 128 128",
@@ -2313,7 +2542,8 @@ export const registry: Registry = {
     "label": "Heroku",
     "tags": [
       "cloud"
-    ]
+    ],
+    "category": "plain"
   },
   "hibernate": {
     "viewBox": "0 0 128 128",
@@ -2323,7 +2553,8 @@ export const registry: Registry = {
       "database",
       "framework",
       "java"
-    ]
+    ],
+    "category": "plain"
   },
   "home": {
     "viewBox": "0 -960 960 960",
@@ -2332,7 +2563,8 @@ export const registry: Registry = {
     "tags": [
       "navigation",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "homebrew": {
     "viewBox": "0 0 128 128",
@@ -2344,7 +2576,8 @@ export const registry: Registry = {
       "linux",
       "apple",
       "os"
-    ]
+    ],
+    "category": "plain"
   },
   "hoppscotch": {
     "viewBox": "0 0 128 128",
@@ -2354,7 +2587,8 @@ export const registry: Registry = {
       "rest",
       "testing",
       "api"
-    ]
+    ],
+    "category": "plain"
   },
   "html5": {
     "viewBox": "0 0 128 128",
@@ -2364,7 +2598,8 @@ export const registry: Registry = {
       "programming",
       "language",
       "hypertextmarkdownlanguage5"
-    ]
+    ],
+    "category": "plain"
   },
   "htmx": {
     "viewBox": "0 0 128 128",
@@ -2376,7 +2611,8 @@ export const registry: Registry = {
       "html",
       "ui",
       "html ui framework"
-    ]
+    ],
+    "category": "plain"
   },
   "hugo": {
     "viewBox": "0 0 128 128",
@@ -2390,7 +2626,8 @@ export const registry: Registry = {
       "html",
       "css",
       "gohugo"
-    ]
+    ],
+    "category": "plain"
   },
   "hyperv": {
     "viewBox": "0 0 128 128",
@@ -2400,7 +2637,8 @@ export const registry: Registry = {
       "hypervisor",
       "operating-system",
       "hyper-v"
-    ]
+    ],
+    "category": "plain"
   },
   "ie10": {
     "viewBox": "0 0 128 128",
@@ -2409,7 +2647,8 @@ export const registry: Registry = {
     "tags": [
       "browser",
       "internetexplorer10"
-    ]
+    ],
+    "category": "original"
   },
   "ifttt": {
     "viewBox": "0 0 128 128",
@@ -2420,7 +2659,8 @@ export const registry: Registry = {
       "applets",
       "programming",
       "ifthisthenthat"
-    ]
+    ],
+    "category": "original"
   },
   "illustrator": {
     "viewBox": "0 0 128 128",
@@ -2430,7 +2670,8 @@ export const registry: Registry = {
       "editor",
       "vector",
       "adobeillustrator"
-    ]
+    ],
+    "category": "plain"
   },
   "inertiajs": {
     "viewBox": "0 0 128 128",
@@ -2441,7 +2682,8 @@ export const registry: Registry = {
       "js",
       "library",
       "inertia.js"
-    ]
+    ],
+    "category": "plain"
   },
   "influxdb": {
     "viewBox": "0 0 128 128",
@@ -2452,7 +2694,8 @@ export const registry: Registry = {
       "monitoring",
       "open-source",
       "api"
-    ]
+    ],
+    "category": "original"
   },
   "inkscape": {
     "viewBox": "0 0 128 128",
@@ -2461,7 +2704,8 @@ export const registry: Registry = {
     "tags": [
       "editor",
       "vector"
-    ]
+    ],
+    "category": "plain"
   },
   "insomnia": {
     "viewBox": "0 0 128 128",
@@ -2473,7 +2717,8 @@ export const registry: Registry = {
       "Soap API",
       "JSON-XML",
       "Insomnia Rest Client"
-    ]
+    ],
+    "category": "plain"
   },
   "instagram": {
     "viewBox": "0 0 24 24",
@@ -2482,7 +2727,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "brand"
-    ]
+    ],
+    "category": "social"
   },
   "intellij": {
     "viewBox": "0 0 128 128",
@@ -2493,7 +2739,8 @@ export const registry: Registry = {
       "editor",
       "java",
       "intellijidea"
-    ]
+    ],
+    "category": "plain"
   },
   "ionic": {
     "viewBox": "0 0 128 128",
@@ -2501,7 +2748,8 @@ export const registry: Registry = {
     "label": "Ionic",
     "tags": [
       "framework"
-    ]
+    ],
+    "category": "original"
   },
   "jaegertracing": {
     "viewBox": "0 0 128 128",
@@ -2511,7 +2759,8 @@ export const registry: Registry = {
       "monitoring",
       "tracing",
       "jaeger"
-    ]
+    ],
+    "category": "plain"
   },
   "jamstack": {
     "viewBox": "0 0 128 128",
@@ -2520,7 +2769,8 @@ export const registry: Registry = {
     "tags": [
       "javascript",
       "markup"
-    ]
+    ],
+    "category": "original"
   },
   "jasmine": {
     "viewBox": "0 0 128 128",
@@ -2529,7 +2779,8 @@ export const registry: Registry = {
     "tags": [
       "testing",
       "jasminejs"
-    ]
+    ],
+    "category": "original"
   },
   "java": {
     "viewBox": "0 0 128 128",
@@ -2539,7 +2790,8 @@ export const registry: Registry = {
       "programming",
       "language",
       "jvm"
-    ]
+    ],
+    "category": "plain"
   },
   "javascript": {
     "viewBox": "0 0 128 128",
@@ -2550,7 +2802,8 @@ export const registry: Registry = {
       "language",
       "js",
       "ecmascript"
-    ]
+    ],
+    "category": "plain"
   },
   "jeet": {
     "viewBox": "0 0 128 128",
@@ -2559,7 +2812,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "css"
-    ]
+    ],
+    "category": "plain"
   },
   "jekyll": {
     "viewBox": "0 0 128 128",
@@ -2569,7 +2823,8 @@ export const registry: Registry = {
       "ruby",
       "blog",
       "jestjs"
-    ]
+    ],
+    "category": "plain"
   },
   "jenkins": {
     "viewBox": "0 0 128 128",
@@ -2580,7 +2835,8 @@ export const registry: Registry = {
       "integration",
       "server",
       "hudson"
-    ]
+    ],
+    "category": "plain"
   },
   "jest": {
     "viewBox": "0 0 128 128",
@@ -2590,7 +2846,8 @@ export const registry: Registry = {
       "testing",
       "javascript",
       "jestjs"
-    ]
+    ],
+    "category": "plain"
   },
   "jetbrains": {
     "viewBox": "0 0 128 128",
@@ -2599,7 +2856,8 @@ export const registry: Registry = {
     "tags": [
       "ide",
       "intellijsoftware"
-    ]
+    ],
+    "category": "plain"
   },
   "jetpackcompose": {
     "viewBox": "0 0 128 128",
@@ -2610,7 +2868,8 @@ export const registry: Registry = {
       "language",
       "kotlin",
       "android"
-    ]
+    ],
+    "category": "plain"
   },
   "jhipster": {
     "viewBox": "0 0 128 128",
@@ -2624,7 +2883,8 @@ export const registry: Registry = {
       "web",
       "web-application",
       "web-development"
-    ]
+    ],
+    "category": "plain"
   },
   "jira": {
     "viewBox": "0 0 128 128",
@@ -2634,7 +2894,8 @@ export const registry: Registry = {
       "platform",
       "organize",
       "atlassianjira"
-    ]
+    ],
+    "category": "plain"
   },
   "jiraalign": {
     "viewBox": "0 0 128 128",
@@ -2645,7 +2906,8 @@ export const registry: Registry = {
       "integration",
       "software",
       "Jira Align"
-    ]
+    ],
+    "category": "plain"
   },
   "jquery": {
     "viewBox": "0 0 128 128",
@@ -2655,7 +2917,8 @@ export const registry: Registry = {
       "library",
       "javascript",
       "jqueryjs"
-    ]
+    ],
+    "category": "plain"
   },
   "json": {
     "viewBox": "0 0 128 128",
@@ -2667,7 +2930,8 @@ export const registry: Registry = {
       "file-format",
       "object-notation",
       "JavaScript Object Notation"
-    ]
+    ],
+    "category": "plain"
   },
   "jule": {
     "viewBox": "0 0 128 128",
@@ -2677,7 +2941,8 @@ export const registry: Registry = {
       "programming",
       "language",
       "julelang"
-    ]
+    ],
+    "category": "original"
   },
   "julia": {
     "viewBox": "0 0 128 128",
@@ -2687,7 +2952,8 @@ export const registry: Registry = {
       "programming",
       "language",
       "julialang"
-    ]
+    ],
+    "category": "plain"
   },
   "junit": {
     "viewBox": "0 0 128 128",
@@ -2697,7 +2963,8 @@ export const registry: Registry = {
       "testing",
       "framework",
       "java"
-    ]
+    ],
+    "category": "plain"
   },
   "jupyter": {
     "viewBox": "0 0 128 128",
@@ -2707,7 +2974,8 @@ export const registry: Registry = {
       "programming",
       "language",
       "jupyternotebook"
-    ]
+    ],
+    "category": "plain"
   },
   "k3os": {
     "viewBox": "0 0 128 128",
@@ -2718,7 +2986,8 @@ export const registry: Registry = {
       "operating-system",
       "k3s",
       "rancher"
-    ]
+    ],
+    "category": "original"
   },
   "k3s": {
     "viewBox": "0 0 128 128",
@@ -2728,7 +2997,8 @@ export const registry: Registry = {
       "kubernetes",
       "container",
       "platform"
-    ]
+    ],
+    "category": "original"
   },
   "k6": {
     "viewBox": "0 0 128 128",
@@ -2738,7 +3008,8 @@ export const registry: Registry = {
       "testing",
       "performance",
       "load"
-    ]
+    ],
+    "category": "original"
   },
   "kaggle": {
     "viewBox": "0 0 128 128",
@@ -2748,7 +3019,8 @@ export const registry: Registry = {
       "platform",
       "auth",
       "machine-learning"
-    ]
+    ],
+    "category": "original"
   },
   "kaldi": {
     "viewBox": "0 0 128 128",
@@ -2758,7 +3030,8 @@ export const registry: Registry = {
       "audio",
       "open-source",
       "library"
-    ]
+    ],
+    "category": "plain"
   },
   "kalilinux": {
     "viewBox": "0 0 128 128",
@@ -2769,7 +3042,8 @@ export const registry: Registry = {
       "operating-system",
       "security",
       "kali"
-    ]
+    ],
+    "category": "original"
   },
   "karatelabs": {
     "viewBox": "0 0 128 128",
@@ -2779,7 +3053,8 @@ export const registry: Registry = {
       "framework",
       "testing",
       "karate"
-    ]
+    ],
+    "category": "plain"
   },
   "karma": {
     "viewBox": "0 0 128 128",
@@ -2790,7 +3065,8 @@ export const registry: Registry = {
       "test-runner",
       "karmarunner",
       "karmajs"
-    ]
+    ],
+    "category": "plain"
   },
   "kdeneon": {
     "viewBox": "0 0 128 128",
@@ -2800,7 +3076,8 @@ export const registry: Registry = {
       "linux",
       "operating system",
       "open-source"
-    ]
+    ],
+    "category": "plain"
   },
   "keras": {
     "viewBox": "0 0 128 128",
@@ -2810,7 +3087,8 @@ export const registry: Registry = {
       "machine-learning",
       "python",
       "library"
-    ]
+    ],
+    "category": "plain"
   },
   "keyboard_arrow_down": {
     "viewBox": "0 -960 960 960",
@@ -2820,7 +3098,8 @@ export const registry: Registry = {
       "navigation",
       "arrow",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "keyboard_arrow_up": {
     "viewBox": "0 -960 960 960",
@@ -2830,7 +3109,8 @@ export const registry: Registry = {
       "navigation",
       "arrow",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "kibana": {
     "viewBox": "0 0 128 128",
@@ -2839,7 +3119,8 @@ export const registry: Registry = {
     "tags": [
       "elastic",
       "dashboard"
-    ]
+    ],
+    "category": "plain"
   },
   "knexjs": {
     "viewBox": "0 0 128 128",
@@ -2851,7 +3132,8 @@ export const registry: Registry = {
       "sql",
       "javascript",
       "library"
-    ]
+    ],
+    "category": "original"
   },
   "knockout": {
     "viewBox": "0 0 128 128",
@@ -2861,7 +3143,8 @@ export const registry: Registry = {
       "framework",
       "javascript",
       "knockoutjs"
-    ]
+    ],
+    "category": "plain-wordmark"
   },
   "kotlin": {
     "viewBox": "0 0 128 128",
@@ -2872,7 +3155,8 @@ export const registry: Registry = {
       "jetbrains",
       "jvm",
       "kotlinlang"
-    ]
+    ],
+    "category": "plain"
   },
   "krakenjs": {
     "viewBox": "0 0 128 128",
@@ -2882,7 +3166,8 @@ export const registry: Registry = {
       "nodejs",
       "framework",
       "kraken"
-    ]
+    ],
+    "category": "plain"
   },
   "ktor": {
     "viewBox": "0 0 128 128",
@@ -2892,7 +3177,8 @@ export const registry: Registry = {
       "jetbrains",
       "kotlin",
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "kubeflow": {
     "viewBox": "0 0 128 128",
@@ -2902,7 +3188,8 @@ export const registry: Registry = {
       "kubernetes",
       "deployment",
       "machine-learning"
-    ]
+    ],
+    "category": "plain"
   },
   "kubernetes": {
     "viewBox": "0 0 128 128",
@@ -2911,7 +3198,8 @@ export const registry: Registry = {
     "tags": [
       "container",
       "deployment"
-    ]
+    ],
+    "category": "plain"
   },
   "labview": {
     "viewBox": "0 0 128 128",
@@ -2919,7 +3207,8 @@ export const registry: Registry = {
     "label": "Labview",
     "tags": [
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "laminas": {
     "viewBox": "0 0 128 128",
@@ -2933,7 +3222,8 @@ export const registry: Registry = {
       "middleware",
       "Laminas Project",
       "Zend Framework"
-    ]
+    ],
+    "category": "original"
   },
   "langchain": {
     "viewBox": "0 0 24 24",
@@ -2944,7 +3234,8 @@ export const registry: Registry = {
       "llm",
       "framework",
       "brand"
-    ]
+    ],
+    "category": "tools"
   },
   "language": {
     "viewBox": "0 -960 960 960",
@@ -2955,7 +3246,8 @@ export const registry: Registry = {
       "website",
       "globe",
       "contact"
-    ]
+    ],
+    "category": "material"
   },
   "laravel": {
     "viewBox": "0 0 128 128",
@@ -2964,7 +3256,8 @@ export const registry: Registry = {
     "tags": [
       "php",
       "framework"
-    ]
+    ],
+    "category": "original"
   },
   "laraveljetstream": {
     "viewBox": "0 0 128 128",
@@ -2977,7 +3270,8 @@ export const registry: Registry = {
       "scaffolding",
       "jetstream",
       "Laravel Jetstream"
-    ]
+    ],
+    "category": "original"
   },
   "last_page": {
     "viewBox": "0 -960 960 960",
@@ -2986,7 +3280,8 @@ export const registry: Registry = {
     "tags": [
       "navigation",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "latex": {
     "viewBox": "0 0 128 128",
@@ -2998,7 +3293,8 @@ export const registry: Registry = {
       "markup",
       "tex",
       "typesetting-system"
-    ]
+    ],
+    "category": "original"
   },
   "leetcode": {
     "viewBox": "0 0 128 128",
@@ -3011,7 +3307,8 @@ export const registry: Registry = {
       "coding",
       "dsa",
       "interview-preparation"
-    ]
+    ],
+    "category": "plain"
   },
   "less": {
     "viewBox": "0 0 128 128",
@@ -3021,7 +3318,8 @@ export const registry: Registry = {
       "css",
       "pre-processor",
       "lesscss"
-    ]
+    ],
+    "category": "plain-wordmark"
   },
   "libgdx": {
     "viewBox": "0 0 128 128",
@@ -3033,7 +3331,8 @@ export const registry: Registry = {
       "game-development",
       "cross-platform",
       "open-source"
-    ]
+    ],
+    "category": "plain"
   },
   "linkedin": {
     "viewBox": "0 0 128 128",
@@ -3042,7 +3341,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "auth"
-    ]
+    ],
+    "category": "plain"
   },
   "linux": {
     "viewBox": "0 0 128 128",
@@ -3050,7 +3350,8 @@ export const registry: Registry = {
     "label": "Linux",
     "tags": [
       "os"
-    ]
+    ],
+    "category": "plain"
   },
   "linuxmint": {
     "viewBox": "0 0 128 128",
@@ -3059,7 +3360,8 @@ export const registry: Registry = {
     "tags": [
       "os",
       "linux"
-    ]
+    ],
+    "category": "plain"
   },
   "liquibase": {
     "viewBox": "0 0 128 128",
@@ -3068,7 +3370,8 @@ export const registry: Registry = {
     "tags": [
       "tool",
       "database"
-    ]
+    ],
+    "category": "original"
   },
   "livewire": {
     "viewBox": "0 0 128 128",
@@ -3080,7 +3383,8 @@ export const registry: Registry = {
       "php",
       "open-source",
       "laravel-livewire"
-    ]
+    ],
+    "category": "plain"
   },
   "llvm": {
     "viewBox": "0 0 128 128",
@@ -3092,7 +3396,8 @@ export const registry: Registry = {
       "c++",
       "open-source",
       "Low Level Virtual Machine"
-    ]
+    ],
+    "category": "plain"
   },
   "location_on": {
     "viewBox": "0 -960 960 960",
@@ -3102,7 +3407,8 @@ export const registry: Registry = {
       "communication",
       "map",
       "contact"
-    ]
+    ],
+    "category": "material"
   },
   "lodash": {
     "viewBox": "0 0 128 128",
@@ -3111,7 +3417,8 @@ export const registry: Registry = {
     "tags": [
       "javascript",
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "logstash": {
     "viewBox": "0 0 128 128",
@@ -3120,7 +3427,8 @@ export const registry: Registry = {
     "tags": [
       "logs",
       "elastic"
-    ]
+    ],
+    "category": "plain"
   },
   "love2d": {
     "viewBox": "0 0 128 128",
@@ -3130,7 +3438,8 @@ export const registry: Registry = {
       "programming",
       "game-engine",
       "löve"
-    ]
+    ],
+    "category": "plain"
   },
   "lua": {
     "viewBox": "0 0 128 128",
@@ -3145,7 +3454,8 @@ export const registry: Registry = {
       "prototype-based",
       "functional",
       "lualang"
-    ]
+    ],
+    "category": "plain"
   },
   "lumen": {
     "viewBox": "0 0 128 128",
@@ -3160,7 +3470,8 @@ export const registry: Registry = {
       "Lumen Laravel",
       "Laravel Lumen Framework",
       "laravel.lumen"
-    ]
+    ],
+    "category": "original"
   },
   "magento": {
     "viewBox": "0 0 128 128",
@@ -3169,7 +3480,8 @@ export const registry: Registry = {
     "tags": [
       "php",
       "framework"
-    ]
+    ],
+    "category": "original"
   },
   "mail": {
     "viewBox": "0 -960 960 960",
@@ -3179,7 +3491,8 @@ export const registry: Registry = {
       "communication",
       "email",
       "contact"
-    ]
+    ],
+    "category": "material"
   },
   "mapbox": {
     "viewBox": "0 0 128 128",
@@ -3189,7 +3502,8 @@ export const registry: Registry = {
       "map",
       "navigation",
       "data"
-    ]
+    ],
+    "category": "original"
   },
   "mariadb": {
     "viewBox": "0 0 128 128",
@@ -3199,7 +3513,8 @@ export const registry: Registry = {
       "database",
       "sql",
       "open-source"
-    ]
+    ],
+    "category": "original"
   },
   "markdown": {
     "viewBox": "0 0 128 128",
@@ -3209,7 +3524,8 @@ export const registry: Registry = {
       "markup",
       "language",
       "md"
-    ]
+    ],
+    "category": "original"
   },
   "materializecss": {
     "viewBox": "0 0 128 128",
@@ -3223,7 +3539,8 @@ export const registry: Registry = {
       "materialize",
       "materialize-css",
       "materialize css"
-    ]
+    ],
+    "category": "plain"
   },
   "materialui": {
     "viewBox": "0 0 128 128",
@@ -3234,7 +3551,8 @@ export const registry: Registry = {
       "design",
       "ui",
       "mui"
-    ]
+    ],
+    "category": "plain"
   },
   "matlab": {
     "viewBox": "0 0 128 128",
@@ -3243,7 +3561,8 @@ export const registry: Registry = {
     "tags": [
       "programming",
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "matplotlib": {
     "viewBox": "0 0 128 128",
@@ -3256,7 +3575,8 @@ export const registry: Registry = {
       "visualization",
       "python",
       "api"
-    ]
+    ],
+    "category": "plain"
   },
   "mattermost": {
     "viewBox": "0 0 128 128",
@@ -3268,7 +3588,8 @@ export const registry: Registry = {
       "collaboration",
       "open-source",
       "platform"
-    ]
+    ],
+    "category": "original"
   },
   "maven": {
     "viewBox": "0 0 128 128",
@@ -3278,7 +3599,8 @@ export const registry: Registry = {
       "build",
       "apachemaven",
       "mvn"
-    ]
+    ],
+    "category": "plain"
   },
   "maya": {
     "viewBox": "0 0 128 128",
@@ -3295,7 +3617,8 @@ export const registry: Registry = {
       "graphics",
       "game",
       "animation"
-    ]
+    ],
+    "category": "plain"
   },
   "mcp": {
     "viewBox": "0 0 24 24",
@@ -3306,7 +3629,8 @@ export const registry: Registry = {
       "llm",
       "protocol",
       "brand"
-    ]
+    ],
+    "category": "tools"
   },
   "medium": {
     "viewBox": "0 0 24 24",
@@ -3315,7 +3639,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "brand"
-    ]
+    ],
+    "category": "social"
   },
   "memcached": {
     "viewBox": "0 0 128 128",
@@ -3325,7 +3650,8 @@ export const registry: Registry = {
       "data",
       "database",
       "nosql"
-    ]
+    ],
+    "category": "plain"
   },
   "menu": {
     "viewBox": "0 -960 960 960",
@@ -3334,7 +3660,8 @@ export const registry: Registry = {
     "tags": [
       "navigation",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "mercurial": {
     "viewBox": "0 0 128 128",
@@ -3342,7 +3669,8 @@ export const registry: Registry = {
     "label": "Mercurial",
     "tags": [
       "version-control"
-    ]
+    ],
+    "category": "plain"
   },
   "meteor": {
     "viewBox": "0 0 128 128",
@@ -3352,7 +3680,8 @@ export const registry: Registry = {
       "javascript",
       "framework",
       "meteorjs"
-    ]
+    ],
+    "category": "plain"
   },
   "microsoftsqlserver": {
     "viewBox": "0 0 128 128",
@@ -3365,7 +3694,8 @@ export const registry: Registry = {
       "msql",
       "mssql",
       "Microsoft SQL Server"
-    ]
+    ],
+    "category": "plain"
   },
   "minitab": {
     "viewBox": "0 0 128 128",
@@ -3374,7 +3704,8 @@ export const registry: Registry = {
     "tags": [
       "package",
       "statistics"
-    ]
+    ],
+    "category": "plain"
   },
   "mithril": {
     "viewBox": "0 0 128 128",
@@ -3386,7 +3717,8 @@ export const registry: Registry = {
       "frontend",
       "js",
       "mithril.js"
-    ]
+    ],
+    "category": "original"
   },
   "mobx": {
     "viewBox": "0 0 128 128",
@@ -3398,7 +3730,8 @@ export const registry: Registry = {
       "reactjs",
       "nodejs",
       "mobxjs"
-    ]
+    ],
+    "category": "plain"
   },
   "mocha": {
     "viewBox": "0 0 128 128",
@@ -3406,7 +3739,8 @@ export const registry: Registry = {
     "label": "Mocha",
     "tags": [
       "testing"
-    ]
+    ],
+    "category": "plain"
   },
   "modx": {
     "viewBox": "0 0 128 128",
@@ -3416,7 +3750,8 @@ export const registry: Registry = {
       "cms",
       "php",
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "moleculer": {
     "viewBox": "0 0 128 128",
@@ -3431,7 +3766,8 @@ export const registry: Registry = {
       "framework",
       "moleculerjs",
       "moleculer.js"
-    ]
+    ],
+    "category": "original"
   },
   "mongodb": {
     "viewBox": "0 0 128 128",
@@ -3439,7 +3775,8 @@ export const registry: Registry = {
     "label": "Mongodb",
     "tags": [
       "database"
-    ]
+    ],
+    "category": "plain"
   },
   "mongoose": {
     "viewBox": "0 0 128 128",
@@ -3449,7 +3786,8 @@ export const registry: Registry = {
       "data-model",
       "nodejs",
       "mongoosejs"
-    ]
+    ],
+    "category": "original"
   },
   "monogame": {
     "viewBox": "0 0 128 128",
@@ -3461,7 +3799,8 @@ export const registry: Registry = {
       "C#",
       "c-sharp",
       "csharp"
-    ]
+    ],
+    "category": "original"
   },
   "moodle": {
     "viewBox": "0 0 128 128",
@@ -3469,7 +3808,8 @@ export const registry: Registry = {
     "label": "Moodle",
     "tags": [
       "platform"
-    ]
+    ],
+    "category": "plain"
   },
   "more_horiz": {
     "viewBox": "0 -960 960 960",
@@ -3478,7 +3818,8 @@ export const registry: Registry = {
     "tags": [
       "navigation",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "more_vert": {
     "viewBox": "0 -960 960 960",
@@ -3487,7 +3828,8 @@ export const registry: Registry = {
     "tags": [
       "navigation",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "msdos": {
     "viewBox": "0 0 128 128",
@@ -3496,7 +3838,8 @@ export const registry: Registry = {
     "tags": [
       "os",
       "microsoftdiskoperatingsystem"
-    ]
+    ],
+    "category": "plain"
   },
   "mysql": {
     "viewBox": "0 0 128 128",
@@ -3506,7 +3849,8 @@ export const registry: Registry = {
       "database",
       "language",
       "mystructuredquerylanguage"
-    ]
+    ],
+    "category": "original"
   },
   "nano": {
     "viewBox": "0 0 128 128",
@@ -3519,7 +3863,8 @@ export const registry: Registry = {
       "terminal",
       "gnu-nano",
       "GNU nano"
-    ]
+    ],
+    "category": "plain"
   },
   "nats": {
     "viewBox": "0 0 128 128",
@@ -3533,7 +3878,8 @@ export const registry: Registry = {
       "nats.io",
       "NATS-io",
       "NATS.io"
-    ]
+    ],
+    "category": "plain"
   },
   "neo4j": {
     "viewBox": "0 0 128 128",
@@ -3541,7 +3887,8 @@ export const registry: Registry = {
     "label": "Neo4j",
     "tags": [
       "database"
-    ]
+    ],
+    "category": "plain"
   },
   "neovim": {
     "viewBox": "0 0 128 128",
@@ -3553,7 +3900,8 @@ export const registry: Registry = {
       "ide",
       "IDE",
       "open-source"
-    ]
+    ],
+    "category": "plain"
   },
   "nestjs": {
     "viewBox": "0 0 128 128",
@@ -3561,7 +3909,8 @@ export const registry: Registry = {
     "label": "Nestjs",
     "tags": [
       "framework"
-    ]
+    ],
+    "category": "original"
   },
   "netbeans": {
     "viewBox": "0 0 128 128",
@@ -3571,7 +3920,8 @@ export const registry: Registry = {
       "ide",
       "java",
       "open-source"
-    ]
+    ],
+    "category": "plain"
   },
   "netbox": {
     "viewBox": "0 0 128 128",
@@ -3582,7 +3932,8 @@ export const registry: Registry = {
       "automation",
       "infrastructure",
       "open-source"
-    ]
+    ],
+    "category": "plain"
   },
   "netlify": {
     "viewBox": "0 0 128 128",
@@ -3594,7 +3945,8 @@ export const registry: Registry = {
       "dynamic websites",
       "web applications",
       "open-source"
-    ]
+    ],
+    "category": "plain"
   },
   "networkx": {
     "viewBox": "0 0 128 128",
@@ -3604,7 +3956,8 @@ export const registry: Registry = {
       "graph",
       "library",
       "python"
-    ]
+    ],
+    "category": "plain"
   },
   "newrelic": {
     "viewBox": "0 0 128 128",
@@ -3614,7 +3967,8 @@ export const registry: Registry = {
       "monitoring",
       "observability",
       "analysis"
-    ]
+    ],
+    "category": "plain"
   },
   "nextjs": {
     "viewBox": "0 0 128 128",
@@ -3622,7 +3976,8 @@ export const registry: Registry = {
     "label": "Nextjs",
     "tags": [
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "nginx": {
     "viewBox": "0 0 128 128",
@@ -3630,7 +3985,8 @@ export const registry: Registry = {
     "label": "Nginx",
     "tags": [
       "server"
-    ]
+    ],
+    "category": "original"
   },
   "ngrok": {
     "viewBox": "0 0 128 128",
@@ -3639,7 +3995,8 @@ export const registry: Registry = {
     "tags": [
       "networking",
       "server"
-    ]
+    ],
+    "category": "original"
   },
   "ngrx": {
     "viewBox": "0 0 128 128",
@@ -3651,7 +4008,8 @@ export const registry: Registry = {
       "redux",
       "store",
       "javascript"
-    ]
+    ],
+    "category": "plain"
   },
   "nhibernate": {
     "viewBox": "0 0 128 128",
@@ -3665,7 +4023,8 @@ export const registry: Registry = {
       "orm",
       "C#",
       "c-sharp"
-    ]
+    ],
+    "category": "plain"
   },
   "nim": {
     "viewBox": "0 0 128 128",
@@ -3677,7 +4036,8 @@ export const registry: Registry = {
       "object-oriented",
       "procedural",
       "nimlang"
-    ]
+    ],
+    "category": "plain"
   },
   "nimble": {
     "viewBox": "0 0 128 128",
@@ -3685,7 +4045,8 @@ export const registry: Registry = {
     "label": "Nimble",
     "tags": [
       "package-manager"
-    ]
+    ],
+    "category": "plain"
   },
   "nixos": {
     "viewBox": "0 0 128 128",
@@ -3693,7 +4054,8 @@ export const registry: Registry = {
     "label": "Nixos",
     "tags": [
       "os"
-    ]
+    ],
+    "category": "plain"
   },
   "nodejs": {
     "viewBox": "0 0 128 128",
@@ -3702,7 +4064,8 @@ export const registry: Registry = {
     "tags": [
       "javascript",
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "nodemon": {
     "viewBox": "0 0 128 128",
@@ -3713,7 +4076,8 @@ export const registry: Registry = {
       "tool",
       "javascript",
       "nodemonjs"
-    ]
+    ],
+    "category": "plain"
   },
   "nodered": {
     "viewBox": "0 0 128 128",
@@ -3723,7 +4087,8 @@ export const registry: Registry = {
       "programming",
       "tool",
       "node-red"
-    ]
+    ],
+    "category": "plain"
   },
   "nodewebkit": {
     "viewBox": "0 0 128 128",
@@ -3731,7 +4096,8 @@ export const registry: Registry = {
     "label": "Nodewebkit",
     "tags": [
       "nwjs"
-    ]
+    ],
+    "category": "plain"
   },
   "nomad": {
     "viewBox": "0 0 128 128",
@@ -3742,7 +4108,8 @@ export const registry: Registry = {
       "virtual machine",
       "deployment",
       "HashiCorp Nomad"
-    ]
+    ],
+    "category": "original"
   },
   "norg": {
     "viewBox": "0 0 128 128",
@@ -3752,7 +4119,8 @@ export const registry: Registry = {
       "note-taking",
       "organization",
       "neorg"
-    ]
+    ],
+    "category": "plain"
   },
   "notion": {
     "viewBox": "0 0 128 128",
@@ -3760,7 +4128,8 @@ export const registry: Registry = {
     "label": "Notion",
     "tags": [
       "project-management"
-    ]
+    ],
+    "category": "plain"
   },
   "npm": {
     "viewBox": "0 0 128 128",
@@ -3771,13 +4140,15 @@ export const registry: Registry = {
       "manager",
       "npmjs",
       "nodepackagemanager"
-    ]
+    ],
+    "category": "plain"
   },
   "npss": {
     "viewBox": "0 0 128 128",
     "innerHTML": "<path fill=\"currentColor\" d=\"M108.575 67.279c-.988 3.43-3.08 6.122-6.887 6.122H83.463l.135-3.93c.023-.68.35-1.233 1.106-1.092.781.145.882 1.039 2.18 1.039h10.084c.392 0 .893-.139.893-.767s-.501-.768-.893-.767l-7.752.025c-4.719.015-3.757-4.902-3.09-7.437.907-3.452 3.08-6.124 6.887-6.124h17.264l-.135 3.932c-.023.68-.35 1.233-1.106 1.092-.781-.145-.881-1.039-2.18-1.039h-9.854c-.392 0-.893.139-.893.767s.5.767.893.767h8.524c4.584 0 3.916 4.404 3.05 7.412zm-25.694 0c-.988 3.43-3.08 6.122-6.888 6.122H57.768l.135-3.93c.024-.68.35-1.233 1.106-1.092.781.145.882 1.039 2.18 1.039h10.084c.392 0 .894-.139.894-.767s-.502-.768-.894-.767l-7.752.025c-4.718.015-3.757-4.902-3.09-7.437.908-3.452 3.08-6.124 6.888-6.124h17.263l-.135 3.932c-.023.68-.35 1.233-1.106 1.092-.78-.145-.881-1.039-2.18-1.039h-9.853c-.393 0-.894.139-.894.767s.501.767.894.767h8.523c4.584 0 3.916 4.404 3.05 7.412M33.627 54.348c-.12 0-.265.113-.102.347.836 1.203.167 3.677-.054 4.557L28.936 77.25c-.382 1.515-.686 3.033 1.537 3.033h8.588c.433 0 .871.041.875-.17.004-.325-.235-.4-.678-.705-.798-.548-.444-1.625-.256-2.412l.877-3.594h11.02c3.755 0 5.678-2.914 6.947-8.105l1.148-4.7c.868-3.55-.193-6.25-4.416-6.25h-9.355l-1.184 1.15c.06-.374.081-1.15-.84-1.15zm11.209 3.994h3.285c.84 0 1.32.454.988 1.79l-1.994 8.054c-.155.626-.365 1.33-1.408 1.33h-3.283c-.84 0-1.324-.454-.992-1.791l1.998-8.053c.155-.627.363-1.33 1.406-1.33m-40.08 1.79L1.994 71.1a2.3 2.3 0 0 1-1.227 1.534c-.268.133-.773.168-.767.468.004.205.333.3.538.3h12.194c.242 0 .66-.061.667-.291.005-.203-.281-.327-.478-.377-.993-.254-.974-1.177-.769-1.996l2.782-11.065c.157-.627.364-1.332 1.408-1.332h3.283c.84 0 1.327.456.991 1.792L17.855 71.1a2.3 2.3 0 0 1-1.228 1.534c-.268.133-.772.168-.767.468.004.205.333.3.539.3h12.193c.243 0 .66-.061.667-.291.006-.203-.281-.327-.477-.377-.994-.254-.867-1.565-.673-2.357l2.39-9.779c.868-3.551-.193-6.25-4.417-6.25h-9.354l-1.185 1.147c.06-.373.082-1.147-.84-1.147h-9.57c-.121 0-.265.113-.102.348.835 1.202.168 3.677-.275 5.437zM122.04 64c0-22.566-28.308-40.86-63.229-40.86C97.024 23.14 128 41.435 128 64s-30.976 40.86-69.188 40.86c34.92 0 63.23-18.294 63.23-40.86z\"/>",
     "label": "Npss",
-    "tags": []
+    "tags": [],
+    "category": "plain"
   },
   "nuget": {
     "viewBox": "0 0 128 128",
@@ -3786,7 +4157,8 @@ export const registry: Registry = {
     "tags": [
       "package",
       "manager"
-    ]
+    ],
+    "category": "original"
   },
   "numpy": {
     "viewBox": "0 0 128 128",
@@ -3795,7 +4167,8 @@ export const registry: Registry = {
     "tags": [
       "library",
       "python"
-    ]
+    ],
+    "category": "plain"
   },
   "nuxt": {
     "viewBox": "0 0 128 128",
@@ -3807,7 +4180,8 @@ export const registry: Registry = {
       "framework",
       "fullstack",
       "vuejs"
-    ]
+    ],
+    "category": "original"
   },
   "nuxtjs": {
     "viewBox": "0 0 128 128",
@@ -3819,7 +4193,8 @@ export const registry: Registry = {
       "framework",
       "frontend",
       "vuejs"
-    ]
+    ],
+    "category": "plain"
   },
   "oauth": {
     "viewBox": "0 0 128 128",
@@ -3828,7 +4203,8 @@ export const registry: Registry = {
     "tags": [
       "authentication",
       "security"
-    ]
+    ],
+    "category": "plain"
   },
   "objectivec": {
     "viewBox": "0 0 128 128",
@@ -3837,7 +4213,8 @@ export const registry: Registry = {
     "tags": [
       "programming",
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "ocaml": {
     "viewBox": "0 0 128 128",
@@ -3846,7 +4223,8 @@ export const registry: Registry = {
     "tags": [
       "programming",
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "ohmyzsh": {
     "viewBox": "0 0 128 128",
@@ -3861,7 +4239,8 @@ export const registry: Registry = {
       "omz",
       "ohmyz.sh",
       "Oh My Zsh"
-    ]
+    ],
+    "category": "plain"
   },
   "okta": {
     "viewBox": "0 0 128 128",
@@ -3871,7 +4250,8 @@ export const registry: Registry = {
       "auth",
       "security",
       "okta developer"
-    ]
+    ],
+    "category": "plain"
   },
   "ollama": {
     "viewBox": "0 0 24 24",
@@ -3881,7 +4261,8 @@ export const registry: Registry = {
       "ai",
       "llm",
       "brand"
-    ]
+    ],
+    "category": "tools"
   },
   "open_in_new": {
     "viewBox": "0 -960 960 960",
@@ -3891,7 +4272,8 @@ export const registry: Registry = {
       "navigation",
       "utility",
       "external-link"
-    ]
+    ],
+    "category": "material"
   },
   "openal": {
     "viewBox": "0 0 128 128",
@@ -3902,7 +4284,8 @@ export const registry: Registry = {
       "audio",
       "game",
       "3d"
-    ]
+    ],
+    "category": "plain"
   },
   "openapi": {
     "viewBox": "0 0 128 128",
@@ -3912,7 +4295,8 @@ export const registry: Registry = {
       "specification",
       "api",
       "open-source"
-    ]
+    ],
+    "category": "plain"
   },
   "opencl": {
     "viewBox": "0 0 128 128",
@@ -3926,7 +4310,8 @@ export const registry: Registry = {
       "api",
       "khronos",
       "programming"
-    ]
+    ],
+    "category": "plain"
   },
   "opencv": {
     "viewBox": "0 0 128 128",
@@ -3936,7 +4321,8 @@ export const registry: Registry = {
       "library",
       "c/c++",
       "computer-vision"
-    ]
+    ],
+    "category": "plain"
   },
   "opengl": {
     "viewBox": "0 0 128 128",
@@ -3948,7 +4334,8 @@ export const registry: Registry = {
       "game",
       "3d",
       "opengraphicslibrary"
-    ]
+    ],
+    "category": "plain"
   },
   "openstack": {
     "viewBox": "0 0 128 128",
@@ -3957,7 +4344,8 @@ export const registry: Registry = {
     "tags": [
       "infrastructure-as-a-service",
       "cloud-computing-platform"
-    ]
+    ],
+    "category": "original"
   },
   "opensuse": {
     "viewBox": "0 0 128 128",
@@ -3967,7 +4355,8 @@ export const registry: Registry = {
       "linux",
       "distribution",
       "desktop"
-    ]
+    ],
+    "category": "original"
   },
   "opentelemetry": {
     "viewBox": "0 0 128 128",
@@ -3975,7 +4364,8 @@ export const registry: Registry = {
     "label": "Opentelemetry",
     "tags": [
       "telemetry"
-    ]
+    ],
+    "category": "plain"
   },
   "opera": {
     "viewBox": "0 0 128 128",
@@ -3983,7 +4373,8 @@ export const registry: Registry = {
     "label": "Opera",
     "tags": [
       "browser"
-    ]
+    ],
+    "category": "plain"
   },
   "oracle": {
     "viewBox": "0 0 128 128",
@@ -3992,7 +4383,8 @@ export const registry: Registry = {
     "tags": [
       "database",
       "oracledatabase"
-    ]
+    ],
+    "category": "original"
   },
   "ory": {
     "viewBox": "0 0 128 128",
@@ -4002,7 +4394,8 @@ export const registry: Registry = {
       "library",
       "open-source",
       "security"
-    ]
+    ],
+    "category": "original"
   },
   "p5js": {
     "viewBox": "0 0 128 128",
@@ -4013,7 +4406,8 @@ export const registry: Registry = {
       "js",
       "library",
       "p5.js"
-    ]
+    ],
+    "category": "original"
   },
   "packer": {
     "viewBox": "0 0 128 128",
@@ -4023,7 +4417,8 @@ export const registry: Registry = {
       "infrastructure",
       "infrastructure-as-code",
       "continuous-delivery"
-    ]
+    ],
+    "category": "plain"
   },
   "pandas": {
     "viewBox": "0 0 128 128",
@@ -4032,7 +4427,8 @@ export const registry: Registry = {
     "tags": [
       "library",
       "python"
-    ]
+    ],
+    "category": "plain"
   },
   "passport": {
     "viewBox": "0 0 128 128",
@@ -4042,7 +4438,8 @@ export const registry: Registry = {
       "authentication",
       "security",
       "passportjs"
-    ]
+    ],
+    "category": "plain"
   },
   "perl": {
     "viewBox": "0 0 128 128",
@@ -4051,7 +4448,8 @@ export const registry: Registry = {
     "tags": [
       "programming",
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "pfsense": {
     "viewBox": "0 0 128 128",
@@ -4064,7 +4462,8 @@ export const registry: Registry = {
       "security",
       "software",
       "pfSense"
-    ]
+    ],
+    "category": "original"
   },
   "phalcon": {
     "viewBox": "0 0 128 128",
@@ -4073,7 +4472,8 @@ export const registry: Registry = {
     "tags": [
       "php",
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "phoenix": {
     "viewBox": "0 0 128 128",
@@ -4087,7 +4487,8 @@ export const registry: Registry = {
       "development",
       "elixir",
       "Phoenix Framework"
-    ]
+    ],
+    "category": "original"
   },
   "photonengine": {
     "viewBox": "0 0 128 128",
@@ -4097,7 +4498,8 @@ export const registry: Registry = {
       "game",
       "game-engine",
       "photon"
-    ]
+    ],
+    "category": "plain"
   },
   "photoshop": {
     "viewBox": "0 0 128 128",
@@ -4107,7 +4509,8 @@ export const registry: Registry = {
       "editor",
       "graphic",
       "adobephotoshop"
-    ]
+    ],
+    "category": "plain"
   },
   "php": {
     "viewBox": "0 0 128 128",
@@ -4118,7 +4521,8 @@ export const registry: Registry = {
       "language",
       "PHP Hypertext Preprocessor",
       "Personal Home Page"
-    ]
+    ],
+    "category": "plain"
   },
   "phpstorm": {
     "viewBox": "0 0 128 128",
@@ -4130,7 +4534,8 @@ export const registry: Registry = {
       "php",
       "web",
       "html"
-    ]
+    ],
+    "category": "plain"
   },
   "pinterest": {
     "viewBox": "0 0 24 24",
@@ -4139,7 +4544,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "brand"
-    ]
+    ],
+    "category": "social"
   },
   "pixijs": {
     "viewBox": "0 0 128 128",
@@ -4153,7 +4559,8 @@ export const registry: Registry = {
       "library",
       "visualization",
       "ui"
-    ]
+    ],
+    "category": "plain"
   },
   "playwright": {
     "viewBox": "0 0 128 128",
@@ -4162,7 +4569,8 @@ export const registry: Registry = {
     "tags": [
       "testing",
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "plotly": {
     "viewBox": "0 0 128 128",
@@ -4172,7 +4580,8 @@ export const registry: Registry = {
       "frontend",
       "machine-learning",
       "dashboard"
-    ]
+    ],
+    "category": "plain"
   },
   "pm2": {
     "viewBox": "0 0 128 128",
@@ -4184,7 +4593,8 @@ export const registry: Registry = {
       "js",
       "manager",
       "monitoring"
-    ]
+    ],
+    "category": "plain"
   },
   "pnpm": {
     "viewBox": "0 0 128 128",
@@ -4194,7 +4604,8 @@ export const registry: Registry = {
       "package",
       "manager",
       "performant npm"
-    ]
+    ],
+    "category": "plain"
   },
   "podman": {
     "viewBox": "0 0 128 128",
@@ -4204,7 +4615,8 @@ export const registry: Registry = {
       "container",
       "pods",
       "docker"
-    ]
+    ],
+    "category": "plain"
   },
   "poetry": {
     "viewBox": "0 0 128 128",
@@ -4214,7 +4626,8 @@ export const registry: Registry = {
       "package-manager",
       "python",
       "python-poetry"
-    ]
+    ],
+    "category": "original"
   },
   "polygon": {
     "viewBox": "0 0 128 128",
@@ -4224,7 +4637,8 @@ export const registry: Registry = {
       "ethereum",
       "erc20",
       "blockchain"
-    ]
+    ],
+    "category": "plain"
   },
   "portainer": {
     "viewBox": "0 0 128 128",
@@ -4234,7 +4648,8 @@ export const registry: Registry = {
       "docker",
       "kubernetes",
       "orchestrator"
-    ]
+    ],
+    "category": "original"
   },
   "postcss": {
     "viewBox": "0 0 128 128",
@@ -4244,7 +4659,8 @@ export const registry: Registry = {
       "pre-processor",
       "css",
       "framework"
-    ]
+    ],
+    "category": "original"
   },
   "postgresql": {
     "viewBox": "0 0 128 128",
@@ -4252,7 +4668,8 @@ export const registry: Registry = {
     "label": "Postgresql",
     "tags": [
       "database"
-    ]
+    ],
+    "category": "plain"
   },
   "postman": {
     "viewBox": "0 0 128 128",
@@ -4261,7 +4678,8 @@ export const registry: Registry = {
     "tags": [
       "tool",
       "testing"
-    ]
+    ],
+    "category": "plain"
   },
   "powershell": {
     "viewBox": "0 0 128 128",
@@ -4275,7 +4693,8 @@ export const registry: Registry = {
       "windows",
       "cmdlets",
       "ps"
-    ]
+    ],
+    "category": "plain"
   },
   "premierepro": {
     "viewBox": "0 0 128 128",
@@ -4285,7 +4704,8 @@ export const registry: Registry = {
       "editor",
       "video",
       "adobepremierepro"
-    ]
+    ],
+    "category": "plain"
   },
   "primeng": {
     "viewBox": "0 0 128 128",
@@ -4297,7 +4717,8 @@ export const registry: Registry = {
       "component",
       "library",
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "prisma": {
     "viewBox": "0 0 128 128",
@@ -4307,7 +4728,8 @@ export const registry: Registry = {
       "orm",
       "nodejs",
       "typescript"
-    ]
+    ],
+    "category": "original"
   },
   "processing": {
     "viewBox": "0 0 128 128",
@@ -4321,7 +4743,8 @@ export const registry: Registry = {
       "ide",
       "framework",
       "processingpy"
-    ]
+    ],
+    "category": "plain"
   },
   "processwire": {
     "viewBox": "0 0 128 128",
@@ -4331,7 +4754,8 @@ export const registry: Registry = {
       "cms",
       "php",
       "framework"
-    ]
+    ],
+    "category": "original"
   },
   "prolog": {
     "viewBox": "0 0 128 128",
@@ -4343,7 +4767,8 @@ export const registry: Registry = {
       "language",
       "open-source",
       "swi-prolog"
-    ]
+    ],
+    "category": "plain"
   },
   "prometheus": {
     "viewBox": "0 0 128 128",
@@ -4353,7 +4778,8 @@ export const registry: Registry = {
       "monitoring",
       "observability",
       "analysis"
-    ]
+    ],
+    "category": "original"
   },
   "protractor": {
     "viewBox": "0 0 128 128",
@@ -4364,7 +4790,8 @@ export const registry: Registry = {
       "javascript",
       "protractorjs",
       "protractortest"
-    ]
+    ],
+    "category": "plain"
   },
   "proxmox": {
     "viewBox": "0 0 128 128",
@@ -4374,7 +4801,8 @@ export const registry: Registry = {
       "container",
       "lxc",
       "virtual machine"
-    ]
+    ],
+    "category": "plain"
   },
   "pug": {
     "viewBox": "0 0 128 128",
@@ -4385,7 +4813,8 @@ export const registry: Registry = {
       "javascript",
       "nodejs",
       "pugjs"
-    ]
+    ],
+    "category": "plain"
   },
   "pulsar": {
     "viewBox": "0 0 128 128",
@@ -4396,7 +4825,8 @@ export const registry: Registry = {
       "cross-platform",
       "editor",
       "Pulsar Edit"
-    ]
+    ],
+    "category": "original"
   },
   "pulumi": {
     "viewBox": "0 0 128 128",
@@ -4405,7 +4835,8 @@ export const registry: Registry = {
     "tags": [
       "infrastructure-as-code",
       "cloud"
-    ]
+    ],
+    "category": "plain"
   },
   "puppeteer": {
     "viewBox": "0 0 128 128",
@@ -4416,7 +4847,8 @@ export const registry: Registry = {
       "devtools protocol",
       "testing",
       "extension"
-    ]
+    ],
+    "category": "plain"
   },
   "purescript": {
     "viewBox": "0 0 128 128",
@@ -4426,7 +4858,8 @@ export const registry: Registry = {
       "functional",
       "programming",
       "javascript"
-    ]
+    ],
+    "category": "original"
   },
   "putty": {
     "viewBox": "0 0 128 128",
@@ -4435,7 +4868,8 @@ export const registry: Registry = {
     "tags": [
       "ssh",
       "server"
-    ]
+    ],
+    "category": "plain"
   },
   "pycharm": {
     "viewBox": "0 0 128 128",
@@ -4444,7 +4878,8 @@ export const registry: Registry = {
     "tags": [
       "jetbrains",
       "editor"
-    ]
+    ],
+    "category": "plain"
   },
   "pydantic": {
     "viewBox": "0 0 24 24",
@@ -4454,7 +4889,8 @@ export const registry: Registry = {
       "python",
       "validation",
       "brand"
-    ]
+    ],
+    "category": "tools"
   },
   "pypi": {
     "viewBox": "0 0 128 128",
@@ -4465,7 +4901,8 @@ export const registry: Registry = {
       "package",
       "programming",
       "Python Package Index"
-    ]
+    ],
+    "category": "plain"
   },
   "pyscript": {
     "viewBox": "0 0 128 128",
@@ -4476,7 +4913,8 @@ export const registry: Registry = {
       "python",
       "html",
       "framework"
-    ]
+    ],
+    "category": "original-wordmark"
   },
   "pytest": {
     "viewBox": "0 0 128 128",
@@ -4486,7 +4924,8 @@ export const registry: Registry = {
       "python",
       "framework",
       "testing"
-    ]
+    ],
+    "category": "plain"
   },
   "python": {
     "viewBox": "0 0 128 128",
@@ -4495,7 +4934,8 @@ export const registry: Registry = {
     "tags": [
       "programming",
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "pytorch": {
     "viewBox": "0 0 128 128",
@@ -4506,7 +4946,8 @@ export const registry: Registry = {
       "framework",
       "machine-learning",
       "python"
-    ]
+    ],
+    "category": "original"
   },
   "qodana": {
     "viewBox": "0 0 128 128",
@@ -4516,7 +4957,8 @@ export const registry: Registry = {
       "jetbrains",
       "code quality",
       "security"
-    ]
+    ],
+    "category": "plain"
   },
   "qt": {
     "viewBox": "0 0 128 128",
@@ -4524,7 +4966,8 @@ export const registry: Registry = {
     "label": "Qt",
     "tags": [
       "framework"
-    ]
+    ],
+    "category": "original"
   },
   "qtest": {
     "viewBox": "0 0 128 128",
@@ -4532,7 +4975,8 @@ export const registry: Registry = {
     "label": "Qtest",
     "tags": [
       "testing"
-    ]
+    ],
+    "category": "original"
   },
   "quarkus": {
     "viewBox": "0 0 128 128",
@@ -4541,7 +4985,8 @@ export const registry: Registry = {
     "tags": [
       "java",
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "quasar": {
     "viewBox": "0 0 128 128",
@@ -4550,7 +4995,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "javascript"
-    ]
+    ],
+    "category": "plain"
   },
   "qwik": {
     "viewBox": "0 0 128 128",
@@ -4559,7 +5005,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "open-source"
-    ]
+    ],
+    "category": "plain"
   },
   "r": {
     "viewBox": "0 0 128 128",
@@ -4569,7 +5016,8 @@ export const registry: Registry = {
       "programming",
       "language",
       "rlang"
-    ]
+    ],
+    "category": "plain"
   },
   "rabbitmq": {
     "viewBox": "0 0 128 128",
@@ -4578,7 +5026,8 @@ export const registry: Registry = {
     "tags": [
       "message-broker",
       "open-source"
-    ]
+    ],
+    "category": "original"
   },
   "racket": {
     "viewBox": "0 0 128 128",
@@ -4587,7 +5036,8 @@ export const registry: Registry = {
     "tags": [
       "programming",
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "radstudio": {
     "viewBox": "0 0 128 128",
@@ -4597,7 +5047,8 @@ export const registry: Registry = {
       "editor",
       "IDE",
       "RAD Studio"
-    ]
+    ],
+    "category": "plain"
   },
   "rails": {
     "viewBox": "0 0 128 128",
@@ -4606,7 +5057,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "rubyonrails"
-    ]
+    ],
+    "category": "plain"
   },
   "railway": {
     "viewBox": "0 0 128 128",
@@ -4616,7 +5068,8 @@ export const registry: Registry = {
       "hosting",
       "platform",
       "deployment"
-    ]
+    ],
+    "category": "original"
   },
   "rancher": {
     "viewBox": "0 0 128 128",
@@ -4625,7 +5078,8 @@ export const registry: Registry = {
     "tags": [
       "kubernetes",
       "orchestrator"
-    ]
+    ],
+    "category": "original"
   },
   "raspberrypi": {
     "viewBox": "0 0 128 128",
@@ -4635,7 +5089,8 @@ export const registry: Registry = {
       "arm",
       "computer",
       "rpi"
-    ]
+    ],
+    "category": "plain"
   },
   "reach": {
     "viewBox": "0 0 128 128",
@@ -4646,7 +5101,8 @@ export const registry: Registry = {
       "blockchain",
       "development",
       "Reach Lang"
-    ]
+    ],
+    "category": "plain"
   },
   "react": {
     "viewBox": "0 0 128 128",
@@ -4655,7 +5111,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "reactjs"
-    ]
+    ],
+    "category": "original"
   },
   "reactbootstrap": {
     "viewBox": "0 0 128 128",
@@ -4669,7 +5126,8 @@ export const registry: Registry = {
       "javascript",
       "React-Bootstrap",
       "react bootstrap"
-    ]
+    ],
+    "category": "original"
   },
   "reactnative": {
     "viewBox": "0 0 128 128",
@@ -4678,7 +5136,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "react-native"
-    ]
+    ],
+    "category": "original"
   },
   "reactnavigation": {
     "viewBox": "0 0 128 128",
@@ -4690,7 +5149,8 @@ export const registry: Registry = {
       "react native",
       "app",
       "open-source"
-    ]
+    ],
+    "category": "original"
   },
   "reactrouter": {
     "viewBox": "0 0 128 128",
@@ -4699,7 +5159,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "react"
-    ]
+    ],
+    "category": "plain"
   },
   "readthedocs": {
     "viewBox": "0 0 128 128",
@@ -4710,7 +5171,8 @@ export const registry: Registry = {
       "python",
       "open-source",
       "Read The Docs"
-    ]
+    ],
+    "category": "original"
   },
   "realm": {
     "viewBox": "0 0 128 128",
@@ -4720,7 +5182,8 @@ export const registry: Registry = {
       "sql",
       "database",
       "cloud"
-    ]
+    ],
+    "category": "plain"
   },
   "rect": {
     "viewBox": "0 0 128 128",
@@ -4730,7 +5193,8 @@ export const registry: Registry = {
       "programming",
       "language",
       "rectlang"
-    ]
+    ],
+    "category": "plain"
   },
   "reddit": {
     "viewBox": "0 0 24 24",
@@ -4739,7 +5203,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "brand"
-    ]
+    ],
+    "category": "social"
   },
   "redhat": {
     "viewBox": "0 0 128 128",
@@ -4748,7 +5213,8 @@ export const registry: Registry = {
     "tags": [
       "server",
       "linux"
-    ]
+    ],
+    "category": "plain"
   },
   "redis": {
     "viewBox": "0 0 128 128",
@@ -4757,7 +5223,8 @@ export const registry: Registry = {
     "tags": [
       "server",
       "remotedictionaryserver"
-    ]
+    ],
+    "category": "plain"
   },
   "redux": {
     "viewBox": "0 0 128 128",
@@ -4766,7 +5233,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "reduxjs"
-    ]
+    ],
+    "category": "original"
   },
   "reflex": {
     "viewBox": "0 0 128 128",
@@ -4776,7 +5244,8 @@ export const registry: Registry = {
       "framework",
       "python",
       "web"
-    ]
+    ],
+    "category": "plain"
   },
   "refresh": {
     "viewBox": "0 -960 960 960",
@@ -4785,7 +5254,8 @@ export const registry: Registry = {
     "tags": [
       "navigation",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "remix": {
     "viewBox": "0 0 128 128",
@@ -4796,7 +5266,8 @@ export const registry: Registry = {
       "fullstack",
       "web",
       "remix.run"
-    ]
+    ],
+    "category": "original"
   },
   "remove": {
     "viewBox": "0 -960 960 960",
@@ -4805,7 +5276,8 @@ export const registry: Registry = {
     "tags": [
       "navigation",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "renpy": {
     "viewBox": "0 0 128 128",
@@ -4817,7 +5289,8 @@ export const registry: Registry = {
       "engine",
       "python",
       "Ren'Py"
-    ]
+    ],
+    "category": "plain"
   },
   "replit": {
     "viewBox": "0 0 128 128",
@@ -4825,7 +5298,8 @@ export const registry: Registry = {
     "label": "Replit",
     "tags": [
       "software"
-    ]
+    ],
+    "category": "original"
   },
   "rexx": {
     "viewBox": "0 0 128 128",
@@ -4833,7 +5307,8 @@ export const registry: Registry = {
     "label": "Rexx",
     "tags": [
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "rider": {
     "viewBox": "0 0 128 128",
@@ -4844,7 +5319,8 @@ export const registry: Registry = {
       "ide",
       "editor",
       "dotnet"
-    ]
+    ],
+    "category": "plain"
   },
   "rocksdb": {
     "viewBox": "0 0 128 128",
@@ -4852,7 +5328,8 @@ export const registry: Registry = {
     "label": "Rocksdb",
     "tags": [
       "database"
-    ]
+    ],
+    "category": "plain"
   },
   "rockylinux": {
     "viewBox": "0 0 128 128",
@@ -4863,7 +5340,8 @@ export const registry: Registry = {
       "open-source",
       "linux",
       "rocky"
-    ]
+    ],
+    "category": "original"
   },
   "rollup": {
     "viewBox": "0 0 128 128",
@@ -4875,7 +5353,8 @@ export const registry: Registry = {
       "javascript",
       "rollupjs",
       "rollup.js"
-    ]
+    ],
+    "category": "plain"
   },
   "ros": {
     "viewBox": "0 0 128 128",
@@ -4884,7 +5363,8 @@ export const registry: Registry = {
     "tags": [
       "robotics",
       "robotoperatingsystem"
-    ]
+    ],
+    "category": "original"
   },
   "rspec": {
     "viewBox": "0 0 128 128",
@@ -4894,7 +5374,8 @@ export const registry: Registry = {
       "ruby",
       "framework",
       "testing"
-    ]
+    ],
+    "category": "plain"
   },
   "rstudio": {
     "viewBox": "0 0 128 128",
@@ -4904,7 +5385,8 @@ export const registry: Registry = {
       "editor",
       "package",
       "statistics"
-    ]
+    ],
+    "category": "plain"
   },
   "ruby": {
     "viewBox": "0 0 128 128",
@@ -4914,7 +5396,8 @@ export const registry: Registry = {
       "programming",
       "language",
       "rubylang"
-    ]
+    ],
+    "category": "plain"
   },
   "rubymine": {
     "viewBox": "0 0 128 128",
@@ -4923,7 +5406,8 @@ export const registry: Registry = {
     "tags": [
       "jetbrains",
       "editor"
-    ]
+    ],
+    "category": "plain"
   },
   "rust": {
     "viewBox": "0 0 128 128",
@@ -4933,7 +5417,8 @@ export const registry: Registry = {
       "programming",
       "language",
       "rustlang"
-    ]
+    ],
+    "category": "original"
   },
   "rxjs": {
     "viewBox": "0 0 128 128",
@@ -4944,7 +5429,8 @@ export const registry: Registry = {
       "library",
       "observability",
       "Reactive Extensions for JavaScript"
-    ]
+    ],
+    "category": "plain"
   },
   "safari": {
     "viewBox": "0 0 128 128",
@@ -4953,7 +5439,8 @@ export const registry: Registry = {
     "tags": [
       "browser",
       "applesafari"
-    ]
+    ],
+    "category": "plain"
   },
   "salesforce": {
     "viewBox": "0 0 128 128",
@@ -4962,7 +5449,8 @@ export const registry: Registry = {
     "tags": [
       "platform",
       "ecommerce"
-    ]
+    ],
+    "category": "plain"
   },
   "sanity": {
     "viewBox": "0 0 128 128",
@@ -4970,7 +5458,8 @@ export const registry: Registry = {
     "label": "Sanity",
     "tags": [
       "CMS"
-    ]
+    ],
+    "category": "plain"
   },
   "sass": {
     "viewBox": "0 0 128 128",
@@ -4980,7 +5469,8 @@ export const registry: Registry = {
       "pre-processor",
       "css",
       "scss"
-    ]
+    ],
+    "category": "original"
   },
   "scala": {
     "viewBox": "0 0 128 128",
@@ -4991,7 +5481,8 @@ export const registry: Registry = {
       "language",
       "jvm",
       "scalalang"
-    ]
+    ],
+    "category": "plain"
   },
   "scalingo": {
     "viewBox": "0 0 128 128",
@@ -5001,7 +5492,8 @@ export const registry: Registry = {
       "cloud",
       "platform",
       "hosting"
-    ]
+    ],
+    "category": "plain"
   },
   "scikitlearn": {
     "viewBox": "0 0 128 128",
@@ -5015,7 +5507,8 @@ export const registry: Registry = {
       "scikit-learn",
       "scikit",
       "sklearn"
-    ]
+    ],
+    "category": "plain"
   },
   "sdl": {
     "viewBox": "0 0 128 128",
@@ -5027,7 +5520,8 @@ export const registry: Registry = {
       "multimedia",
       "game",
       "simpledirectmedialayer"
-    ]
+    ],
+    "category": "plain"
   },
   "search": {
     "viewBox": "0 -960 960 960",
@@ -5036,7 +5530,8 @@ export const registry: Registry = {
     "tags": [
       "navigation",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "selenium": {
     "viewBox": "0 0 128 128",
@@ -5045,7 +5540,8 @@ export const registry: Registry = {
     "tags": [
       "webdrive",
       "automation"
-    ]
+    ],
+    "category": "original"
   },
   "sema": {
     "viewBox": "0 0 128 128",
@@ -5058,7 +5554,8 @@ export const registry: Registry = {
       "code-review",
       "open-source",
       "Sema Software"
-    ]
+    ],
+    "category": "original"
   },
   "sentry": {
     "viewBox": "0 0 128 128",
@@ -5068,7 +5565,8 @@ export const registry: Registry = {
       "monitoring",
       "analytics",
       "metrics"
-    ]
+    ],
+    "category": "original"
   },
   "sequelize": {
     "viewBox": "0 0 128 128",
@@ -5078,7 +5576,8 @@ export const registry: Registry = {
       "database",
       "language",
       "sequelizejs"
-    ]
+    ],
+    "category": "plain"
   },
   "shopware": {
     "viewBox": "0 0 128 128",
@@ -5087,7 +5586,8 @@ export const registry: Registry = {
     "tags": [
       "cloud",
       "platform"
-    ]
+    ],
+    "category": "original"
   },
   "shotgrid": {
     "viewBox": "0 0 128 128",
@@ -5100,7 +5600,8 @@ export const registry: Registry = {
       "pipeline",
       "production-tool",
       "production-tracking"
-    ]
+    ],
+    "category": "plain"
   },
   "sketch": {
     "viewBox": "0 0 128 128",
@@ -5108,7 +5609,8 @@ export const registry: Registry = {
     "label": "Sketch",
     "tags": [
       "application"
-    ]
+    ],
+    "category": "plain"
   },
   "slack": {
     "viewBox": "0 0 128 128",
@@ -5116,7 +5618,8 @@ export const registry: Registry = {
     "label": "Slack",
     "tags": [
       "chat"
-    ]
+    ],
+    "category": "plain"
   },
   "sms": {
     "viewBox": "0 -960 960 960",
@@ -5126,7 +5629,8 @@ export const registry: Registry = {
       "communication",
       "message",
       "contact"
-    ]
+    ],
+    "category": "material"
   },
   "snapchat": {
     "viewBox": "0 0 24 24",
@@ -5135,7 +5639,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "brand"
-    ]
+    ],
+    "category": "social"
   },
   "socketio": {
     "viewBox": "0 0 128 128",
@@ -5145,7 +5650,8 @@ export const registry: Registry = {
       "library",
       "networking",
       "websockets"
-    ]
+    ],
+    "category": "original"
   },
   "solidity": {
     "viewBox": "0 0 128 128",
@@ -5156,7 +5662,8 @@ export const registry: Registry = {
       "language",
       "blockchain",
       "soliditylang"
-    ]
+    ],
+    "category": "plain"
   },
   "solidjs": {
     "viewBox": "0 0 128 128",
@@ -5166,7 +5673,8 @@ export const registry: Registry = {
       "javascript",
       "framework",
       "frontend"
-    ]
+    ],
+    "category": "plain"
   },
   "sonarqube": {
     "viewBox": "0 0 128 128",
@@ -5176,7 +5684,8 @@ export const registry: Registry = {
       "tool",
       "security",
       "sonar"
-    ]
+    ],
+    "category": "original"
   },
   "sourceengine": {
     "viewBox": "0 0 128 128",
@@ -5187,7 +5696,8 @@ export const registry: Registry = {
       "valve",
       "javascript",
       "source engine"
-    ]
+    ],
+    "category": "plain"
   },
   "sourcetree": {
     "viewBox": "0 0 128 128",
@@ -5195,7 +5705,8 @@ export const registry: Registry = {
     "label": "Sourcetree",
     "tags": [
       "version-control"
-    ]
+    ],
+    "category": "original"
   },
   "spack": {
     "viewBox": "0 0 128 128",
@@ -5207,7 +5718,8 @@ export const registry: Registry = {
       "manager",
       "python",
       "open-source"
-    ]
+    ],
+    "category": "plain"
   },
   "spicedb": {
     "viewBox": "0 0 128 128",
@@ -5218,7 +5730,8 @@ export const registry: Registry = {
       "authorization",
       "access-control",
       "Zanzibar"
-    ]
+    ],
+    "category": "plain"
   },
   "splunk": {
     "viewBox": "0 0 128 128",
@@ -5229,7 +5742,8 @@ export const registry: Registry = {
       "data",
       "log",
       "monitoring"
-    ]
+    ],
+    "category": "original-wordmark"
   },
   "spring": {
     "viewBox": "0 0 128 128",
@@ -5238,7 +5752,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "springframework"
-    ]
+    ],
+    "category": "original"
   },
   "spss": {
     "viewBox": "0 0 128 128",
@@ -5248,7 +5763,8 @@ export const registry: Registry = {
       "package",
       "statistics",
       "ibmspss"
-    ]
+    ],
+    "category": "plain"
   },
   "spyder": {
     "viewBox": "0 0 128 128",
@@ -5259,7 +5775,8 @@ export const registry: Registry = {
       "ide",
       "editor",
       "data-science"
-    ]
+    ],
+    "category": "plain"
   },
   "sql": {
     "viewBox": "0 -960 960 960",
@@ -5270,7 +5787,8 @@ export const registry: Registry = {
       "sql",
       "data",
       "storage"
-    ]
+    ],
+    "category": "material"
   },
   "sqlalchemy": {
     "viewBox": "0 0 128 128",
@@ -5279,7 +5797,8 @@ export const registry: Registry = {
     "tags": [
       "python",
       "orm"
-    ]
+    ],
+    "category": "plain"
   },
   "sqldeveloper": {
     "viewBox": "0 0 128 128",
@@ -5288,7 +5807,8 @@ export const registry: Registry = {
     "tags": [
       "tool",
       "database"
-    ]
+    ],
+    "category": "plain"
   },
   "sqlite": {
     "viewBox": "0 0 128 128",
@@ -5298,7 +5818,8 @@ export const registry: Registry = {
       "sql",
       "database",
       "db"
-    ]
+    ],
+    "category": "plain"
   },
   "ssh": {
     "viewBox": "0 0 128 128",
@@ -5307,7 +5828,8 @@ export const registry: Registry = {
     "tags": [
       "security",
       "secureshell"
-    ]
+    ],
+    "category": "original"
   },
   "stackblitz": {
     "viewBox": "0 0 128 128",
@@ -5317,7 +5839,8 @@ export const registry: Registry = {
       "IDE",
       "editor",
       "remote-development"
-    ]
+    ],
+    "category": "original"
   },
   "stackoverflow": {
     "viewBox": "0 0 128 128",
@@ -5328,7 +5851,8 @@ export const registry: Registry = {
       "development",
       "community",
       "Stack Overflow"
-    ]
+    ],
+    "category": "plain"
   },
   "stata": {
     "viewBox": "0 0 128 128",
@@ -5340,7 +5864,8 @@ export const registry: Registry = {
       "data-science",
       "software",
       "statistics"
-    ]
+    ],
+    "category": "original-wordmark"
   },
   "stenciljs": {
     "viewBox": "0 0 128 128",
@@ -5350,7 +5875,8 @@ export const registry: Registry = {
       "framework",
       "ui",
       "stencil"
-    ]
+    ],
+    "category": "plain"
   },
   "storybook": {
     "viewBox": "0 0 128 128",
@@ -5361,7 +5887,8 @@ export const registry: Registry = {
       "documentation",
       "ui",
       "storybookjs"
-    ]
+    ],
+    "category": "plain"
   },
   "streamlit": {
     "viewBox": "0 0 128 128",
@@ -5371,7 +5898,8 @@ export const registry: Registry = {
       "python",
       "machine-learning",
       "data-science"
-    ]
+    ],
+    "category": "plain"
   },
   "styledcomponents": {
     "viewBox": "0 0 128 128",
@@ -5386,7 +5914,8 @@ export const registry: Registry = {
       "web",
       "Styled Components",
       "styled-components"
-    ]
+    ],
+    "category": "plain"
   },
   "stylus": {
     "viewBox": "0 0 128 128",
@@ -5396,7 +5925,8 @@ export const registry: Registry = {
       "css",
       "pre-processor",
       "styluslang"
-    ]
+    ],
+    "category": "original"
   },
   "subversion": {
     "viewBox": "0 0 128 128",
@@ -5406,7 +5936,8 @@ export const registry: Registry = {
       "svn",
       "version",
       "apachesubversion"
-    ]
+    ],
+    "category": "original"
   },
   "sulu": {
     "viewBox": "0 0 128 128",
@@ -5415,7 +5946,8 @@ export const registry: Registry = {
     "tags": [
       "cms",
       "platform"
-    ]
+    ],
+    "category": "original"
   },
   "supabase": {
     "viewBox": "0 0 128 128",
@@ -5426,7 +5958,8 @@ export const registry: Registry = {
       "cloud-computing-platform",
       "database",
       "storage"
-    ]
+    ],
+    "category": "plain"
   },
   "surrealdb": {
     "viewBox": "0 0 128 128",
@@ -5436,7 +5969,8 @@ export const registry: Registry = {
       "db",
       "database",
       "storage"
-    ]
+    ],
+    "category": "plain"
   },
   "svelte": {
     "viewBox": "0 0 128 128",
@@ -5447,7 +5981,8 @@ export const registry: Registry = {
       "framework",
       "compiler",
       "sveltejs"
-    ]
+    ],
+    "category": "plain"
   },
   "svgo": {
     "viewBox": "0 0 128 128",
@@ -5460,7 +5995,8 @@ export const registry: Registry = {
       "javascript",
       "library",
       "node.js"
-    ]
+    ],
+    "category": "plain"
   },
   "swagger": {
     "viewBox": "0 0 128 128",
@@ -5471,7 +6007,8 @@ export const registry: Registry = {
       "software",
       "tool",
       "Swagger"
-    ]
+    ],
+    "category": "plain"
   },
   "swift": {
     "viewBox": "0 0 128 128",
@@ -5479,7 +6016,8 @@ export const registry: Registry = {
     "label": "Swift",
     "tags": [
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "swiper": {
     "viewBox": "0 0 128 128",
@@ -5489,7 +6027,8 @@ export const registry: Registry = {
       "library",
       "javascript",
       "open-source"
-    ]
+    ],
+    "category": "original"
   },
   "symfony": {
     "viewBox": "0 0 128 128",
@@ -5498,7 +6037,8 @@ export const registry: Registry = {
     "tags": [
       "framework",
       "php"
-    ]
+    ],
+    "category": "original"
   },
   "tailwindcss": {
     "viewBox": "0 0 128 128",
@@ -5507,7 +6047,8 @@ export const registry: Registry = {
     "tags": [
       "css",
       "framework"
-    ]
+    ],
+    "category": "original"
   },
   "talos": {
     "viewBox": "0 0 128 128",
@@ -5517,7 +6058,8 @@ export const registry: Registry = {
       "container",
       "linux",
       "distribution"
-    ]
+    ],
+    "category": "plain"
   },
   "tauri": {
     "viewBox": "0 0 128 128",
@@ -5529,7 +6071,8 @@ export const registry: Registry = {
       "desktop",
       "framework",
       "programming"
-    ]
+    ],
+    "category": "plain"
   },
   "telegram": {
     "viewBox": "0 0 24 24",
@@ -5538,7 +6081,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "brand"
-    ]
+    ],
+    "category": "social"
   },
   "teleport": {
     "viewBox": "0 0 128 128",
@@ -5550,7 +6094,8 @@ export const registry: Registry = {
       "auth",
       "authentication",
       "infrastructure"
-    ]
+    ],
+    "category": "original"
   },
   "tensorflow": {
     "viewBox": "0 0 128 128",
@@ -5560,7 +6105,8 @@ export const registry: Registry = {
       "library",
       "machine-learning",
       "deep-learning"
-    ]
+    ],
+    "category": "original"
   },
   "terraform": {
     "viewBox": "0 0 128 128",
@@ -5570,7 +6116,8 @@ export const registry: Registry = {
       "deployment",
       "architecture",
       "automation"
-    ]
+    ],
+    "category": "plain"
   },
   "terramate": {
     "viewBox": "0 0 128 128",
@@ -5580,7 +6127,8 @@ export const registry: Registry = {
       "deployment",
       "devops",
       "automation"
-    ]
+    ],
+    "category": "original"
   },
   "tex": {
     "viewBox": "0 0 128 128",
@@ -5590,7 +6138,8 @@ export const registry: Registry = {
       "typesetting-system",
       "markup",
       "tex"
-    ]
+    ],
+    "category": "original"
   },
   "thealgorithms": {
     "viewBox": "0 0 128 128",
@@ -5599,7 +6148,8 @@ export const registry: Registry = {
     "tags": [
       "organization",
       "algorithms"
-    ]
+    ],
+    "category": "plain"
   },
   "threedsmax": {
     "viewBox": "0 0 128 128",
@@ -5615,7 +6165,8 @@ export const registry: Registry = {
       "animation",
       "Autodesk 3ds Max",
       "3dsmax"
-    ]
+    ],
+    "category": "plain"
   },
   "threejs": {
     "viewBox": "0 0 128 128",
@@ -5624,7 +6175,8 @@ export const registry: Registry = {
     "tags": [
       "javascript",
       "framework"
-    ]
+    ],
+    "category": "original"
   },
   "thymeleaf": {
     "viewBox": "0 0 128 128",
@@ -5635,7 +6187,8 @@ export const registry: Registry = {
       "html",
       "java",
       "server"
-    ]
+    ],
+    "category": "plain"
   },
   "tiktok": {
     "viewBox": "0 0 24 24",
@@ -5644,7 +6197,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "brand"
-    ]
+    ],
+    "category": "social"
   },
   "titaniumsdk": {
     "viewBox": "0 0 128 128",
@@ -5656,7 +6210,8 @@ export const registry: Registry = {
       "javascript",
       "cross-platform",
       "sdk"
-    ]
+    ],
+    "category": "original"
   },
   "tmux": {
     "viewBox": "0 0 128 128",
@@ -5666,7 +6221,8 @@ export const registry: Registry = {
       "cli",
       "terminal",
       "multiplexer"
-    ]
+    ],
+    "category": "plain"
   },
   "tomcat": {
     "viewBox": "0 0 128 128",
@@ -5674,7 +6230,8 @@ export const registry: Registry = {
     "label": "Tomcat",
     "tags": [
       "server"
-    ]
+    ],
+    "category": "original"
   },
   "tortoisegit": {
     "viewBox": "0 0 128 128",
@@ -5682,7 +6239,8 @@ export const registry: Registry = {
     "label": "Tortoisegit",
     "tags": [
       "git"
-    ]
+    ],
+    "category": "plain"
   },
   "towergit": {
     "viewBox": "0 0 128 128",
@@ -5691,7 +6249,8 @@ export const registry: Registry = {
     "tags": [
       "git",
       "towergitclient"
-    ]
+    ],
+    "category": "plain"
   },
   "traefikmesh": {
     "viewBox": "0 0 128 128",
@@ -5700,7 +6259,8 @@ export const registry: Registry = {
     "tags": [
       "mesh",
       "kubernetes"
-    ]
+    ],
+    "category": "original"
   },
   "traefikproxy": {
     "viewBox": "0 0 128 128",
@@ -5709,7 +6269,8 @@ export const registry: Registry = {
     "tags": [
       "proxy",
       "router"
-    ]
+    ],
+    "category": "original"
   },
   "travis": {
     "viewBox": "0 0 128 128",
@@ -5719,7 +6280,8 @@ export const registry: Registry = {
       "platform",
       "integration",
       "travisci"
-    ]
+    ],
+    "category": "plain"
   },
   "trello": {
     "viewBox": "0 0 128 128",
@@ -5729,7 +6291,8 @@ export const registry: Registry = {
       "platform",
       "organize",
       "atlassiantrello"
-    ]
+    ],
+    "category": "plain"
   },
   "trpc": {
     "viewBox": "0 0 128 128",
@@ -5741,7 +6304,8 @@ export const registry: Registry = {
       "typesafe",
       "api",
       "Typescript Remote Procedure Call"
-    ]
+    ],
+    "category": "plain"
   },
   "turbo": {
     "viewBox": "0 0 128 128",
@@ -5750,7 +6314,8 @@ export const registry: Registry = {
     "tags": [
       "spa",
       "js"
-    ]
+    ],
+    "category": "original"
   },
   "twilio": {
     "viewBox": "0 0 128 128",
@@ -5760,7 +6325,8 @@ export const registry: Registry = {
       "api",
       "automation",
       "platform"
-    ]
+    ],
+    "category": "original"
   },
   "twitch": {
     "viewBox": "0 0 24 24",
@@ -5769,7 +6335,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "brand"
-    ]
+    ],
+    "category": "social"
   },
   "twitter": {
     "viewBox": "0 0 128 128",
@@ -5778,7 +6345,8 @@ export const registry: Registry = {
     "tags": [
       "auth",
       "x"
-    ]
+    ],
+    "category": "original"
   },
   "typescript": {
     "viewBox": "0 0 128 128",
@@ -5790,7 +6358,8 @@ export const registry: Registry = {
       "javascript",
       "language",
       "ts"
-    ]
+    ],
+    "category": "plain"
   },
   "typo3": {
     "viewBox": "0 0 128 128",
@@ -5799,7 +6368,8 @@ export const registry: Registry = {
     "tags": [
       "cms",
       "php"
-    ]
+    ],
+    "category": "original"
   },
   "ubuntu": {
     "viewBox": "0 0 128 128",
@@ -5809,7 +6379,8 @@ export const registry: Registry = {
       "os",
       "open-source",
       "linux"
-    ]
+    ],
+    "category": "plain"
   },
   "unifiedmodelinglanguage": {
     "viewBox": "0 0 128 128",
@@ -5821,7 +6392,8 @@ export const registry: Registry = {
       "language",
       "uml",
       "unified modeling language"
-    ]
+    ],
+    "category": "plain"
   },
   "unity": {
     "viewBox": "0 0 128 128",
@@ -5833,7 +6405,8 @@ export const registry: Registry = {
       "csharp",
       "engine",
       "game-engine"
-    ]
+    ],
+    "category": "plain"
   },
   "unix": {
     "viewBox": "0 0 128 128",
@@ -5841,7 +6414,8 @@ export const registry: Registry = {
     "label": "Unix",
     "tags": [
       "os"
-    ]
+    ],
+    "category": "original"
   },
   "unrealengine": {
     "viewBox": "0 0 128 128",
@@ -5851,7 +6425,8 @@ export const registry: Registry = {
       "c++",
       "engine",
       "game-engine"
-    ]
+    ],
+    "category": "original"
   },
   "upload": {
     "viewBox": "0 -960 960 960",
@@ -5860,7 +6435,8 @@ export const registry: Registry = {
     "tags": [
       "navigation",
       "utility"
-    ]
+    ],
+    "category": "material"
   },
   "uwsgi": {
     "viewBox": "0 0 128 128",
@@ -5869,7 +6445,8 @@ export const registry: Registry = {
     "tags": [
       "hosting",
       "uwebservergatewayinterface"
-    ]
+    ],
+    "category": "plain"
   },
   "v8": {
     "viewBox": "0 0 128 128",
@@ -5882,7 +6459,8 @@ export const registry: Registry = {
       "web",
       "cpp",
       "v8 engine"
-    ]
+    ],
+    "category": "plain"
   },
   "vaadin": {
     "viewBox": "0 0 128 128",
@@ -5892,7 +6470,8 @@ export const registry: Registry = {
       "framework",
       "java",
       "web"
-    ]
+    ],
+    "category": "original"
   },
   "vagrant": {
     "viewBox": "0 0 128 128",
@@ -5900,7 +6479,8 @@ export const registry: Registry = {
     "label": "Vagrant",
     "tags": [
       "platform"
-    ]
+    ],
+    "category": "plain"
   },
   "vala": {
     "viewBox": "0 0 128 128",
@@ -5909,7 +6489,8 @@ export const registry: Registry = {
     "tags": [
       "programming",
       "language"
-    ]
+    ],
+    "category": "plain"
   },
   "vault": {
     "viewBox": "0 0 128 128",
@@ -5920,7 +6501,8 @@ export const registry: Registry = {
       "security",
       "infrastructure",
       "HashiCorp Vault"
-    ]
+    ],
+    "category": "original"
   },
   "veevalidate": {
     "viewBox": "0 0 128 128",
@@ -5930,7 +6512,8 @@ export const registry: Registry = {
       "vuejs",
       "vuejs-library",
       "package"
-    ]
+    ],
+    "category": "original"
   },
   "vercel": {
     "viewBox": "0 0 128 128",
@@ -5941,7 +6524,8 @@ export const registry: Registry = {
       "platform",
       "deployment",
       "git"
-    ]
+    ],
+    "category": "original"
   },
   "vertx": {
     "viewBox": "0 0 128 128",
@@ -5952,7 +6536,8 @@ export const registry: Registry = {
       "java",
       "framework",
       "eclipsevertx"
-    ]
+    ],
+    "category": "plain"
   },
   "video_call": {
     "viewBox": "0 -960 960 960",
@@ -5962,7 +6547,8 @@ export const registry: Registry = {
       "communication",
       "video",
       "contact"
-    ]
+    ],
+    "category": "material"
   },
   "vim": {
     "viewBox": "0 0 128 128",
@@ -5971,7 +6557,8 @@ export const registry: Registry = {
     "tags": [
       "editor",
       "viimproved"
-    ]
+    ],
+    "category": "plain"
   },
   "visualbasic": {
     "viewBox": "0 0 128 128",
@@ -5981,7 +6568,8 @@ export const registry: Registry = {
       "programming",
       "language",
       "vb"
-    ]
+    ],
+    "category": "plain"
   },
   "visualstudio": {
     "viewBox": "0 0 128 128",
@@ -5990,7 +6578,8 @@ export const registry: Registry = {
     "tags": [
       "editor",
       "vs"
-    ]
+    ],
+    "category": "plain"
   },
   "vite": {
     "viewBox": "0 0 128 128",
@@ -6000,7 +6589,8 @@ export const registry: Registry = {
       "web3",
       "blockchain",
       "DAG"
-    ]
+    ],
+    "category": "original"
   },
   "vitejs": {
     "viewBox": "0 0 128 128",
@@ -6013,7 +6603,8 @@ export const registry: Registry = {
       "esbuild",
       "vite.js",
       "Vite"
-    ]
+    ],
+    "category": "plain"
   },
   "vitess": {
     "viewBox": "0 0 128 128",
@@ -6023,7 +6614,8 @@ export const registry: Registry = {
       "sharding",
       "database",
       "mysql"
-    ]
+    ],
+    "category": "plain"
   },
   "vitest": {
     "viewBox": "0 0 128 128",
@@ -6034,7 +6626,8 @@ export const registry: Registry = {
       "open-source",
       "testing",
       "vite"
-    ]
+    ],
+    "category": "plain"
   },
   "vscode": {
     "viewBox": "0 0 128 128",
@@ -6044,7 +6637,8 @@ export const registry: Registry = {
       "editor",
       "ide",
       "visualstudiocode"
-    ]
+    ],
+    "category": "plain"
   },
   "vscodium": {
     "viewBox": "0 0 128 128",
@@ -6054,7 +6648,8 @@ export const registry: Registry = {
       "editor",
       "ide",
       "open-source"
-    ]
+    ],
+    "category": "plain"
   },
   "vsphere": {
     "viewBox": "0 0 128 128",
@@ -6065,7 +6660,8 @@ export const registry: Registry = {
       "operating-system",
       "vmware",
       "vmwarevsphere"
-    ]
+    ],
+    "category": "plain"
   },
   "vuejs": {
     "viewBox": "0 0 128 128",
@@ -6073,7 +6669,8 @@ export const registry: Registry = {
     "label": "Vuejs",
     "tags": [
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "vuestorefront": {
     "viewBox": "0 0 128 128",
@@ -6081,7 +6678,8 @@ export const registry: Registry = {
     "label": "Vuestorefront",
     "tags": [
       "framework"
-    ]
+    ],
+    "category": "plain"
   },
   "vuetify": {
     "viewBox": "0 0 128 128",
@@ -6092,7 +6690,8 @@ export const registry: Registry = {
       "framework",
       "vuejs-library",
       "material-design"
-    ]
+    ],
+    "category": "plain"
   },
   "vulkan": {
     "viewBox": "0 0 128 128",
@@ -6104,7 +6703,8 @@ export const registry: Registry = {
       "library",
       "graphics",
       "game"
-    ]
+    ],
+    "category": "original"
   },
   "vyper": {
     "viewBox": "0 0 128 128",
@@ -6117,7 +6717,8 @@ export const registry: Registry = {
       "programming",
       "python",
       "vyperlang"
-    ]
+    ],
+    "category": "original"
   },
   "waku": {
     "viewBox": "0 0 128 128",
@@ -6128,7 +6729,8 @@ export const registry: Registry = {
       "javascript",
       "framework",
       "web"
-    ]
+    ],
+    "category": "plain"
   },
   "wasm": {
     "viewBox": "0 0 128 128",
@@ -6141,7 +6743,8 @@ export const registry: Registry = {
       "web",
       "language",
       "WebAssembly"
-    ]
+    ],
+    "category": "original"
   },
   "web3js": {
     "viewBox": "0 0 128 128",
@@ -6151,7 +6754,8 @@ export const registry: Registry = {
       "blockchain",
       "ecommerce",
       "web3.js"
-    ]
+    ],
+    "category": "plain"
   },
   "webflow": {
     "viewBox": "0 0 128 128",
@@ -6160,7 +6764,8 @@ export const registry: Registry = {
     "tags": [
       "cms",
       "ecommerce"
-    ]
+    ],
+    "category": "original"
   },
   "webgpu": {
     "viewBox": "0 0 128 128",
@@ -6170,7 +6775,8 @@ export const registry: Registry = {
       "graphics",
       "framework",
       "web"
-    ]
+    ],
+    "category": "plain"
   },
   "weblate": {
     "viewBox": "0 0 128 128",
@@ -6178,7 +6784,8 @@ export const registry: Registry = {
     "label": "Weblate",
     "tags": [
       "localization"
-    ]
+    ],
+    "category": "plain"
   },
   "webpack": {
     "viewBox": "0 0 128 128",
@@ -6188,7 +6795,8 @@ export const registry: Registry = {
       "package",
       "manager",
       "webpackjs"
-    ]
+    ],
+    "category": "plain"
   },
   "webstorm": {
     "viewBox": "0 0 128 128",
@@ -6197,7 +6805,8 @@ export const registry: Registry = {
     "tags": [
       "jetbrains",
       "editor"
-    ]
+    ],
+    "category": "plain"
   },
   "whatsapp": {
     "viewBox": "0 0 24 24",
@@ -6206,7 +6815,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "brand"
-    ]
+    ],
+    "category": "social"
   },
   "windows11": {
     "viewBox": "0 0 128 128",
@@ -6214,7 +6824,8 @@ export const registry: Registry = {
     "label": "Windows11",
     "tags": [
       "os"
-    ]
+    ],
+    "category": "original"
   },
   "windows8": {
     "viewBox": "0 0 128 128",
@@ -6222,7 +6833,8 @@ export const registry: Registry = {
     "label": "Windows8",
     "tags": [
       "os"
-    ]
+    ],
+    "category": "original"
   },
   "wolfram": {
     "viewBox": "0 0 128 128",
@@ -6233,7 +6845,8 @@ export const registry: Registry = {
       "functional",
       "programming",
       "wolframlanguage"
-    ]
+    ],
+    "category": "plain"
   },
   "woocommerce": {
     "viewBox": "0 0 128 128",
@@ -6241,7 +6854,8 @@ export const registry: Registry = {
     "label": "Woocommerce",
     "tags": [
       "ecommerce"
-    ]
+    ],
+    "category": "plain"
   },
   "wordpress": {
     "viewBox": "0 0 128 128",
@@ -6249,7 +6863,8 @@ export const registry: Registry = {
     "label": "Wordpress",
     "tags": [
       "cms"
-    ]
+    ],
+    "category": "plain"
   },
   "xamarin": {
     "viewBox": "0 0 128 128",
@@ -6265,7 +6880,8 @@ export const registry: Registry = {
       "apple",
       "android",
       "windows"
-    ]
+    ],
+    "category": "original"
   },
   "xcode": {
     "viewBox": "0 0 128 128",
@@ -6279,7 +6895,8 @@ export const registry: Registry = {
       "iphone",
       "mobile",
       "apple"
-    ]
+    ],
+    "category": "plain"
   },
   "xd": {
     "viewBox": "0 0 128 128",
@@ -6290,7 +6907,8 @@ export const registry: Registry = {
       "editor",
       "ui",
       "adobexd"
-    ]
+    ],
+    "category": "plain"
   },
   "xml": {
     "viewBox": "0 0 128 128",
@@ -6300,7 +6918,8 @@ export const registry: Registry = {
       "markup",
       "language",
       "extensiblemarkuplanguage"
-    ]
+    ],
+    "category": "plain"
   },
   "yaml": {
     "viewBox": "0 0 128 128",
@@ -6310,7 +6929,8 @@ export const registry: Registry = {
       "data",
       "language",
       "YAML Ain't Markup Language"
-    ]
+    ],
+    "category": "plain"
   },
   "yarn": {
     "viewBox": "0 0 128 128",
@@ -6321,7 +6941,8 @@ export const registry: Registry = {
       "manager",
       "javascript",
       "js"
-    ]
+    ],
+    "category": "original"
   },
   "yii": {
     "viewBox": "0 0 128 128",
@@ -6331,7 +6952,8 @@ export const registry: Registry = {
       "php",
       "framework",
       "yesitis"
-    ]
+    ],
+    "category": "plain"
   },
   "youtube": {
     "viewBox": "0 0 24 24",
@@ -6340,7 +6962,8 @@ export const registry: Registry = {
     "tags": [
       "social",
       "brand"
-    ]
+    ],
+    "category": "social"
   },
   "yugabytedb": {
     "viewBox": "0 0 128 128",
@@ -6352,7 +6975,8 @@ export const registry: Registry = {
       "sql",
       "scale",
       "open-source"
-    ]
+    ],
+    "category": "plain"
   },
   "yunohost": {
     "viewBox": "0 0 128 128",
@@ -6360,7 +6984,8 @@ export const registry: Registry = {
     "label": "Yunohost",
     "tags": [
       "os"
-    ]
+    ],
+    "category": "plain"
   },
   "zend": {
     "viewBox": "0 0 128 128",
@@ -6369,7 +6994,8 @@ export const registry: Registry = {
     "tags": [
       "php",
       "framework"
-    ]
+    ],
+    "category": "original"
   },
   "zig": {
     "viewBox": "0 0 128 128",
@@ -6378,7 +7004,8 @@ export const registry: Registry = {
     "tags": [
       "language",
       "ziglang"
-    ]
+    ],
+    "category": "original"
   },
   "zsh": {
     "viewBox": "0 0 128 128",
@@ -6390,7 +7017,8 @@ export const registry: Registry = {
       "scripting",
       "language",
       "command"
-    ]
+    ],
+    "category": "plain"
   },
   "zustand": {
     "viewBox": "0 0 128 128",
@@ -6398,6 +7026,7 @@ export const registry: Registry = {
     "label": "Zustand",
     "tags": [
       "framework"
-    ]
+    ],
+    "category": "plain"
   }
 }
