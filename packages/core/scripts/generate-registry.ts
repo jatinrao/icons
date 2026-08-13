@@ -6,12 +6,13 @@ import type { Registry, RegistryEntry } from '../src/types'
 
 // Icons stored from a "plain"/"line" devicon variant are monochrome glyphs
 // meant to be recolored; "original"/"original-wordmark" variants are
-// multi-color brand marks whose colors should be left alone. "material" and
-// "social" (Material Symbols, Simple Icons) are monochrome by design too —
-// this is a no-op for them today since their source SVGs have no inner fill
-// attributes to rewrite in the first place (they inherit color instead), but
-// keeps the categorization semantically correct if that ever changes.
-const MONOCHROME_CATEGORIES = new Set(['plain', 'line', 'material', 'social'])
+// multi-color brand marks whose colors should be left alone. "material",
+// "social", and "tools" (Material Symbols, Simple Icons) are monochrome by
+// design too — this is a no-op for them today since their source SVGs have
+// no inner fill attributes to rewrite in the first place (they inherit
+// color instead), but keeps the categorization semantically correct if that
+// ever changes.
+const MONOCHROME_CATEGORIES = new Set(['plain', 'line', 'material', 'social', 'tools'])
 
 export function splitSvg(svg: string): { viewBox: string; innerHTML: string } {
   const openTagMatch = svg.match(/<svg\b([^>]*?)(\/)?>/i)

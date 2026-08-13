@@ -21,19 +21,31 @@ admin dashboard to manage icons and a public gallery to browse and copy them.
 
 ## Attribution
 
-The icon set (622 icons) is seeded from three sources:
+The icon set (629 icons) is seeded from three sources:
 
 - [devicon](https://github.com/devicons/devicon) (MIT licensed) — 578 tech/tool
   logos. `pnpm --filter @web-portfolio/icons-db seed-devicon`
 - [Material Symbols](https://github.com/marella/material-symbols) (Apache-2.0
-  licensed) — 32 curated communication and navigation/utility icons.
+  licensed) — 34 curated communication, navigation/utility, and device/data
+  icons (including Connected TV and a generic SQL/database glyph — neither
+  devicon nor Simple Icons has a "SQL" brand mark, since SQL isn't a company).
   `pnpm --filter @web-portfolio/icons-db seed-material-icons`
-- [Simple Icons](https://simpleicons.org) (CC0-1.0, public domain) — 12 social
-  platform logos devicon doesn't cover (Instagram, YouTube, WhatsApp, etc. —
-  devicon already has Facebook, Twitter, LinkedIn, GitHub, GitLab, Slack, and
-  Behance). `pnpm --filter @web-portfolio/icons-db seed-social-icons`
+- [Simple Icons](https://simpleicons.org) (CC0-1.0, public domain) — 17 icons
+  devicon doesn't cover, split across two curated lists:
+  - 12 social platform logos (Instagram, YouTube, WhatsApp, etc. — devicon
+    already has Facebook, Twitter, LinkedIn, GitHub, GitLab, Slack, and
+    Behance). `pnpm --filter @web-portfolio/icons-db seed-social-icons`
+  - 5 developer-tool/product brand logos (MCP, Google Analytics, LangChain,
+    Ollama, Pydantic). `pnpm --filter @web-portfolio/icons-db seed-tool-icons`
 
-Run all three with `pnpm --filter @web-portfolio/icons-db seed-all`.
+Run all four with `pnpm --filter @web-portfolio/icons-db seed-all`.
+
+Not every requested icon has a licensed source to pull from: **Segment,
+Statsig, and Google Stitch** aren't in devicon, Material Symbols, or Simple
+Icons (Google Stitch in particular is too new — released after all three
+sources' latest releases). Add them manually via `apps/admin`'s "paste raw
+SVG" flow if needed, rather than scraping brand assets without a clear
+redistribution license.
 
 ## Local development
 

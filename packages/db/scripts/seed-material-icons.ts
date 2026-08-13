@@ -10,6 +10,8 @@ export interface CuratedIcon {
   name: string
   label: string
   tags: string[]
+  /** Material Symbols filename, if it differs from the registry `name`. */
+  sourceFile?: string
 }
 
 const COMMUNICATION_ICONS: CuratedIcon[] = [
@@ -62,7 +64,18 @@ const NAVIGATION_ICONS: CuratedIcon[] = [
   { name: 'last_page', label: 'Last Page', tags: ['navigation', 'utility'] },
 ]
 
-export const MATERIAL_ICONS: CuratedIcon[] = [...COMMUNICATION_ICONS, ...NAVIGATION_ICONS]
+// Not a specific brand — Material Symbols has no "SQL" logo, and neither do
+// devicon or Simple Icons, so `database` is the closest generic stand-in.
+const DEVICE_AND_DATA_ICONS: CuratedIcon[] = [
+  { name: 'connected_tv', label: 'Connected TV', tags: ['device', 'tv', 'streaming', 'utility'] },
+  { name: 'sql', label: 'SQL', tags: ['database', 'sql', 'data', 'storage'], sourceFile: 'database' },
+]
+
+export const MATERIAL_ICONS: CuratedIcon[] = [
+  ...COMMUNICATION_ICONS,
+  ...NAVIGATION_ICONS,
+  ...DEVICE_AND_DATA_ICONS,
+]
 
 async function main() {
   const packageJsonPath = require.resolve('@material-symbols/svg-400/package.json')
@@ -73,7 +86,7 @@ async function main() {
   let skipped = 0
 
   for (const icon of MATERIAL_ICONS) {
-    const svgPath = `${packageRoot}outlined/${icon.name}.svg`
+    const svgPath = `${packageRoot}outlined/${icon.sourceFile ?? icon.name}.svg`
     if (!existsSync(svgPath)) {
       skipped++
       continue
