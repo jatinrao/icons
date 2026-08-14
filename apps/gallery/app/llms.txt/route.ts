@@ -1,5 +1,5 @@
 import { getAllIcons, getCategories, formatCategoryLabel } from '@/lib/icons'
-import { SITE_URL } from '@/lib/site'
+import { SITE_NAME, SITE_URL } from '@/lib/site'
 
 // The llms.txt convention (https://llmstxt.org) — a curated, plain-text
 // summary of a site for AI agents/answer engines to consume directly,
@@ -15,7 +15,7 @@ export async function GET() {
     })
     .join('\n')
 
-  const body = `# Icons Gallery
+  const body = `# ${SITE_NAME}
 
 > A free, searchable gallery of ${icons.length} SVG icons — programming languages, frameworks, dev tools, social platforms, and UI icons. Companion site for two npm packages.
 

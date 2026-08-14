@@ -27,14 +27,14 @@ describe('IconDetailPanel', () => {
     render(<IconDetailPanel icon={icon} />)
     expect(screen.getByRole('heading', { name: 'React' })).toBeInTheDocument()
     expect(screen.getByText('react')).toBeInTheDocument()
-    expect(screen.getByText('Original')).toBeInTheDocument()
+    expect(screen.getByText('Devicon')).toBeInTheDocument()
     expect(screen.getByText('framework')).toBeInTheDocument()
     expect(screen.getByText('frontend')).toBeInTheDocument()
   })
 
   it('omits the category badge for an icon with no category', () => {
     render(<IconDetailPanel icon={{ ...icon, category: null }} />)
-    expect(screen.queryByText('Original')).not.toBeInTheDocument()
+    expect(screen.queryByText('Devicon')).not.toBeInTheDocument()
   })
 
   it('shows the original SVG untouched, with no reset button, before any interaction', () => {

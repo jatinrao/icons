@@ -97,7 +97,12 @@ describe('getCategories', () => {
 describe('formatCategoryLabel', () => {
   it('title-cases and replaces separators with spaces', () => {
     expect(formatCategoryLabel('material')).toBe('Material')
-    expect(formatCategoryLabel('original-wordmark')).toBe('Original Wordmark')
+    expect(formatCategoryLabel('plain-wordmark')).toBe('Plain Wordmark')
     expect(formatCategoryLabel('plain_line')).toBe('Plain Line')
+  })
+
+  it('labels devicon\'s "original" variants by source, not devicon\'s internal jargon', () => {
+    expect(formatCategoryLabel('original')).toBe('Devicon')
+    expect(formatCategoryLabel('original-wordmark')).toBe('Devicon Wordmark')
   })
 })
