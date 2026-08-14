@@ -147,12 +147,6 @@ button:focus-visible {
   min-width: 0;
 }
 
-.topbar .count {
-  color: var(--muted);
-  font-size: 0.9rem;
-  white-space: nowrap;
-}
-
 .theme-toggle {
   width: 40px;
   height: 40px;
