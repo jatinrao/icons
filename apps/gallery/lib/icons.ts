@@ -47,9 +47,9 @@ export function matchesQuery(icon: Pick<GalleryIcon, 'name' | 'label' | 'tags'>,
   )
 }
 
-/** `category` of "all" (the dropdown's default) matches every icon. */
-export function matchesCategory(icon: Pick<GalleryIcon, 'category'>, category: string): boolean {
-  return category === 'all' || icon.category === category
+/** An empty selection (the sidebar's default, nothing checked) matches every icon. */
+export function matchesCategory(icon: Pick<GalleryIcon, 'category'>, categories: string[]): boolean {
+  return categories.length === 0 || (icon.category !== null && categories.includes(icon.category))
 }
 
 export function getCategories(icons: Pick<GalleryIcon, 'category'>[]): string[] {
@@ -66,4 +66,46 @@ export function formatCategoryLabel(category: string): string {
     .filter(Boolean)
     .map((word) => word[0].toUpperCase() + word.slice(1))
     .join(' ')
+}
+
+// Curated for the categories this project actually seeds today; any future
+// category not in this map still gets a deterministic (not random) color via
+// a simple string hash, so the UI never breaks — it just doesn't get a
+// hand-picked color until this map is updated.
+const CATEGORY_ACCENT: Record<string, string> = {
+  original: 'var(--accent-blue)',
+  plain: 'var(--accent-indigo)',
+  'original-wordmark': 'var(--accent-purple)',
+  'plain-wordmark': 'var(--accent-teal)',
+  material: 'var(--accent-orange)',
+  social: 'var(--accent-pink)',
+  tools: 'var(--accent-green)',
+}
+
+const ACCENT_FALLBACK_PALETTE = [
+  'var(--accent-blue)',
+  'var(--accent-indigo)',
+  'var(--accent-purple)',
+  'var(--accent-teal)',
+  'var(--accent-orange)',
+  'var(--accent-pink)',
+  'var(--accent-green)',
+  'var(--accent-red)',
+  'var(--accent-yellow)',
+  'var(--accent-mint)',
+  'var(--accent-cyan)',
+  'var(--accent-brown)',
+]
+
+function hashString(value: string): number {
+  let hash = 0
+  for (let i = 0; i < value.length; i++) {
+    hash = (hash * 31 + value.charCodeAt(i)) | 0
+  }
+  return Math.abs(hash)
+}
+
+export function categoryAccent(category: string | null): string {
+  if (!category) return 'var(--accent-blue)'
+  return CATEGORY_ACCENT[category] ?? ACCENT_FALLBACK_PALETTE[hashString(category) % ACCENT_FALLBACK_PALETTE.length]
 }

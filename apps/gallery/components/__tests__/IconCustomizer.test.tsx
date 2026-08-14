@@ -25,7 +25,12 @@ describe('IconCustomizer', () => {
 
     fireEvent.change(screen.getByLabelText(/Color/), { target: { value: '#ff0000' } })
 
-    expect(container.querySelector('.detail-glyph')?.innerHTML).toContain('currentColor')
+    // Assert on the actual child element, not just a substring anywhere in
+    // innerHTML — `currentColor` resolves against the CSS `color` property,
+    // not a parent's `fill` attribute, so a root-only fill change would be a
+    // false pass here (and silently fail to recolor anything for real).
+    expect(container.querySelector('.detail-glyph path')).toHaveAttribute('fill', '#ff0000')
+    expect(container.querySelector('.detail-glyph')?.innerHTML).not.toContain('currentColor')
     expect(screen.getByText('Reset to original')).toBeInTheDocument()
 
     fireEvent.click(screen.getByText('Copy SVG'))
@@ -64,5 +69,37 @@ describe('IconCustomizer', () => {
 
     expect(container.querySelector('.detail-glyph')?.innerHTML).toContain('fill="#61DAFB"')
     expect(screen.queryByText('Reset to original')).not.toBeInTheDocument()
+  })
+
+  it('applies a quick-pick color swatch and marks it pressed', () => {
+    const { container } = render(<IconCustomizer name="react" svg={svg} />)
+
+    const indigo = screen.getByLabelText('Indigo accent color')
+    expect(indigo).toHaveAttribute('aria-pressed', 'false')
+
+    fireEvent.click(indigo)
+
+    expect(indigo).toHaveAttribute('aria-pressed', 'true')
+    expect(container.querySelector('.detail-glyph path')).toHaveAttribute('fill', '#6155F5')
+  })
+
+  it('adjusts stroke width with the +/- stepper, clamped to its bounds', () => {
+    render(<IconCustomizer name="react" svg={svg} />)
+    fireEvent.click(screen.getByText('Advanced options'))
+
+    const decrease = screen.getByLabelText('Decrease stroke width')
+    const increase = screen.getByLabelText('Increase stroke width')
+
+    fireEvent.click(increase)
+    expect(screen.getByText('Stroke width (2.5)')).toBeInTheDocument()
+
+    fireEvent.click(decrease)
+    fireEvent.click(decrease)
+    expect(screen.getByText('Stroke width (1.5)')).toBeInTheDocument()
+
+    // Drive it down to the floor and confirm the button disables rather than going negative.
+    for (let i = 0; i < 10; i++) fireEvent.click(decrease)
+    expect(screen.getByText('Stroke width (0)')).toBeInTheDocument()
+    expect(decrease).toBeDisabled()
   })
 })

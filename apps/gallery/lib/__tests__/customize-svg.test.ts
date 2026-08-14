@@ -23,12 +23,24 @@ describe('applyCustomization', () => {
     expect(result).toContain('width="64"')
   })
 
-  it('rewrites inner explicit fills to currentColor so they defer to the new root fill', () => {
+  it('rewrites inner explicit fills to the literal chosen color, not currentColor', () => {
+    // currentColor resolves against the CSS `color` property, not a parent's
+    // `fill` attribute — writing it here would silently fail to recolor
+    // anything in a standalone preview or exported file with no ambient
+    // `color` set. The literal color must be written directly.
     const svg = '<svg viewBox="0 0 24 24"><path fill="#61DAFB" d="M1 1"/><circle fill="none" cx="1" cy="1" r="1"/></svg>'
     const result = applyCustomization(svg, options)
 
-    expect(result).toContain('<path fill="currentColor" d="M1 1"/>')
+    expect(result).toContain('<path fill="#ff0000" d="M1 1"/>')
+    expect(result).not.toContain('currentColor')
     expect(result).toContain('fill="none"')
+  })
+
+  it('rewrites a fill that was already currentColor (e.g. a monochrome registry icon) to the literal color', () => {
+    const svg = '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M1 1"/></svg>'
+    const result = applyCustomization(svg, options)
+
+    expect(result).toContain('<path fill="#ff0000" d="M1 1"/>')
   })
 
   it('recolors stroke and stroke-width only on elements that already declare a stroke', () => {

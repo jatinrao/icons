@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { getAllIcons, getIconByName } from '@/lib/icons'
+import { formatCategoryLabel, getAllIcons, getIconByName } from '@/lib/icons'
 import { SITE_NAME, SITE_URL } from '@/lib/site'
 import { IconCustomizer } from '@/components/IconCustomizer'
 import { UsageSnippet } from '@/components/UsageSnippet'
@@ -54,13 +54,13 @@ export default async function IconDetailPage({ params }: { params: Promise<{ nam
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="topbar">
-        <Link href="/" className="button">
-          ← All icons
+        <Link href="/" className="button plain">
+          ‹ Icon Library
         </Link>
         <DarkModeToggle />
       </div>
 
-      <div className="detail-card">
+      <div className="detail-card glass">
         <div>
           <h1 style={{ margin: '0 0 0.35rem' }}>{icon.label}</h1>
           <p style={{ margin: 0, color: 'var(--muted)', fontFamily: 'ui-monospace, monospace' }}>
@@ -68,15 +68,14 @@ export default async function IconDetailPage({ params }: { params: Promise<{ nam
           </p>
         </div>
 
-        {icon.tags.length > 0 && (
-          <div className="detail-tags">
-            {icon.tags.map((tag) => (
-              <span key={tag} className="tag">
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
+        <div className="detail-tags">
+          {icon.category && <span className="tag tag-category">{formatCategoryLabel(icon.category)}</span>}
+          {icon.tags.map((tag) => (
+            <span key={tag} className="tag">
+              {tag}
+            </span>
+          ))}
+        </div>
 
         <IconCustomizer name={icon.name} svg={icon.svg} />
         <UsageSnippet name={icon.name} />

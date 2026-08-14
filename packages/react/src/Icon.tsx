@@ -61,6 +61,7 @@ export function Icon({
   stroke,
   strokeWidth,
   title,
+  style,
   ...rest
 }: IconProps) {
   const entry = registry[name]
@@ -87,6 +88,12 @@ export function Icon({
       aria-hidden={title ? undefined : true}
       xmlns="http://www.w3.org/2000/svg"
       {...rest}
+      // Monochrome icons' inner elements are `fill="currentColor"`, which
+      // resolves against the CSS `color` property — not the `fill`
+      // attribute set above. Without this, an explicit `color` prop would
+      // recolor only the (invisible) root <svg> element and silently do
+      // nothing to what's actually drawn.
+      style={{ ...style, color }}
       dangerouslySetInnerHTML={{ __html: markup }}
     />
   )

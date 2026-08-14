@@ -23,8 +23,13 @@ export function DarkModeToggle() {
   }
 
   return (
-    <button type="button" className="button" onClick={toggle} aria-label="Toggle dark mode">
-      {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+    <button
+      type="button"
+      className="theme-toggle"
+      onClick={toggle}
+      aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+    >
+      {theme === 'dark' ? '☀' : '☾'}
     </button>
   )
 }

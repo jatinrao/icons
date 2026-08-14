@@ -30,13 +30,17 @@ export default async function HomePage({
     <div className="page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <div className="topbar">
+      <a href="#icon-results" className="skip-link">
+        Skip to icon results
+      </a>
+
+      <header className="topbar glass">
         <div className="brand">
-          <h1>Icons</h1>
+          <h1>Icon Library</h1>
           <span className="count">{icons.length} icons</span>
         </div>
         <DarkModeToggle />
-      </div>
+      </header>
 
       <IconGrid icons={icons} initialQuery={q ?? ''} />
       <Footer />
