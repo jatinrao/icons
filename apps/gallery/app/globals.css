@@ -458,17 +458,41 @@ button:focus-visible {
   border: 1px solid var(--border);
   border-radius: 24px;
   padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  text-align: center;
-  max-width: 420px;
+  max-width: 680px;
   margin: 0 auto;
 }
 
 .detail-card.glass {
   box-shadow: inset 0 1px 0 color-mix(in srgb, white 30%, transparent), 0 12px 40px rgba(0, 0, 0, 0.16);
+}
+
+/* Two-column layout shared by the full detail page and the modal: preview +
+   meta on the left, interactive controls on the right. Stacks on narrow
+   viewports (see the responsive block below). */
+.detail-panel {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.detail-panel-meta {
+  flex: none;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.detail-panel-controls {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
 }
 
 .detail-glyph {
@@ -505,21 +529,43 @@ button:focus-visible {
   font-weight: 600;
 }
 
-.customizer {
+/* ---------- Detail modal (intercepted route) ---------- */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
-  width: 100%;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.35);
 }
 
-.customize-controls {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.9rem;
-  width: 100%;
-  max-width: 420px;
+.modal-dialog {
+  position: relative;
+  width: min(720px, 92vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 36px;
+  border-radius: 26px;
+  border: 0.5px solid var(--border);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, white 30%, transparent), 0 24px 70px rgba(0, 0, 0, 0.32);
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--fill-secondary, rgba(120, 120, 128, 0.16));
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .size-control {
@@ -676,6 +722,20 @@ button:focus-visible {
 
   .icon-grid {
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  }
+
+  .detail-panel {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .detail-panel-meta {
+    width: 100%;
+  }
+
+  .modal-dialog {
+    padding: 28px 20px;
+    width: 100%;
   }
 }
 

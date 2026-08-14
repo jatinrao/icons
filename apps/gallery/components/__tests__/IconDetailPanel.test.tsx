@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { IconCustomizer } from '../IconCustomizer'
+import { IconDetailPanel } from '../IconDetailPanel'
+import type { GalleryIcon } from '@/lib/icons'
 
 vi.mock('@/lib/svg-export', () => ({
   svgToPngBlob: vi.fn().mockResolvedValue(new Blob(['fake-png'], { type: 'image/png' })),
@@ -9,24 +10,46 @@ vi.mock('@/lib/svg-export', () => ({
 
 const svg = '<svg viewBox="0 0 24 24"><path fill="#61DAFB" d="M1 1"/></svg>'
 
+const icon: GalleryIcon = {
+  name: 'react',
+  label: 'React',
+  svg,
+  tags: ['framework', 'frontend'],
+  category: 'original',
+}
+
 beforeEach(() => {
   Object.assign(navigator, { clipboard: { writeText: vi.fn().mockResolvedValue(undefined) } })
 })
 
-describe('IconCustomizer', () => {
+describe('IconDetailPanel', () => {
+  it('renders the name, category badge, and tags', () => {
+    render(<IconDetailPanel icon={icon} />)
+    expect(screen.getByRole('heading', { name: 'React' })).toBeInTheDocument()
+    expect(screen.getByText('react')).toBeInTheDocument()
+    expect(screen.getByText('Original')).toBeInTheDocument()
+    expect(screen.getByText('framework')).toBeInTheDocument()
+    expect(screen.getByText('frontend')).toBeInTheDocument()
+  })
+
+  it('omits the category badge for an icon with no category', () => {
+    render(<IconDetailPanel icon={{ ...icon, category: null }} />)
+    expect(screen.queryByText('Original')).not.toBeInTheDocument()
+  })
+
   it('shows the original SVG untouched, with no reset button, before any interaction', () => {
-    const { container } = render(<IconCustomizer name="react" svg={svg} />)
+    const { container } = render(<IconDetailPanel icon={icon} />)
     expect(container.querySelector('.detail-glyph')?.innerHTML).toContain('fill="#61DAFB"')
     expect(screen.queryByText('Reset to original')).not.toBeInTheDocument()
   })
 
   it('applies the chosen color to the preview and copy output once changed', async () => {
-    const { container } = render(<IconCustomizer name="react" svg={svg} />)
+    const { container } = render(<IconDetailPanel icon={icon} />)
 
     fireEvent.change(screen.getByLabelText(/Color/), { target: { value: '#ff0000' } })
 
     // Assert on the actual child element, not just a substring anywhere in
-    // innerHTML — `currentColor` resolves against the CSS `color` property,
+    // innerHTML — currentColor resolves against the CSS `color` property,
     // not a parent's `fill` attribute, so a root-only fill change would be a
     // false pass here (and silently fail to recolor anything for real).
     expect(container.querySelector('.detail-glyph path')).toHaveAttribute('fill', '#ff0000')
@@ -42,7 +65,7 @@ describe('IconCustomizer', () => {
   })
 
   it('updates the size label and preview box as the slider moves', () => {
-    const { container } = render(<IconCustomizer name="react" svg={svg} />)
+    const { container } = render(<IconDetailPanel icon={icon} />)
 
     fireEvent.change(screen.getByLabelText(/Size/), { target: { value: '64' } })
 
@@ -51,7 +74,7 @@ describe('IconCustomizer', () => {
   })
 
   it('hides advanced (stroke) controls until "Advanced options" is clicked', () => {
-    render(<IconCustomizer name="react" svg={svg} />)
+    render(<IconDetailPanel icon={icon} />)
 
     expect(screen.queryByLabelText('Stroke')).not.toBeInTheDocument()
     fireEvent.click(screen.getByText('Advanced options'))
@@ -60,7 +83,7 @@ describe('IconCustomizer', () => {
   })
 
   it('resets to the original, untouched SVG and hides the reset button again', () => {
-    const { container } = render(<IconCustomizer name="react" svg={svg} />)
+    const { container } = render(<IconDetailPanel icon={icon} />)
 
     fireEvent.change(screen.getByLabelText(/Color/), { target: { value: '#ff0000' } })
     expect(screen.getByText('Reset to original')).toBeInTheDocument()
@@ -72,7 +95,7 @@ describe('IconCustomizer', () => {
   })
 
   it('applies a quick-pick color swatch and marks it pressed', () => {
-    const { container } = render(<IconCustomizer name="react" svg={svg} />)
+    const { container } = render(<IconDetailPanel icon={icon} />)
 
     const indigo = screen.getByLabelText('Indigo accent color')
     expect(indigo).toHaveAttribute('aria-pressed', 'false')
@@ -84,7 +107,7 @@ describe('IconCustomizer', () => {
   })
 
   it('adjusts stroke width with the +/- stepper, clamped to its bounds', () => {
-    render(<IconCustomizer name="react" svg={svg} />)
+    render(<IconDetailPanel icon={icon} />)
     fireEvent.click(screen.getByText('Advanced options'))
 
     const decrease = screen.getByLabelText('Decrease stroke width')
