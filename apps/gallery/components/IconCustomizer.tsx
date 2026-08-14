@@ -17,6 +17,22 @@ const PREVIEW_MAX_PX = 200
 const DEFAULT_COLOR = '#000000'
 const DEFAULT_STROKE_COLOR = '#000000'
 const DEFAULT_STROKE_WIDTH = 2
+const MIN_STROKE_WIDTH = 0
+const MAX_STROKE_WIDTH = 10
+const STROKE_STEP = 0.5
+
+// A curated slice of the iOS system-accent palette, for quick color picks —
+// the native color input below still covers any custom color.
+const SWATCHES = [
+  { label: 'Blue', hex: '#0088FF' },
+  { label: 'Indigo', hex: '#6155F5' },
+  { label: 'Purple', hex: '#CB30E0' },
+  { label: 'Teal', hex: '#00C3D0' },
+  { label: 'Orange', hex: '#FF8D28' },
+  { label: 'Pink', hex: '#FF2D55' },
+  { label: 'Green', hex: '#34C759' },
+  { label: 'Black', hex: '#000000' },
+]
 
 export function IconCustomizer({ name, svg }: IconCustomizerProps) {
   const [size, setSize] = useState(DEFAULT_SIZE)
@@ -44,6 +60,11 @@ export function IconCustomizer({ name, svg }: IconCustomizerProps) {
     setCustomized(false)
   }
 
+  function adjustStrokeWidth(delta: number) {
+    const next = Math.min(MAX_STROKE_WIDTH, Math.max(MIN_STROKE_WIDTH, strokeWidth + delta))
+    change(setStrokeWidth, next)
+  }
+
   const previewPx = Math.min(customized ? size : 96, PREVIEW_MAX_PX)
 
   return (
@@ -55,28 +76,41 @@ export function IconCustomizer({ name, svg }: IconCustomizerProps) {
       />
 
       <div className="customize-controls">
-        <div className="control-row">
-          <label htmlFor="customize-size">
-            Size ({size}px)
-            <input
-              id="customize-size"
-              type="range"
-              min={MIN_SIZE}
-              max={MAX_SIZE}
-              value={size}
-              onChange={(event) => change(setSize, Number(event.currentTarget.value))}
-            />
-          </label>
+        <label className="size-control" htmlFor="customize-size">
+          Size ({size}px)
+          <input
+            id="customize-size"
+            type="range"
+            min={MIN_SIZE}
+            max={MAX_SIZE}
+            value={size}
+            onChange={(event) => change(setSize, Number(event.currentTarget.value))}
+          />
+        </label>
 
-          <label htmlFor="customize-color">
-            Color
-            <input
-              id="customize-color"
-              type="color"
-              value={color}
-              onChange={(event) => change(setColor, event.currentTarget.value)}
-            />
-          </label>
+        <div className="control-row">
+          <div className="color-control">
+            <span className="control-label">Color</span>
+            <div role="group" aria-label="Icon color" className="swatch-row">
+              {SWATCHES.map((swatch) => (
+                <button
+                  key={swatch.hex}
+                  type="button"
+                  aria-label={`${swatch.label} accent color`}
+                  aria-pressed={color === swatch.hex}
+                  className={`swatch${color === swatch.hex ? ' swatch-selected' : ''}`}
+                  style={{ background: swatch.hex }}
+                  onClick={() => change(setColor, swatch.hex)}
+                />
+              ))}
+              <input
+                aria-label="Color"
+                type="color"
+                value={color}
+                onChange={(event) => change(setColor, event.currentTarget.value)}
+              />
+            </div>
+          </div>
         </div>
 
         <button type="button" className="button" onClick={() => setShowAdvanced((v) => !v)}>
@@ -95,18 +129,28 @@ export function IconCustomizer({ name, svg }: IconCustomizerProps) {
               />
             </label>
 
-            <label htmlFor="customize-stroke-width">
-              Stroke width
-              <input
-                id="customize-stroke-width"
-                type="number"
-                min={0}
-                max={10}
-                step={0.5}
-                value={strokeWidth}
-                onChange={(event) => change(setStrokeWidth, Number(event.currentTarget.value))}
-              />
-            </label>
+            <div role="group" aria-label="Stroke width" className="stepper">
+              <span className="control-label">Stroke width ({strokeWidth})</span>
+              <div className="stepper-buttons">
+                <button
+                  type="button"
+                  aria-label="Decrease stroke width"
+                  onClick={() => adjustStrokeWidth(-STROKE_STEP)}
+                  disabled={strokeWidth <= MIN_STROKE_WIDTH}
+                >
+                  −
+                </button>
+                <span className="stepper-value">{strokeWidth}</span>
+                <button
+                  type="button"
+                  aria-label="Increase stroke width"
+                  onClick={() => adjustStrokeWidth(STROKE_STEP)}
+                  disabled={strokeWidth >= MAX_STROKE_WIDTH}
+                >
+                  +
+                </button>
+              </div>
+            </div>
           </div>
         )}
 

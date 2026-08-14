@@ -37,6 +37,22 @@ describe('Icon', () => {
     expect(svg?.getAttribute('fill')).toBe('#ff0000')
   })
 
+  it('also sets color via CSS style, since currentColor children resolve against that — not the fill attribute', () => {
+    // jsdom can't compute actual currentColor resolution, so this only
+    // proves the mechanism is wired up, not that it visually renders red —
+    // confirmed separately in a real browser.
+    const { container } = render(<Icon name="react" color="#ff0000" />)
+    const svg = container.querySelector('svg')
+    expect(svg?.style.color).toBe('rgb(255, 0, 0)')
+  })
+
+  it('lets an explicit style prop pass through without breaking the color style', () => {
+    const { container } = render(<Icon name="react" color="#ff0000" style={{ opacity: 0.5 }} />)
+    const svg = container.querySelector('svg')
+    expect(svg?.style.color).toBe('rgb(255, 0, 0)')
+    expect(svg?.style.opacity).toBe('0.5')
+  })
+
   it('renders nothing and warns for an unknown name', () => {
     const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
     const { container } = render(<Icon name="does-not-exist" />)

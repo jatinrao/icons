@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest'
-import { formatCategoryLabel, getAllIcons, getCategories, getIconByName, matchesCategory, matchesQuery } from '../icons'
+import {
+  categoryAccent,
+  formatCategoryLabel,
+  getAllIcons,
+  getCategories,
+  getIconByName,
+  matchesCategory,
+  matchesQuery,
+} from '../icons'
 
 const icon = { name: 'react', label: 'React', tags: ['framework', 'frontend'] }
 
@@ -38,15 +46,34 @@ describe('matchesQuery', () => {
 })
 
 describe('matchesCategory', () => {
-  it('"all" matches every icon, including ones with no category', () => {
-    expect(matchesCategory({ category: 'material' }, 'all')).toBe(true)
-    expect(matchesCategory({ category: null }, 'all')).toBe(true)
+  it('an empty selection matches every icon, including ones with no category', () => {
+    expect(matchesCategory({ category: 'material' }, [])).toBe(true)
+    expect(matchesCategory({ category: null }, [])).toBe(true)
   })
 
-  it('matches only the exact category', () => {
-    expect(matchesCategory({ category: 'social' }, 'social')).toBe(true)
-    expect(matchesCategory({ category: 'material' }, 'social')).toBe(false)
-    expect(matchesCategory({ category: null }, 'social')).toBe(false)
+  it('matches any of several selected categories', () => {
+    expect(matchesCategory({ category: 'social' }, ['social', 'tools'])).toBe(true)
+    expect(matchesCategory({ category: 'tools' }, ['social', 'tools'])).toBe(true)
+    expect(matchesCategory({ category: 'material' }, ['social', 'tools'])).toBe(false)
+    expect(matchesCategory({ category: null }, ['social'])).toBe(false)
+  })
+})
+
+describe('categoryAccent', () => {
+  it('returns a curated accent for a known category', () => {
+    expect(categoryAccent('social')).toBe('var(--accent-pink)')
+    expect(categoryAccent('tools')).toBe('var(--accent-green)')
+  })
+
+  it('falls back to a default for no category', () => {
+    expect(categoryAccent(null)).toBe('var(--accent-blue)')
+  })
+
+  it('deterministically maps an unrecognized category to a palette color', () => {
+    const a = categoryAccent('some-brand-new-category')
+    const b = categoryAccent('some-brand-new-category')
+    expect(a).toBe(b)
+    expect(a).toMatch(/^var\(--accent-/)
   })
 })
 
