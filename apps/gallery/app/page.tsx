@@ -37,7 +37,6 @@ export default async function HomePage({
       <header className="topbar glass">
         <div className="brand">
           <h1>{SITE_NAME}</h1>
-          <span className="count">{icons.length} icons</span>
         </div>
         <DarkModeToggle />
       </header>
