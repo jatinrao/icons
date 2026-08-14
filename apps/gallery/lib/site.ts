@@ -6,7 +6,7 @@ import { getAllIcons } from './icons'
 export const SITE_URL =
   process.env.SITE_URL ?? (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')
 
-export const SITE_NAME = 'Icons Gallery'
+export const SITE_NAME = '@web-portfolio/icons'
 
 // Computed from the live registry rather than hardcoded, so this never goes
 // stale as icons are added.

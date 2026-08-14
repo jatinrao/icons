@@ -60,7 +60,18 @@ export function getCategories(icons: Pick<GalleryIcon, 'category'>[]): string[] 
   return Array.from(set).sort()
 }
 
+// "original"/"original-wordmark" are devicon's own internal variant names —
+// meaningless to someone browsing the gallery who doesn't know devicon's
+// authoring conventions. Label them by source instead; every other category
+// (plain, material, social, tools, ...) still gets the generic title-cased
+// transform below.
+const CATEGORY_LABEL_OVERRIDES: Record<string, string> = {
+  original: 'Devicon',
+  'original-wordmark': 'Devicon Wordmark',
+}
+
 export function formatCategoryLabel(category: string): string {
+  if (CATEGORY_LABEL_OVERRIDES[category]) return CATEGORY_LABEL_OVERRIDES[category]
   return category
     .split(/[-_]/)
     .filter(Boolean)

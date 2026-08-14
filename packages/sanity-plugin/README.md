@@ -1,35 +1,42 @@
 # @web-portfolio/icons-sanity
 
-A [Sanity Studio](https://www.sanity.io) plugin that adds an **icon picker
-field** backed by a bundled library of **622 SVG icons** — so content editors
-can pick an icon by searching a name, tag, or category instead of pasting raw
-SVG markup into every field. Built for portfolio sites, agency/marketing
-sites, and any Sanity project where editors need to attach icons to skills,
-tech stacks, services, or social/contact links — without needing design or
-dev help for every change.
+A [Sanity Studio](https://www.sanity.io) plugin that adds a proper icon
+picker field to your schema, backed by the same **629-icon** library as
+[`@web-portfolio/icons`](https://www.npmjs.com/package/@web-portfolio/icons).
+It exists because "paste an SVG into a text field" is a bad experience for
+content editors — they either need to know what valid SVG markup looks
+like, or they need you to do it for them every time a new skill or social
+link gets added. This plugin turns that into: click the field, search,
+pick an icon, done.
+
+**[Browse the icon set →](https://icons.getresume.dev)** before you install,
+to see exactly what your editors will be choosing from.
 
 [![npm version](https://img.shields.io/npm/v/@web-portfolio/icons-sanity.svg)](https://www.npmjs.com/package/@web-portfolio/icons-sanity)
 [![license](https://img.shields.io/npm/l/@web-portfolio/icons-sanity.svg)](https://github.com/jatinrao/icons/blob/main/LICENSE)
 
+[![Browse icons at icons.getresume.dev](https://raw.githubusercontent.com/jatinrao/icons/main/.github/assets/gallery-grid.png)](https://icons.getresume.dev)
+
 ## Why this plugin
 
-If you're a **developer** shipping a portfolio or personal-site CMS setup,
-you've probably built a "paste an SVG" field before — it works, but it means
-every content edit needs someone who knows what valid SVG markup looks like.
-This plugin replaces that with a proper picker:
+If you've built a portfolio, agency site, or any Sanity project with a
+"skills" or "tech stack" or "connect with us" section, you've probably
+built some version of an icon field before. This plugin is meant to save
+you from doing that again:
 
-- **622 icons out of the box** — tech/tool logos, social platform icons, and
-  common communication/navigation icons (see [Icon set](#whats-in-the-icon-set)).
-  Editors search by name, tag, or category; no SVG knowledge required.
-- **No API calls from Studio** — the entire icon registry is bundled into the
-  plugin at build time, so the picker works offline and loads instantly.
-  Nothing is fetched from a database or CDN while editing.
-- **Stores just a name** — the field value is a plain string (`"react"`,
-  `"github"`, ...), which pairs directly with
-  [`@web-portfolio/icons`](https://www.npmjs.com/package/@web-portfolio/icons)'s
-  `<Icon name="..." />` on your frontend — no ID lookups, no asset references.
-- **Live preview** — the currently selected icon renders inline in the form,
-  not just its name.
+- **629 icons, ready to search.** Tech-stack logos, social platform icons,
+  and everyday UI icons — editors search by name, tag, or category, no SVG
+  knowledge required.
+- **Nothing fetched while editing.** The whole registry is bundled into the
+  plugin at build time, so the picker opens instantly and works even if
+  Studio is running offline.
+- **Stores a name, not a blob.** The field value is a plain string
+  (`"react"`, `"github"`) rather than raw markup or an asset reference,
+  which pairs directly with `@web-portfolio/icons`'s `<Icon name="..." />`
+  on your frontend — no lookups, no asset resolution, just the name.
+- **Shows what's selected.** The current icon renders inline in the form,
+  not just as text, so editors can confirm at a glance they picked the
+  right one.
 
 ## Installation
 
@@ -84,9 +91,9 @@ export default defineType({
 })
 ```
 
-Editors click the field, search ("react", "docker", "mail"...), and select an
-icon from a live-previewed grid. The field stores the icon's name as a plain
-string — e.g. `"react"`.
+In Studio, that renders as a field editors click to open a searchable grid.
+They type "react" or "docker" or "mail", pick a result, and the field
+stores that icon's name as a plain string — e.g. `"react"`.
 
 ### Social/contact links example
 
@@ -110,8 +117,10 @@ defineField({
 
 ### Rendering the picked icon on your frontend
 
-Pair with [`@web-portfolio/icons`](https://www.npmjs.com/package/@web-portfolio/icons)
-— pass the stored string straight through as `name`:
+This is the part that makes the whole thing worth it — pair with
+[`@web-portfolio/icons`](https://www.npmjs.com/package/@web-portfolio/icons)
+and pass the stored string straight through as `name`, no transformation
+needed:
 
 ```tsx
 import { Icon } from '@web-portfolio/icons'
@@ -128,16 +137,21 @@ function SkillBadge({ skill }: { skill: { name: string; icon: string } }) {
 
 ## What's in the icon set
 
-622 icons from three sources, shared with `@web-portfolio/icons`:
+629 icons from three sources, shared with `@web-portfolio/icons`:
 
 - **[devicon](https://github.com/devicons/devicon)** (578 icons, MIT) —
   programming languages, frameworks, databases, cloud platforms, dev tools.
-- **[Material Symbols](https://github.com/marella/material-symbols)** (32
-  icons, Apache-2.0) — communication and navigation icons (mail, call,
-  arrows, menu, close, ...).
-- **[Simple Icons](https://simpleicons.org)** (12 icons, CC0-1.0) — social
-  platform logos devicon doesn't cover (Instagram, YouTube, WhatsApp,
-  Telegram, TikTok, Discord, ...).
+- **[Material Symbols](https://github.com/marella/material-symbols)** (34
+  icons, Apache-2.0) — everyday UI icons: mail, call, arrows, menu, close,
+  connected TV, and more.
+- **[Simple Icons](https://simpleicons.org)** (17 icons, CC0-1.0) — social
+  platforms and dev-tool brands devicon doesn't cover (Instagram, YouTube,
+  WhatsApp, MCP, LangChain, Ollama, and more).
+
+Not sure exactly what's in there? The
+[gallery](https://icons.getresume.dev) is the fastest way to check — search
+or filter by category to see every icon before you commit to using it in a
+schema.
 
 ## License
 

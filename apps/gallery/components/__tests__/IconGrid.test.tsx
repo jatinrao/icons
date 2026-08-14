@@ -37,9 +37,9 @@ describe('IconGrid', () => {
     expect(screen.getByText('React')).toBeInTheDocument()
   })
 
-  it('lists each distinct category, title-cased, as a checkbox', () => {
+  it('lists each distinct category, formatted for display, as a checkbox', () => {
     render(<IconGrid icons={icons} />)
-    expect(screen.getByLabelText('Original')).toBeInTheDocument()
+    expect(screen.getByLabelText('Devicon')).toBeInTheDocument()
     expect(screen.getByLabelText('Plain')).toBeInTheDocument()
   })
 
@@ -55,7 +55,7 @@ describe('IconGrid', () => {
   it('matches ANY of several selected categories, not all', () => {
     render(<IconGrid icons={icons} />)
     fireEvent.click(screen.getByLabelText('Plain'))
-    fireEvent.click(screen.getByLabelText('Original'))
+    fireEvent.click(screen.getByLabelText('Devicon'))
 
     expect(screen.getByText('React')).toBeInTheDocument()
     expect(screen.getByText('Docker')).toBeInTheDocument()

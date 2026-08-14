@@ -5,6 +5,8 @@ Studio icon picker plugin (`@web-portfolio/icons-sanity`), both built from one
 bundled registry, plus a database-backed admin dashboard to manage icons and a
 fully static public gallery to browse and copy them.
 
+**Live gallery: [icons.getresume.dev](https://icons.getresume.dev)**
+
 ## Packages & apps
 
 - `packages/db` — Drizzle schema + Turso/libSQL client (private, internal).
@@ -21,6 +23,7 @@ fully static public gallery to browse and copy them.
   icons, backed by Turso ([apps/admin/README setup](#local-development)).
 - `apps/gallery` — public site to search, preview, customize, and copy/download
   icons as SVG or PNG, modeled on [techicons.dev](https://techicons.dev).
+  Deployed at [icons.getresume.dev](https://icons.getresume.dev).
   **Fully static** — built directly from `packages/core`'s bundled registry,
   no database at request time or build time. Admin edits show up here after
   the next `pnpm generate-registry` + redeploy, not live.

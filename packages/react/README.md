@@ -1,35 +1,47 @@
 # @web-portfolio/icons
 
-A free React icon component with **622 bundled SVG icons** — programming
-languages, frameworks, dev tools, social platforms, and common UI/navigation
-icons — in one `<Icon />` component. Built for developer and designer
-portfolios, resumes, personal websites, and dashboards that need a reliable
-icon set without pulling in a huge dependency tree or making runtime network
-calls.
+A React icon component backed by **629 bundled SVG icons** — programming
+languages, frameworks, dev tools, social platforms, and everyday UI icons —
+all through one `<Icon />` component instead of a separate import per icon.
+It started as the icon set for a personal portfolio site, and grew into
+something worth publishing on its own: no icon font, no CDN requests at
+runtime, nothing to load asynchronously. Everything ships inside the
+package and renders instantly.
+
+**[Browse the full icon set →](https://icons.getresume.dev)** — search by
+name or category, try the color/stroke/size controls on any icon, and copy
+the exact `<Icon />` snippet or the raw SVG straight from the page.
 
 [![npm version](https://img.shields.io/npm/v/@web-portfolio/icons.svg)](https://www.npmjs.com/package/@web-portfolio/icons)
 [![license](https://img.shields.io/npm/l/@web-portfolio/icons.svg)](https://github.com/jatinrao/icons/blob/main/LICENSE)
 
-## Why this package
+[![Browse icons at icons.getresume.dev](https://raw.githubusercontent.com/jatinrao/icons/main/.github/assets/gallery-grid.png)](https://icons.getresume.dev)
 
-If you're a **developer** building a portfolio site, you need tech-stack
-logos (React, Node.js, Docker, PostgreSQL, TypeScript...) and social icons
-(GitHub, LinkedIn, Twitter/X...) that actually match each other in style. If
-you're a **designer** or building any kind of personal/professional site, you
-need consistent, themeable SVG icons without a mess of `<img>` tags pointing
-at external CDNs. This package covers both:
+## Why this exists
 
-- **622 icons, zero runtime dependencies** — everything is bundled into the
-  package at build time. No API calls, no CDN, no loading spinners.
-- **One dynamic component** — `<Icon name="react" />` instead of importing a
-  separate component per icon.
-- **Themeable** — `color`, `stroke`, and `strokeWidth` props so icons follow
-  your site's color scheme (`currentColor` by default, so most icons inherit
-  your text color automatically).
-- **Fully typed** — ships its own `.d.ts`, works out of the box with
-  TypeScript.
-- **Tiny footprint per icon** — tree-shaking aside, the whole registry is
-  optimized SVG (via SVGO) at build time.
+Building a portfolio or dashboard usually means one of two things: pulling
+in an icon font for a handful of glyphs, or scattering `<img src="...">`
+tags across the codebase pointing at some CDN that may or may not be up
+when it matters. Neither felt right for something as small as "show the
+React logo next to the word React." This package is the alternative —
+`<Icon name="react" />`, done, and the same component works whether you
+need a tech-stack badge, a social link icon, or a plain arrow for a
+carousel button.
+
+A few things it does deliberately:
+
+- **One component, not 629 imports.** `registry[name]` does a lookup at
+  render time, so you never end up with `import { ReactIcon, DockerIcon,
+  PostgresIcon } from '...'` cluttering the top of a file.
+- **Nothing fetched at runtime.** The whole registry is bundled at build
+  time and optimized with SVGO, so there's no loading state, no layout
+  shift while an image loads, and it works offline.
+- **Themeable where it makes sense.** `color`, `stroke`, and `strokeWidth`
+  props recolor monochrome icons to match your palette; brand marks that
+  are supposed to stay a specific color (the React logo's blue, for
+  instance) are left alone on purpose.
+- **Typed out of the box.** No separate `@types/` package to remember to
+  install.
 
 ## Installation
 
@@ -65,6 +77,9 @@ function TechStack() {
 }
 ```
 
+That's more or less the whole API. Every icon in the set works the same
+way — swap the `name` and you're done.
+
 ### Social links in a portfolio footer
 
 ```tsx
@@ -87,7 +102,7 @@ function SocialLinks() {
 }
 ```
 
-### Theming with color, stroke, and strokeWidth
+### Recoloring with color, stroke, and strokeWidth
 
 ```tsx
 // Fill color follows your palette (monochrome icons only — see note below)
@@ -96,6 +111,13 @@ function SocialLinks() {
 // Line-style icons: adjust stroke and stroke width directly
 <Icon name="arrow_forward" stroke="#0ea5e9" strokeWidth={1.5} size={24} />
 ```
+
+If you'd rather dial in a color visually than guess a hex value, the
+[gallery](https://icons.getresume.dev) has a live color/stroke/size picker
+on every icon's page — pick a look, then copy the `<Icon />` snippet with
+your chosen props already filled in.
+
+[![Customizing an icon's color, size, and stroke in the gallery](https://raw.githubusercontent.com/jatinrao/icons/main/.github/assets/gallery-detail.png)](https://icons.getresume.dev)
 
 ## API
 
@@ -125,22 +147,27 @@ to the underlying `<svg>` element.
 
 ## What's in the icon set
 
-622 icons from three sources, normalized to a consistent style:
+629 icons pulled from three sources and normalized to a consistent style —
+you shouldn't be able to tell which source any given icon came from just by
+looking at it:
 
-- **[devicon](https://github.com/devicons/devicon)** (578 icons, MIT) —
-  programming languages, frameworks, databases, cloud platforms, and dev
-  tools. `react`, `typescript`, `nodejs`, `docker`, `postgresql`, `figma`,
-  `amazonwebservices`, `kubernetes`, and hundreds more.
-- **[Material Symbols](https://github.com/marella/material-symbols)** (32
-  icons, Apache-2.0) — communication and navigation icons: `mail`, `call`,
-  `arrow_forward`, `menu`, `close`, and more.
-- **[Simple Icons](https://simpleicons.org)** (12 icons, CC0-1.0) — social
-  platform logos devicon doesn't cover: `instagram`, `youtube`, `whatsapp`,
-  `telegram`, `tiktok`, `discord`, and more (devicon already covers GitHub,
-  LinkedIn, Twitter/X, GitLab, and Slack).
+- **[devicon](https://github.com/devicons/devicon)** (578 icons, MIT) — the
+  bulk of the set: programming languages, frameworks, databases, cloud
+  platforms, and dev tools. `react`, `typescript`, `nodejs`, `docker`,
+  `postgresql`, `figma`, `amazonwebservices`, `kubernetes`, and hundreds
+  more.
+- **[Material Symbols](https://github.com/marella/material-symbols)** (34
+  icons, Apache-2.0) — the everyday UI icons devicon doesn't cover: `mail`,
+  `call`, `arrow_forward`, `menu`, `close`, `connected_tv`, and more.
+- **[Simple Icons](https://simpleicons.org)** (17 icons, CC0-1.0) — social
+  platforms and dev-tool brands devicon is missing: `instagram`, `youtube`,
+  `whatsapp`, `mcp`, `langchain`, `ollama`, and more (devicon already
+  covers GitHub, LinkedIn, Twitter/X, GitLab, and Slack, so those aren't
+  duplicated here).
 
-Browse the full, searchable list — with live previews and copy-paste usage
-snippets for every icon — at the [source repo](https://github.com/jatinrao/icons).
+The fastest way to find the exact name you need is the
+[gallery](https://icons.getresume.dev) — search, filter by category, and
+copy the name (or the whole snippet) straight off the page.
 
 ## TypeScript
 
@@ -156,7 +183,7 @@ import { Icon, type IconProps } from '@web-portfolio/icons'
 Building with [Sanity](https://www.sanity.io)? Pair this with
 [`@web-portfolio/icons-sanity`](https://www.npmjs.com/package/@web-portfolio/icons-sanity)
 to let editors pick icons from a searchable picker in Studio, backed by the
-same 622-icon registry — no more pasting raw SVG markup into every field.
+same 629-icon registry — no more pasting raw SVG markup into every field.
 
 ## License
 
