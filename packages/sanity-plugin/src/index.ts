@@ -9,4 +9,10 @@ export const sanityIconPicker = definePlugin(() => ({
 }))
 
 export { iconRef } from './iconRef'
-export { IconPickerInput, matchesQuery } from './IconPickerInput'
+export {
+  IconPickerInput,
+  formatCategoryLabel,
+  matchesQuery,
+  rankMatch,
+  type IconEntry,
+} from './IconPickerInput'

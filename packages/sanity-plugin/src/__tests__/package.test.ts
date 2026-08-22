@@ -33,9 +33,9 @@ describe('package.json (public npm package correctness)', () => {
     expect(pkg.devDependencies['@web-portfolio/icons-core']).toMatch(/^workspace:/)
   })
 
-  it('declares sanity/@sanity/ui/react/styled-components only as peers, never bundled', () => {
+  it('declares the Studio libraries only as peers, never bundled', () => {
     const peerDependencies: Record<string, string> = pkg.peerDependencies
-    for (const name of ['sanity', '@sanity/ui', 'react', 'styled-components']) {
+    for (const name of ['sanity', '@sanity/ui', '@sanity/icons', 'react', 'styled-components']) {
       expect(peerDependencies[name]).toBeTruthy()
     }
   })

@@ -29,6 +29,46 @@ for (const banned of bannedStrings) {
   check(!esmSource.includes(banned), `dist/index.js does not reference "${banned}"`)
 }
 
+// Every Studio library must stay an import, not an inlined copy — a second
+// copy of @sanity/ui in a Studio bundle breaks theme context at runtime.
+for (const peer of ['sanity', '@sanity/ui', '@sanity/icons', 'styled-components']) {
+  check(
+    new RegExp(`from\\s*["']${peer.replace('/', '\\/')}["']`).test(esmSource),
+    `dist/index.js imports "${peer}" rather than bundling it`,
+  )
+}
+
+// Same rule for the type declarations: icons-core is private and unpublished,
+// so a surviving `from '@web-portfolio/icons-core'` in dist/*.d.ts would leave
+// every consumer's editor unable to resolve this package's exported types.
+for (const types of ['dist/index.d.ts', 'dist/index.d.cts']) {
+  const source = readFileSync(pkgUrl(types), 'utf-8')
+  check(
+    !source.includes('@web-portfolio/icons-core'),
+    `${types} does not import icons-core's types`,
+  )
+  // A relative specifier is the other way this breaks: tsup can rewrite the
+  // icons-core import to something like './types', which points at a file that
+  // was never emitted into dist/.
+  const relativeImports = [...source.matchAll(/from\s*['"](\.[^'"]*)['"]/g)].map((m) => m[1])
+  check(
+    relativeImports.length === 0,
+    `${types} has no dangling relative imports${relativeImports.length ? ` (found ${relativeImports.join(', ')})` : ''}`,
+  )
+}
+
+// The registry is a tracked, pre-generated artifact — `prepublishOnly` no
+// longer regenerates it, so nothing at publish time would otherwise notice a
+// truncated or empty registry.generated.ts. Assert the icon set actually made
+// it into the bundle. The floor is deliberately loose: it catches "empty" and
+// "truncated", not "one icon was removed on purpose".
+const MIN_EXPECTED_ICONS = 600
+const bundledIconCount = (esmSource.match(/"viewBox"/g) ?? []).length
+check(
+  bundledIconCount >= MIN_EXPECTED_ICONS,
+  `dist/index.js bundles the icon registry (${bundledIconCount} icons, expected >= ${MIN_EXPECTED_ICONS})`,
+)
+
 const esm = await import(pkgUrl('dist/index.js'))
 check(typeof esm.sanityIconPicker === 'function', 'ESM build exports sanityIconPicker')
 check(typeof esm.iconRef === 'object', 'ESM build exports iconRef')
