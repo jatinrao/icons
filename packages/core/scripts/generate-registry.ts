@@ -83,8 +83,15 @@ function serializeRegistry(registry: Registry): string {
   ].join('\n')
 }
 
+// createDb's local-file fallback (`file:./local.db`) is resolved against the
+// current working directory. Every seed script runs from packages/db, but this
+// one runs from packages/core — so without an explicit path the two read two
+// different files, and this one silently finds an empty database. Turso env
+// vars, when set, still take precedence.
+const LOCAL_DB_URL = `file:${path.resolve(import.meta.dirname, '../../db/local.db')}`
+
 async function main() {
-  const db = createDb()
+  const db = createDb(process.env.TURSO_DATABASE_URL ? {} : { url: LOCAL_DB_URL })
   const rows = await listIcons(db)
   const registry = buildRegistry(rows)
   const outPath = path.join(import.meta.dirname, '../src/registry.generated.ts')

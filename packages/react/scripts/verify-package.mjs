@@ -31,6 +31,18 @@ for (const banned of bannedStrings) {
   check(!esmSource.includes(banned), `dist/index.js does not reference "${banned}"`)
 }
 
+// The registry is a tracked, pre-generated artifact — `prepublishOnly` no
+// longer regenerates it, so nothing at publish time would otherwise notice a
+// truncated or empty registry.generated.ts. Assert the icon set actually made
+// it into the bundle. The floor is deliberately loose: it catches "empty" and
+// "truncated", not "one icon was removed on purpose".
+const MIN_EXPECTED_ICONS = 600
+const bundledIconCount = (esmSource.match(/"viewBox"/g) ?? []).length
+check(
+  bundledIconCount >= MIN_EXPECTED_ICONS,
+  `dist/index.js bundles the icon registry (${bundledIconCount} icons, expected >= ${MIN_EXPECTED_ICONS})`,
+)
+
 const esm = await import(pkgUrl('dist/index.js'))
 check(typeof esm.Icon === 'function', 'ESM build exports Icon')
 
