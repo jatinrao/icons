@@ -1,6 +1,6 @@
 # @web-portfolio/icons
 
-A React icon component backed by **629 bundled SVG icons** — programming
+A React icon component backed by **633 bundled SVG icons** — programming
 languages, frameworks, dev tools, social platforms, and everyday UI icons —
 all through one `<Icon />` component instead of a separate import per icon.
 It started as the icon set for a personal portfolio site, and grew into
@@ -30,7 +30,7 @@ carousel button.
 
 A few things it does deliberately:
 
-- **One component, not 629 imports.** `registry[name]` does a lookup at
+- **One component, not 633 imports.** `registry[name]` does a lookup at
   render time, so you never end up with `import { ReactIcon, DockerIcon,
   PostgresIcon } from '...'` cluttering the top of a file.
 - **Nothing fetched at runtime.** The whole registry is bundled at build
@@ -147,7 +147,7 @@ to the underlying `<svg>` element.
 
 ## What's in the icon set
 
-629 icons pulled from three sources and normalized to a consistent style —
+633 icons pulled from three sources and normalized to a consistent style —
 you shouldn't be able to tell which source any given icon came from just by
 looking at it:
 
@@ -156,9 +156,10 @@ looking at it:
   platforms, and dev tools. `react`, `typescript`, `nodejs`, `docker`,
   `postgresql`, `figma`, `amazonwebservices`, `kubernetes`, and hundreds
   more.
-- **[Material Symbols](https://github.com/marella/material-symbols)** (34
+- **[Material Symbols](https://github.com/marella/material-symbols)** (38
   icons, Apache-2.0) — the everyday UI icons devicon doesn't cover: `mail`,
-  `call`, `arrow_forward`, `menu`, `close`, `connected_tv`, and more.
+  `call`, `arrow_forward`, `menu`, `close`, `connected_tv`, `bolt`,
+  `translate`, `checklist`, `gift`, and more.
 - **[Simple Icons](https://simpleicons.org)** (17 icons, CC0-1.0) — social
   platforms and dev-tool brands devicon is missing: `instagram`, `youtube`,
   `whatsapp`, `mcp`, `langchain`, `ollama`, and more (devicon already
@@ -183,7 +184,7 @@ import { Icon, type IconProps } from '@web-portfolio/icons'
 Building with [Sanity](https://www.sanity.io)? Pair this with
 [`@web-portfolio/icons-sanity`](https://www.npmjs.com/package/@web-portfolio/icons-sanity)
 to let editors pick icons from a searchable picker in Studio, backed by the
-same 629-icon registry — no more pasting raw SVG markup into every field.
+same 633-icon registry — no more pasting raw SVG markup into every field.
 
 ## License
 
