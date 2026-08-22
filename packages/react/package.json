@@ -1,6 +1,6 @@
 {
   "name": "@web-portfolio/icons",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Dynamic React icon component backed by a bundled devicon-seeded registry.",
   "license": "MIT",
   "keywords": [
@@ -32,7 +32,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "tsup",
-    "prepublishOnly": "pnpm --filter @web-portfolio/icons-core generate-registry && pnpm build && pnpm verify-package",
+    "prepublishOnly": "pnpm build && pnpm verify-package",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "verify-package": "node scripts/verify-package.mjs"
