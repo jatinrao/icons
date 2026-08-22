@@ -1,7 +1,7 @@
 # @web-portfolio/icons-sanity
 
 A [Sanity Studio](https://www.sanity.io) plugin that adds a proper icon
-picker field to your schema, backed by the same **629-icon** library as
+picker field to your schema, backed by the same **633-icon** library as
 [`@web-portfolio/icons`](https://www.npmjs.com/package/@web-portfolio/icons).
 It exists because "paste an SVG into a text field" is a bad experience for
 content editors — they either need to know what valid SVG markup looks
@@ -24,9 +24,12 @@ If you've built a portfolio, agency site, or any Sanity project with a
 built some version of an icon field before. This plugin is meant to save
 you from doing that again:
 
-- **629 icons, ready to search.** Tech-stack logos, social platform icons,
-  and everyday UI icons — editors search by name, tag, or category, no SVG
-  knowledge required.
+- **633 icons, ready to search.** Tech-stack logos, social platform icons,
+  and everyday UI icons — editors search by name, label, or tag, and can
+  narrow to a category, no SVG knowledge required.
+- **Results ranked, not just filtered.** Typing `go` leads with `go`, not
+  `godot` — exact matches first, then name prefixes, then everything that
+  merely mentions the term.
 - **Nothing fetched while editing.** The whole registry is bundled into the
   plugin at build time, so the picker opens instantly and works even if
   Studio is running offline.
@@ -34,9 +37,14 @@ you from doing that again:
   (`"react"`, `"github"`) rather than raw markup or an asset reference,
   which pairs directly with `@web-portfolio/icons`'s `<Icon name="..." />`
   on your frontend — no lookups, no asset resolution, just the name.
-- **Shows what's selected.** The current icon renders inline in the form,
-  not just as text, so editors can confirm at a glance they picked the
-  right one.
+- **Shows what's selected.** The current icon renders inline in the form
+  alongside its label, category, and the exact string that got stored — so
+  editors can confirm at a glance they picked the right one.
+- **Built entirely from Sanity UI.** `Card`, `Dialog`, `Badge`, `Select`,
+  `TextInput`, `Tooltip` and `@sanity/icons`, sized off the Sanity UI space
+  scale. It inherits your Studio's theme and light/dark scheme instead of
+  fighting it, and respects `readOnly` fields and Studio's focus/presence
+  tracking like a built-in input.
 
 ## Installation
 
@@ -49,7 +57,8 @@ pnpm add @web-portfolio/icons-sanity
 ```
 
 Peer dependencies (already present in any standard Sanity Studio v3 project):
-`sanity >=3`, `@sanity/ui >=2`, `react >=18`, `styled-components >=6`.
+`sanity >=3`, `@sanity/ui >=2`, `@sanity/icons >=3`, `react >=18`,
+`styled-components >=6`.
 
 ## Setup
 
@@ -95,6 +104,37 @@ In Studio, that renders as a field editors click to open a searchable grid.
 They type "react" or "docker" or "mail", pick a result, and the field
 stores that icon's name as a plain string — e.g. `"react"`.
 
+### What editors see
+
+- The collapsed field shows the chosen icon, its label, its source category,
+  and the raw string stored in the document.
+- Clicking **Select icon** / **Change icon** opens a dialog with a search
+  field and a category dropdown (Devicon, Material, Social, Tools, …).
+  Results render a page at a time so the dialog opens instantly even though
+  the whole 633-icon set is in memory.
+- Hovering a tile reveals its registry name — the exact value that gets
+  saved.
+- A `readOnly` field (schema-level, or a role without write access) disables
+  both actions and emits no patches.
+- If a document holds a name that is no longer in the bundled set — say the
+  icon was renamed upstream — the field says so explicitly instead of
+  rendering an empty box, and offers to replace or clear it.
+
+### Building your own input
+
+If `iconRef` isn't the shape you want, the pieces are exported so you can
+wire the same picker into a custom schema type or reuse its matching logic:
+
+```ts
+import {
+  IconPickerInput, // the input component itself
+  formatCategoryLabel, // "original" -> "Devicon"
+  matchesQuery, // name/label/tag matching
+  rankMatch, // relevance score, lower is better
+  type IconEntry, // the shape matchesQuery/rankMatch expect
+} from '@web-portfolio/icons-sanity'
+```
+
 ### Social/contact links example
 
 ```ts
@@ -137,13 +177,13 @@ function SkillBadge({ skill }: { skill: { name: string; icon: string } }) {
 
 ## What's in the icon set
 
-629 icons from three sources, shared with `@web-portfolio/icons`:
+633 icons from three sources, shared with `@web-portfolio/icons`:
 
 - **[devicon](https://github.com/devicons/devicon)** (578 icons, MIT) —
   programming languages, frameworks, databases, cloud platforms, dev tools.
-- **[Material Symbols](https://github.com/marella/material-symbols)** (34
+- **[Material Symbols](https://github.com/marella/material-symbols)** (38
   icons, Apache-2.0) — everyday UI icons: mail, call, arrows, menu, close,
-  connected TV, and more.
+  connected TV, bolt, translate, checklist, gift, and more.
 - **[Simple Icons](https://simpleicons.org)** (17 icons, CC0-1.0) — social
   platforms and dev-tool brands devicon doesn't cover (Instagram, YouTube,
   WhatsApp, MCP, LangChain, Ollama, and more).
