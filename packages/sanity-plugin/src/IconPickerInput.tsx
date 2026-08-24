@@ -79,6 +79,13 @@ const ResultsScroller = styled(Box)`
  * and forces `cursor: default` — it outranks a plain class selector, so these
  * overrides have to match it and then some (`&&` doubles the class) to land.
  */
+/** One line of label text plus its top padding, in the Sanity UI space scale
+ * — matches the `space={2}` gap the tile's inner Stack uses. Multi-word names
+ * ("Amazon Web Services", "Apache Airflow") are long enough to wrap onto a
+ * second line if this isn't pinned, and a taller-than-expected cell throws
+ * off every grid row after it (rows overlap the ones below). */
+const LABEL_ROW_HEIGHT = 20
+
 const IconTile = styled(Card)`
   &&[data-as='button'] {
     cursor: pointer;
@@ -88,11 +95,30 @@ const IconTile = styled(Card)`
     /* Without this a long label ("Google Cloud Platform") widens its grid
        column and knocks the whole row out of alignment. */
     min-width: 0;
+    /* Every tile in a row must be the same height for the grid's implicit
+       row track to size correctly — an overflowing label would otherwise
+       stretch its own row and visually collide with the row underneath. */
+    overflow: hidden;
   }
 `
 
 const GlyphRow = styled(Flex)`
   height: ${({ theme }) => rem(theme.sanity.space[5])};
+`
+
+const LabelRow = styled(Box)`
+  height: ${rem(LABEL_ROW_HEIGHT)};
+  overflow: hidden;
+
+  /* Belt-and-braces alongside Text's \`textOverflow="ellipsis"\` prop: force
+     single-line truncation here too so a long label can never wrap and grow
+     the tile past its fixed height. */
+  > * {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `
 
 const CategorySelectBox = styled(Box)`
@@ -425,9 +451,11 @@ export function IconPickerInput(props: StringInputProps) {
                                 <GlyphRow align="center" justify="center">
                                   <IconGlyph name={name} size={GRID_ICON_SIZE} />
                                 </GlyphRow>
-                                <Text size={0} align="center" muted textOverflow="ellipsis">
-                                  {entry.label}
-                                </Text>
+                                <LabelRow>
+                                  <Text size={0} align="center" muted textOverflow="ellipsis">
+                                    {entry.label}
+                                  </Text>
+                                </LabelRow>
                               </Stack>
                             </IconTile>
                           </Tooltip>
