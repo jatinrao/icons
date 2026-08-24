@@ -1,4 +1,4 @@
-import { registry, type RegistryEntry } from '@web-portfolio/icons-core'
+import { metadata, registry, type IconMetadata, type RegistryEntry } from '@web-portfolio/icons-core'
 
 export interface GalleryIcon {
   name: string
@@ -9,32 +9,35 @@ export interface GalleryIcon {
 }
 
 /**
- * The registry stores viewBox/innerHTML split apart (that's what the React
- * component and Sanity picker need); the gallery's copy/download/customize
- * flows all work on a raw `<svg>...</svg>` string instead, so this
- * reassembles one.
+ * icons-core splits render data (viewBox/innerHTML) from search metadata
+ * (label/tags/category) into separate generated files — that's what the
+ * React component and Sanity picker each need in isolation. The gallery is
+ * the one consumer that wants both at once, merged back together here; its
+ * copy/download/customize flows all work on a raw `<svg>...</svg>` string
+ * instead of the split representation.
  */
 function toSvgString(entry: RegistryEntry): string {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${entry.viewBox}">${entry.innerHTML}</svg>`
 }
 
-function toGalleryIcon(name: string, entry: RegistryEntry): GalleryIcon {
+function toGalleryIcon(name: string, entry: RegistryEntry, meta: IconMetadata): GalleryIcon {
   return {
     name,
-    label: entry.label,
+    label: meta.label,
     svg: toSvgString(entry),
-    tags: entry.tags,
-    category: entry.category,
+    tags: meta.tags,
+    category: meta.category,
   }
 }
 
 export function getAllIcons(): GalleryIcon[] {
-  return Object.entries(registry).map(([name, entry]) => toGalleryIcon(name, entry))
+  return Object.entries(registry).map(([name, entry]) => toGalleryIcon(name, entry, metadata[name]))
 }
 
 export function getIconByName(name: string): GalleryIcon | undefined {
   const entry = registry[name]
-  return entry ? toGalleryIcon(name, entry) : undefined
+  const meta = metadata[name]
+  return entry && meta ? toGalleryIcon(name, entry, meta) : undefined
 }
 
 export function matchesQuery(icon: Pick<GalleryIcon, 'name' | 'label' | 'tags'>, query: string): boolean {

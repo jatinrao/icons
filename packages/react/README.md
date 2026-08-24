@@ -17,6 +17,28 @@ the exact `<Icon />` snippet or the raw SVG straight from the page.
 
 [![Browse icons at icons.getresume.dev](https://raw.githubusercontent.com/jatinrao/icons/main/.github/assets/gallery-grid.png)](https://icons.getresume.dev)
 
+## Recent changes
+
+**Security & supply chain**
+- Bumped `vitest` to 3.2.7 and `drizzle-orm` to 0.45.2 across the monorepo,
+  and pinned several transitive dependencies (`esbuild`, `sharp`, `postcss`,
+  `glob`, `js-yaml`, `uuid`, `prismjs`, `adm-zip`, `es-define-property`) to
+  patched versions via pnpm overrides.
+- Install scripts now run only for an explicit allow-list (`esbuild`,
+  `sharp`) instead of the whole dependency tree by default.
+- Current [Socket.dev](https://socket.dev/npm/package/@web-portfolio/icons)
+  score: **100** Vulnerability, **100** Quality, **100** License, **91**
+  Maintenance, **81** Supply Chain Security. This package ships zero runtime
+  dependencies — everything is bundled or a peer — so the two scores under
+  100 reflect Socket's scan of the declared `react` peer and this package's
+  adoption signals (age, download volume), not anything this repo controls.
+
+**Smaller bundle**
+- The registry now stores only what `<Icon>` actually reads (`viewBox` /
+  `innerHTML`). Search-only fields (`label`, `tags`, `category`) moved to a
+  separate file that only `@web-portfolio/icons-sanity`'s picker needs, and
+  the build output is now minified.
+
 ## Why this exists
 
 Building a portfolio or dashboard usually means one of two things: pulling

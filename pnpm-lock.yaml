@@ -245,6 +245,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.7(@types/react@18.3.31)
+      '@web-portfolio/icons':
+        specifier: workspace:*
+        version: link:../react
       '@web-portfolio/icons-core':
         specifier: workspace:*
         version: link:../core

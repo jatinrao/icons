@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest'
-import { buildRegistry, buildRegistryEntry, normalizeToCurrentColor, splitSvg } from '../generate-registry'
+import {
+  buildRegistry,
+  buildRegistryEntry,
+  normalizeToCurrentColor,
+  splitEntries,
+  splitSvg,
+} from '../generate-registry'
 
 describe('splitSvg', () => {
   it('extracts viewBox and inner markup', () => {
@@ -76,5 +82,29 @@ describe('buildRegistry', () => {
     expect(Object.keys(registry).sort()).toEqual(['docker', 'react'])
     expect(registry.docker.label).toBe('Docker')
     expect(registry.react.label).toBe('React')
+  })
+})
+
+describe('splitEntries', () => {
+  it('separates render fields from search fields, keyed by the same names', () => {
+    const full = buildRegistry([
+      { ...monochromeIcon, name: 'docker' },
+      { ...brandIcon, name: 'react' },
+    ])
+    const { registry, metadata } = splitEntries(full)
+
+    expect(Object.keys(registry).sort()).toEqual(['docker', 'react'])
+    expect(Object.keys(metadata).sort()).toEqual(['docker', 'react'])
+
+    expect(registry.docker).toEqual({ viewBox: full.docker.viewBox, innerHTML: full.docker.innerHTML })
+    expect(metadata.docker).toEqual({
+      label: full.docker.label,
+      tags: full.docker.tags,
+      category: full.docker.category,
+    })
+
+    // Neither half leaks the other's fields.
+    expect(registry.docker).not.toHaveProperty('label')
+    expect(metadata.docker).not.toHaveProperty('viewBox')
   })
 })

@@ -31,13 +31,21 @@ for (const banned of bannedStrings) {
   check(!esmSource.includes(banned), `dist/index.js does not reference "${banned}"`)
 }
 
+// Icon rendering only ever reads viewBox/innerHTML — label/tags/category are
+// search-only fields the Sanity picker needs, not this package. They live in
+// icons-core's separate metadata.generated.ts, which nothing here imports; a
+// `"tags"` key showing up would mean that split silently broke.
+check(!/"?tags"?:/.test(esmSource), 'dist/index.js does not bundle icon search metadata (label/tags)')
+
 // The registry is a tracked, pre-generated artifact — `prepublishOnly` no
 // longer regenerates it, so nothing at publish time would otherwise notice a
 // truncated or empty registry.generated.ts. Assert the icon set actually made
 // it into the bundle. The floor is deliberately loose: it catches "empty" and
 // "truncated", not "one icon was removed on purpose".
 const MIN_EXPECTED_ICONS = 600
-const bundledIconCount = (esmSource.match(/"viewBox"/g) ?? []).length
+// Minification drops the quotes off object keys that are valid identifiers
+// (`viewBox` is one), so match either quoted or bare form.
+const bundledIconCount = (esmSource.match(/"?viewBox"?:/g) ?? []).length
 check(
   bundledIconCount >= MIN_EXPECTED_ICONS,
   `dist/index.js bundles the icon registry (${bundledIconCount} icons, expected >= ${MIN_EXPECTED_ICONS})`,

@@ -1,6 +1,6 @@
 {
   "name": "@web-portfolio/icons",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Dynamic React icon component backed by a bundled devicon-seeded registry.",
   "license": "MIT",
   "keywords": [
@@ -28,7 +28,9 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "scripts": {
     "build": "tsup",

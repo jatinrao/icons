@@ -40,6 +40,14 @@ describe('package.json (public npm package correctness)', () => {
     }
   })
 
+  it('declares @web-portfolio/icons as a peer, so its bundled registry is never duplicated here', () => {
+    // Rendering delegates to @web-portfolio/icons's <Icon> rather than
+    // re-bundling icons-core's SVG data — a peer (like react, sanity, ...)
+    // rather than a real dependency keeps that one copy shared with whatever
+    // the consumer's frontend already installed.
+    expect(pkg.peerDependencies?.['@web-portfolio/icons']).toBeTruthy()
+  })
+
   it('exports map covers ESM, CJS, and types, all pointing into dist/', () => {
     const exportsMap = pkg.exports['.']
     expect(exportsMap.import).toBe('./dist/index.js')

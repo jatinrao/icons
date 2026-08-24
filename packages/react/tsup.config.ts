@@ -9,6 +9,7 @@ export default defineConfig({
   // off here — rather than filtering them out of `files` — also avoids
   // shipping a //# sourceMappingURL that points at a file we don't include.
   sourcemap: false,
+  minify: true,
   clean: true,
   external: ['react'],
   // @web-portfolio/icons-core is an internal, unpublished workspace package —

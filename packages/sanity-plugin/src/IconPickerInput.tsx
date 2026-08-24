@@ -21,26 +21,30 @@ import { ImageIcon, SearchIcon, TrashIcon, WarningOutlineIcon } from '@sanity/ic
 // module namespace instead of the factory. Bundlers paper over that with
 // __esModule interop; Node doesn't, and neither should this package.
 import { styled } from 'styled-components'
-import { registry } from '@web-portfolio/icons-core'
+import { Icon } from '@web-portfolio/icons'
+import { metadata } from '@web-portfolio/icons-core'
 
 /**
- * The shape of one registry entry, redeclared here rather than re-exported
+ * The shape of one metadata entry, redeclared here rather than re-exported
  * from icons-core. icons-core is private and unpublished, so any reference to
  * it that survives into dist/*.d.ts is a type import consumers cannot resolve.
- * Structurally identical to icons-core's `RegistryEntry` — and the picker
- * passes real registry entries to the functions below, so a drift in the
+ * Structurally identical to icons-core's `IconMetadata` — and the picker
+ * passes real metadata entries to the functions below, so a drift in the
  * fields this actually uses fails typecheck at those call sites.
+ *
+ * Rendering (viewBox/innerHTML) isn't part of this shape at all: the picker
+ * delegates actual icon markup to `@web-portfolio/icons`'s `<Icon>` rather
+ * than reading SVG data out of icons-core directly, so this package never
+ * needs to bundle it.
  */
 export interface IconEntry {
-  viewBox: string
-  innerHTML: string
   label: string
   tags: string[]
   category: string | null
 }
 
 /**
- * The bundled registry is 600+ icons. Mounting every inline SVG at once makes
+ * The bundled icon set is 600+ icons. Mounting every inline SVG at once makes
  * opening the dialog visibly janky in Studio, so results render a page at a
  * time and the rest are one click away.
  */
@@ -127,26 +131,6 @@ const CategorySelectBox = styled(Box)`
   width: ${rem(180)};
 `
 
-function IconGlyph({ name, size = 24 }: { name: string; size?: number }) {
-  const entry = registry[name]
-  if (!entry) return null
-
-  return (
-    <svg
-      viewBox={entry.viewBox}
-      width={size}
-      height={size}
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-      // The icon is always paired with its label in the DOM, so exposing it
-      // to screen readers a second time is noise.
-      aria-hidden="true"
-      focusable="false"
-      dangerouslySetInnerHTML={{ __html: entry.innerHTML }}
-    />
-  )
-}
-
 export function matchesQuery(name: string, entry: IconEntry, query: string): boolean {
   if (!query.trim()) return true
   const q = query.trim().toLowerCase()
@@ -204,12 +188,12 @@ export function IconPickerInput(props: StringInputProps) {
   const [category, setCategory] = useState('')
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
 
-  const names = useMemo(() => Object.keys(registry).sort(), [])
+  const names = useMemo(() => Object.keys(metadata).sort(), [])
 
   const categories = useMemo(() => {
     const found = new Set<string>()
     for (const name of names) {
-      const entry = registry[name]
+      const entry = metadata[name]
       if (entry.category) found.add(entry.category)
     }
     return Array.from(found).sort()
@@ -217,14 +201,14 @@ export function IconPickerInput(props: StringInputProps) {
 
   const filtered = useMemo(() => {
     const matches = names.filter((name) => {
-      const entry = registry[name]
+      const entry = metadata[name]
       if (category && entry.category !== category) return false
       return matchesQuery(name, entry, query)
     })
 
     if (!query.trim()) return matches
     return matches.sort(
-      (a, b) => rankMatch(a, registry[a], query) - rankMatch(b, registry[b], query),
+      (a, b) => rankMatch(a, metadata[a], query) - rankMatch(b, metadata[b], query),
     )
   }, [names, query, category])
 
@@ -237,7 +221,7 @@ export function IconPickerInput(props: StringInputProps) {
   const visible = filtered.slice(0, visibleCount)
   const remaining = filtered.length - visible.length
 
-  const selectedEntry = value ? registry[value] : undefined
+  const selectedEntry = value ? metadata[value] : undefined
   // A value that isn't in the bundled set (icon renamed or dropped upstream)
   // used to render as a bare "?" with no way to tell what had happened.
   const hasUnknownValue = Boolean(value && !selectedEntry)
@@ -285,7 +269,7 @@ export function IconPickerInput(props: StringInputProps) {
         >
           <Flex align="center" justify="center" style={{ width: '100%', height: '100%' }}>
             {selectedEntry ? (
-              <IconGlyph name={value as string} size={PREVIEW_ICON_SIZE} />
+              <Icon name={value as string} size={PREVIEW_ICON_SIZE} />
             ) : (
               <Text size={1} muted>
                 {hasUnknownValue ? <WarningOutlineIcon /> : <ImageIcon />}
@@ -413,7 +397,7 @@ export function IconPickerInput(props: StringInputProps) {
                   <Stack space={3}>
                     <Grid columns={[3, 4, 6]} gap={2}>
                       {visible.map((name) => {
-                        const entry = registry[name]
+                        const entry = metadata[name]
                         const isSelected = name === value
 
                         return (
@@ -449,7 +433,7 @@ export function IconPickerInput(props: StringInputProps) {
                             >
                               <Stack space={2}>
                                 <GlyphRow align="center" justify="center">
-                                  <IconGlyph name={name} size={GRID_ICON_SIZE} />
+                                  <Icon name={name} size={GRID_ICON_SIZE} />
                                 </GlyphRow>
                                 <LabelRow>
                                   <Text size={0} align="center" muted textOverflow="ellipsis">

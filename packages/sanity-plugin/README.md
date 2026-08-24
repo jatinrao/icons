@@ -17,6 +17,34 @@ to see exactly what your editors will be choosing from.
 
 [![Browse icons at icons.getresume.dev](https://raw.githubusercontent.com/jatinrao/icons/main/.github/assets/gallery-grid.png)](https://icons.getresume.dev)
 
+## Recent changes
+
+**97% smaller package**
+- This plugin no longer bundles its own copy of the 633-icon SVG registry.
+  It now renders icon previews through `@web-portfolio/icons`'s `<Icon>`
+  component (added as a peer dependency, see below) and only carries the
+  lightweight search index — name, label, tags, category, no SVG markup —
+  that the picker's search and filtering actually need.
+- Published size: **1.1 MB → 35.7 KB** (tarball), **1.36 MB → 60.5 KB**
+  (unpacked JS), **577 KB → 15 KB** (gzipped). Since any project using this
+  plugin already installs `@web-portfolio/icons` to render the picked icon
+  on its frontend, that icon data is no longer downloaded twice.
+
+**Security & supply chain**
+- Bumped `vitest` to 3.2.7 and `drizzle-orm` to 0.45.2 across the monorepo,
+  and pinned several transitive dependencies (`esbuild`, `sharp`, `postcss`,
+  `glob`, `js-yaml`, `uuid`, `prismjs`, `adm-zip`, `es-define-property`) to
+  patched versions via pnpm overrides.
+- Install scripts now run only for an explicit allow-list (`esbuild`,
+  `sharp`) instead of the whole dependency tree by default.
+- Current
+  [Socket.dev](https://socket.dev/npm/package/@web-portfolio/icons-sanity)
+  score: **100** Vulnerability, **100** Quality, **100** License, **88**
+  Maintenance, **80** Supply Chain Security. This plugin still ships zero
+  runtime dependencies of its own — the Supply Chain number reflects
+  Socket's scan of the full Sanity Studio peer tree (`sanity`, `@sanity/ui`,
+  ...), not this plugin's code.
+
 ## Why this plugin
 
 If you've built a portfolio, agency site, or any Sanity project with a
@@ -30,9 +58,9 @@ you from doing that again:
 - **Results ranked, not just filtered.** Typing `go` leads with `go`, not
   `godot` — exact matches first, then name prefixes, then everything that
   merely mentions the term.
-- **Nothing fetched while editing.** The whole registry is bundled into the
-  plugin at build time, so the picker opens instantly and works even if
-  Studio is running offline.
+- **Nothing fetched while editing.** Icon markup (via `@web-portfolio/icons`)
+  and search metadata (via this plugin) are both bundled at build time, so
+  the picker opens instantly and works even if Studio is running offline.
 - **Stores a name, not a blob.** The field value is a plain string
   (`"react"`, `"github"`) rather than raw markup or an asset reference,
   which pairs directly with `@web-portfolio/icons`'s `<Icon name="..." />`
@@ -56,9 +84,11 @@ npm install @web-portfolio/icons-sanity
 pnpm add @web-portfolio/icons-sanity
 ```
 
-Peer dependencies (already present in any standard Sanity Studio v3 project):
+Peer dependencies:
 `sanity >=3`, `@sanity/ui >=2`, `@sanity/icons >=3`, `react >=18`,
-`styled-components >=6`.
+`styled-components >=6` (already present in any standard Sanity Studio v3
+project), plus `@web-portfolio/icons >=1.0.1`, which renders the icons this
+plugin picks — install it if your Studio doesn't already have it.
 
 ## Setup
 

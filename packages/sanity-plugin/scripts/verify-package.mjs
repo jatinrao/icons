@@ -31,7 +31,11 @@ for (const banned of bannedStrings) {
 
 // Every Studio library must stay an import, not an inlined copy — a second
 // copy of @sanity/ui in a Studio bundle breaks theme context at runtime.
-for (const peer of ['sanity', '@sanity/ui', '@sanity/icons', 'styled-components']) {
+// @web-portfolio/icons belongs in this list for a different reason: it
+// already ships (and inlines) the full render registry, so importing it
+// instead of re-bundling icons-core's SVG data avoids duplicating ~1.3MB of
+// icon markup across both published packages.
+for (const peer of ['sanity', '@sanity/ui', '@sanity/icons', 'styled-components', '@web-portfolio/icons']) {
   check(
     new RegExp(`from\\s*["']${peer.replace('/', '\\/')}["']`).test(esmSource),
     `dist/index.js imports "${peer}" rather than bundling it`,
@@ -57,16 +61,28 @@ for (const types of ['dist/index.d.ts', 'dist/index.d.cts']) {
   )
 }
 
-// The registry is a tracked, pre-generated artifact — `prepublishOnly` no
-// longer regenerates it, so nothing at publish time would otherwise notice a
-// truncated or empty registry.generated.ts. Assert the icon set actually made
-// it into the bundle. The floor is deliberately loose: it catches "empty" and
-// "truncated", not "one icon was removed on purpose".
+// This package renders icons via @web-portfolio/icons's <Icon> (asserted
+// above) rather than reading SVG data out of icons-core directly, so its own
+// bundle should carry zero render markup — only the picker's search metadata
+// (label/tags/category, from icons-core's separate metadata.generated.ts).
+// A `viewBox`/`innerHTML` key showing up here would mean the two packages
+// are back to shipping duplicate copies of the ~1.3MB icon registry.
+check(
+  !/"?viewBox"?:/.test(esmSource) && !/"?innerHTML"?:/.test(esmSource),
+  'dist/index.js does not bundle icon render data (viewBox/innerHTML) — that lives in @web-portfolio/icons',
+)
+
+// The picker's search metadata is a tracked, pre-generated artifact —
+// `prepublishOnly` no longer regenerates it, so nothing at publish time would
+// otherwise notice a truncated or empty metadata.generated.ts. Assert the
+// icon set actually made it into the bundle. The floor is deliberately
+// loose: it catches "empty" and "truncated", not "one icon was removed on
+// purpose".
 const MIN_EXPECTED_ICONS = 600
-const bundledIconCount = (esmSource.match(/"viewBox"/g) ?? []).length
+const bundledIconCount = (esmSource.match(/"?category"?:/g) ?? []).length
 check(
   bundledIconCount >= MIN_EXPECTED_ICONS,
-  `dist/index.js bundles the icon registry (${bundledIconCount} icons, expected >= ${MIN_EXPECTED_ICONS})`,
+  `dist/index.js bundles the icon search metadata (${bundledIconCount} icons, expected >= ${MIN_EXPECTED_ICONS})`,
 )
 
 const esm = await import(pkgUrl('dist/index.js'))

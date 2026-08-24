@@ -17,37 +17,26 @@ function renderWithTheme(ui: ReactElement) {
 }
 
 vi.mock('@web-portfolio/icons-core', () => ({
-  registry: {
-    react: {
-      viewBox: '0 0 128 128',
-      innerHTML: '<circle cx="64" cy="64" r="10" fill="currentColor"/>',
-      label: 'React',
-      tags: ['framework', 'frontend'],
-      category: 'original',
-    },
-    docker: {
-      viewBox: '0 0 128 128',
-      innerHTML: '<path d="M1 1" fill="currentColor"/>',
-      label: 'Docker',
-      tags: ['platform', 'deploy'],
-      category: 'plain',
-    },
-    mail: {
-      viewBox: '0 -960 960 960',
-      innerHTML: '<path d="M2 2" fill="currentColor"/>',
-      label: 'Mail',
-      tags: ['email', 'contact'],
-      category: 'material',
-    },
+  metadata: {
+    react: { label: 'React', tags: ['framework', 'frontend'], category: 'original' },
+    docker: { label: 'Docker', tags: ['platform', 'deploy'], category: 'plain' },
+    mail: { label: 'Mail', tags: ['email', 'contact'], category: 'material' },
   },
+}))
+
+// The picker delegates rendering to @web-portfolio/icons's <Icon> rather than
+// reading SVG markup itself — stub it so these tests stay independent of
+// whatever the real bundled icon set currently contains.
+vi.mock('@web-portfolio/icons', () => ({
+  Icon: ({ name, size }: { name: string; size?: number }) => (
+    <svg data-testid={`icon-${name}`} width={size} height={size} />
+  ),
 }))
 
 const SEARCH_PLACEHOLDER = 'Search by name, label, or tag…'
 
 describe('matchesQuery', () => {
   const entry = {
-    viewBox: '',
-    innerHTML: '',
     label: 'React',
     tags: ['framework', 'frontend'],
     category: 'original',
@@ -67,8 +56,6 @@ describe('matchesQuery', () => {
 
 describe('rankMatch', () => {
   const make = (label: string) => ({
-    viewBox: '',
-    innerHTML: '',
     label,
     tags: ['lang'],
     category: 'plain',
