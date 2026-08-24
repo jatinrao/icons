@@ -1,6 +1,6 @@
 {
   "name": "@web-portfolio/icons-sanity",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sanity Studio icon picker input, backed by the same bundled registry as @web-portfolio/icons.",
   "license": "MIT",
   "keywords": [
@@ -57,7 +57,7 @@
     "styled-components": "^6.1.13",
     "tsup": "^8.3.5",
     "typescript": "^5.7.0",
-    "vitest": "^2.1.0"
+    "vitest": "^3.2.7"
   },
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,16 @@
 packages:
   - "packages/*"
   - "apps/*"
+overrides:
+  es-define-property: npm:@socketregistry/es-define-property@^1.0.7
+  js-yaml: ^5.2.1
+  adm-zip: ^0.6.0
+  glob: ^10.5.0
+  prismjs: ^1.30.0
+  uuid: ^11.1.1
+  postcss: ^8.5.26
+  esbuild: ^0.28.2
+  sharp: ^0.35.3
 allowBuilds:
   esbuild: true
   sharp: true
