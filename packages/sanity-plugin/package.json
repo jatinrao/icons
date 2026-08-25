@@ -1,6 +1,6 @@
 {
   "name": "@web-portfolio/icons-sanity",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Sanity Studio icon picker input, backed by the same bundled registry as @web-portfolio/icons.",
   "license": "MIT",
   "keywords": [
@@ -26,7 +26,9 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "sideEffects": false,
   "scripts": {
     "build": "tsup",

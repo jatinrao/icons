@@ -9,7 +9,11 @@ export default defineConfig({
   // off here — rather than filtering them out of `files` — also avoids
   // shipping a //# sourceMappingURL that points at a file we don't include.
   sourcemap: false,
-  minify: true,
+  // Deliberately not minified: Socket flagged this package's minified
+  // output as a "Minified code" quality/supply-chain alert (it hides what's
+  // actually running from anyone auditing the package), and the size win
+  // was marginal (~3% raw, <1% gzip) next to the 97% cut from no longer
+  // bundling the icon registry. Not worth the trade.
   clean: true,
   // @web-portfolio/icons already ships (and inlines) the full render
   // registry — importing it here instead of re-bundling icons-core's SVG

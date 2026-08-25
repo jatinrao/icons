@@ -9,7 +9,11 @@ export default defineConfig({
   // off here — rather than filtering them out of `files` — also avoids
   // shipping a //# sourceMappingURL that points at a file we don't include.
   sourcemap: false,
-  minify: true,
+  // Deliberately not minified: Socket (and similar scanners) flag minified
+  // code shipped to npm as a supply-chain risk signal — it hides what's
+  // actually running from anyone auditing the package — and the size win
+  // here was marginal (~3% raw, <1% gzip) since the bundle is dominated by
+  // SVG string data minification barely touches. Not worth the trade.
   clean: true,
   external: ['react'],
   // @web-portfolio/icons-core is an internal, unpublished workspace package —
