@@ -19,7 +19,7 @@ to see exactly what your editors will be choosing from.
 
 ## Recent changes
 
-**v2.0.0 — ESM-only, built with `@sanity/plugin-kit`**
+**v3.0.0 — ESM-only, built with `@sanity/plugin-kit`**
 - The build now uses [`@sanity/plugin-kit`](https://github.com/sanity-io/plugins/tree/main/packages/@sanity/plugin-kit)
   and [`@sanity/pkg-utils`](https://github.com/sanity-io/pkg-utils) instead
   of a hand-rolled `tsup` config — the same toolchain Sanity's own plugin
