@@ -111,18 +111,14 @@ const GlyphRow = styled(Flex)`
 `
 
 const LabelRow = styled(Box)`
-  height: ${rem(LABEL_ROW_HEIGHT)};
-  overflow: hidden;
-
-  /* Belt-and-braces alongside Text's \`textOverflow="ellipsis"\` prop: force
-     single-line truncation here too so a long label can never wrap and grow
-     the tile past its fixed height. */
-  > * {
-    display: block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  /* min-height, not height + overflow: hidden — Sanity UI's Text renders its
+     glyphs slightly outside its own collapsed box (a negative-margin trick
+     it uses for tight optical leading), so clipping here or on \`> *\` cut
+     the top off every label instead of just truncating long ones. Overflow
+     protection is unnecessary anyway: Text's own \`textOverflow="ellipsis"\`
+     prop already forces single-line truncation via its internal span, so a
+     long label can't wrap and grow the tile regardless. */
+  min-height: ${rem(LABEL_ROW_HEIGHT)};
 `
 
 const CategorySelectBox = styled(Box)`
