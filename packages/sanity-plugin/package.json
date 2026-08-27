@@ -1,6 +1,6 @@
 {
   "name": "@web-portfolio/icons-sanity",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Sanity Studio icon picker input, backed by the same bundled registry as @web-portfolio/icons.",
   "license": "MIT",
   "keywords": [
@@ -16,26 +16,38 @@
     "url": "https://github.com/jatinrao/icons/issues"
   },
   "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
+      "source": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist"
   ],
   "sideEffects": false,
+  "browserslist": "extends @sanity/browserslist-config",
+  "engines": {
+    "node": ">=20.19 <22 || >=22.12"
+  },
+  "sanityPlugin": {
+    "verifyPackage": {
+      "oxfmt": false,
+      "oxlint": false,
+      "scripts": false,
+      "tsconfig": false
+    }
+  },
   "scripts": {
-    "build": "tsup",
+    "build": "plugin-kit verify-package --silent && pkg-utils build --strict --check --clean",
+    "watch": "pkg-utils watch --strict",
     "prepublishOnly": "pnpm build && pnpm verify-package",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "verify-package": "node scripts/verify-package.mjs"
+    "verify-package": "node scripts/verify-package.mjs",
+    "link-watch": "plugin-kit link-watch"
   },
   "peerDependencies": {
     "@sanity/icons": ">=3",
@@ -46,7 +58,10 @@
     "styled-components": ">=6"
   },
   "devDependencies": {
+    "@sanity/browserslist-config": "^1.0.5",
     "@sanity/icons": "^3.8.0",
+    "@sanity/pkg-utils": "^12.3.2",
+    "@sanity/plugin-kit": "^10.0.8",
     "@sanity/ui": "^2.10.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
@@ -59,12 +74,15 @@
     "react-dom": "^18.3.1",
     "sanity": "^3.68.0",
     "styled-components": "^6.1.13",
-    "tsup": "^8.3.5",
     "typescript": "^5.7.0",
     "vitest": "^3.2.7"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "exports": {
+      ".": "./dist/index.js",
+      "./package.json": "./package.json"
+    }
   },
   "repository": {
     "type": "git",

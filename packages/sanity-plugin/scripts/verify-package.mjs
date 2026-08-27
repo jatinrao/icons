@@ -2,9 +2,7 @@
 // — not the source, not a mock. Run after `pnpm build`. Exits non-zero on
 // any failure so it can gate CI.
 import { existsSync, readFileSync } from 'node:fs'
-import { createRequire } from 'node:module'
 
-const require = createRequire(import.meta.url)
 const pkgUrl = (path) => new URL(`../${path}`, import.meta.url)
 
 let failed = false
@@ -17,8 +15,15 @@ function check(condition, message) {
   }
 }
 
-for (const file of ['dist/index.js', 'dist/index.cjs', 'dist/index.d.ts', 'dist/index.d.cts']) {
+for (const file of ['dist/index.js', 'dist/index.d.ts']) {
   check(existsSync(pkgUrl(file)), `${file} exists`)
+}
+
+// ESM-only (@sanity/plugin-kit convention: Studio v5+ is pure ESM, and a
+// parallel CJS build risks two copies of the plugin in the module tree) —
+// a CJS artifact reappearing here would mean the build silently regressed.
+for (const file of ['dist/index.cjs', 'dist/index.d.cts']) {
+  check(!existsSync(pkgUrl(file)), `${file} does not exist (package is ESM-only)`)
 }
 
 // SECURITY: this package runs inside a consumer's Sanity Studio build — it
@@ -45,7 +50,7 @@ for (const peer of ['sanity', '@sanity/ui', '@sanity/icons', 'styled-components'
 // Same rule for the type declarations: icons-core is private and unpublished,
 // so a surviving `from '@web-portfolio/icons-core'` in dist/*.d.ts would leave
 // every consumer's editor unable to resolve this package's exported types.
-for (const types of ['dist/index.d.ts', 'dist/index.d.cts']) {
+for (const types of ['dist/index.d.ts']) {
   const source = readFileSync(pkgUrl(types), 'utf-8')
   check(
     !source.includes('@web-portfolio/icons-core'),
@@ -89,9 +94,6 @@ const esm = await import(pkgUrl('dist/index.js'))
 check(typeof esm.sanityIconPicker === 'function', 'ESM build exports sanityIconPicker')
 check(typeof esm.iconRef === 'object', 'ESM build exports iconRef')
 check(typeof esm.IconPickerInput === 'function', 'ESM build exports IconPickerInput')
-
-const cjs = require(pkgUrl('dist/index.cjs').pathname)
-check(typeof cjs.sanityIconPicker === 'function', 'CJS build exports sanityIconPicker')
 
 // The plugin factory produces a well-formed Sanity plugin definition that
 // actually registers our custom field type.

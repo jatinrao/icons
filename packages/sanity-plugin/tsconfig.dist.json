@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "esnext",
+    // Deliberately not "preserve" (plugin-kit's generic default): with
+    // "preserve", pkg-utils' bundler leaves JSX syntax untransformed in
+    // dist/index.js — invalid JS outside a JSX-aware loader, and a
+    // regression from the working tsup build (which used automatic-runtime
+    // JSX transform). "react-jsx" restores that behavior. See the matching
+    // `sanityPlugin.verifyPackage.tsconfig: false` opt-out in package.json.
+    "jsx": "react-jsx",
+    "module": "preserve",
+    "noEmit": true
+  },
+  "exclude": ["src/**/__tests__", "src/**/*.test.ts", "src/**/*.test.tsx"]
+}

@@ -48,11 +48,16 @@ describe('package.json (public npm package correctness)', () => {
     expect(pkg.peerDependencies?.['@web-portfolio/icons']).toBeTruthy()
   })
 
-  it('exports map covers ESM, CJS, and types, all pointing into dist/', () => {
+  it('exports map is ESM-only, pointing into dist/', () => {
     const exportsMap = pkg.exports['.']
-    expect(exportsMap.import).toBe('./dist/index.js')
-    expect(exportsMap.require).toBe('./dist/index.cjs')
-    expect(exportsMap.types).toBe('./dist/index.d.ts')
+    expect(exportsMap.default).toBe('./dist/index.js')
+    expect(pkg.types).toBe('./dist/index.d.ts')
+  })
+
+  it('ships no CJS entry points (plugin-kit convention: Studio v5+ is pure ESM)', () => {
+    expect((pkg as Record<string, unknown>).main).toBeUndefined()
+    expect((pkg as Record<string, unknown>).module).toBeUndefined()
+    expect((pkg.exports['.'] as Record<string, unknown>).require).toBeUndefined()
   })
 
   it('publishConfig is public (scoped packages default to restricted otherwise)', () => {

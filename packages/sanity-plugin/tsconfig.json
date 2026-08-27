@@ -6,5 +6,5 @@
     "jsx": "react-jsx",
     "types": ["@testing-library/jest-dom"]
   },
-  "include": ["src", "vitest.setup.ts"]
+  "include": ["src", "vitest.setup.ts", "package.config.ts"]
 }

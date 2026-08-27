@@ -19,6 +19,19 @@ to see exactly what your editors will be choosing from.
 
 ## Recent changes
 
+**v2.0.0 — ESM-only, built with `@sanity/plugin-kit`**
+- The build now uses [`@sanity/plugin-kit`](https://github.com/sanity-io/plugins/tree/main/packages/@sanity/plugin-kit)
+  and [`@sanity/pkg-utils`](https://github.com/sanity-io/pkg-utils) instead
+  of a hand-rolled `tsup` config — the same toolchain Sanity's own plugin
+  ecosystem uses.
+- **Breaking:** the package is now ESM-only. The `require()`/CJS entry point
+  (`main`, `module` fields, and the `require` export condition) has been
+  removed — Sanity Studio v3+ is pure ESM, so this plugin was never actually
+  loaded via `require()` in practice. If you import this package with
+  `require()` directly (outside a Studio config), switch to `import`.
+- No other behavior changed: same `sanityIconPicker()` export, same `iconRef`
+  schema type, same peer dependencies.
+
 **97% smaller package**
 - This plugin no longer bundles its own copy of the 633-icon SVG registry.
   It now renders icon previews through `@web-portfolio/icons`'s `<Icon>`
