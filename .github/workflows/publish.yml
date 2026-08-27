@@ -19,9 +19,11 @@ jobs:
       # signed attestation linking the published tarball back to this exact
       # workflow run and commit — https://docs.npmjs.com/generating-provenance-statements
       id-token: write
-    env:
-      TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
-      TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+    # Turso wiring (TURSO_DATABASE_URL/TURSO_AUTH_TOKEN as repo secrets, plus
+    # the registry-regeneration step below) is deferred to a later release.
+    # Until then this publishes from whatever's already committed in
+    # packages/core/src/registry.generated.ts — a release won't pick up icon
+    # changes made only in the DB and never regenerated+committed.
     steps:
       - uses: actions/checkout@v4
         with:
@@ -38,9 +40,6 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - run: pnpm test
-
-      - name: Regenerate the icon registry from the live database
-        run: pnpm generate-registry
 
       - name: Bump package versions
         run: |
@@ -59,10 +58,10 @@ jobs:
           pnpm --filter @web-portfolio/icons publish --no-git-checks --access public --provenance
           pnpm --filter @web-portfolio/icons-sanity publish --no-git-checks --access public --provenance
 
-      - name: Commit the regenerated registry and version bumps
+      - name: Commit the version bumps
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add packages/core/src/registry.generated.ts packages/react/package.json packages/sanity-plugin/package.json
+          git add packages/react/package.json packages/sanity-plugin/package.json
           git commit -m "chore: publish icon packages [skip ci]" || echo "Nothing to commit"
           git push
