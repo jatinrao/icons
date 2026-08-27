@@ -3,12 +3,18 @@ name: Publish
 on:
   workflow_dispatch:
     inputs:
-      version_bump:
-        description: 'Version bump type'
+      icons_version_bump:
+        description: '@web-portfolio/icons version bump ("none" to skip — leaves it unpublished this run)'
         required: true
-        default: patch
+        default: none
         type: choice
-        options: [patch, minor, major]
+        options: [none, patch, minor, major]
+      icons_sanity_version_bump:
+        description: '@web-portfolio/icons-sanity version bump ("none" to skip — leaves it unpublished this run)'
+        required: true
+        default: none
+        type: choice
+        options: [none, patch, minor, major]
 
 jobs:
   publish:
@@ -41,22 +47,37 @@ jobs:
 
       - run: pnpm test
 
-      - name: Bump package versions
-        run: |
-          pnpm --filter @web-portfolio/icons version ${{ inputs.version_bump }} --no-git-tag-version
-          pnpm --filter @web-portfolio/icons-sanity version ${{ inputs.version_bump }} --no-git-tag-version
+      # The two packages release independently — each only bumps/builds/
+      # publishes when its own input isn't "none", so an unchanged package
+      # (e.g. a release that's only a sanity-plugin fix) never gets a
+      # version bump or a republish of identical code.
+      - name: Bump @web-portfolio/icons version
+        if: inputs.icons_version_bump != 'none'
+        run: pnpm --filter @web-portfolio/icons version ${{ inputs.icons_version_bump }} --no-git-tag-version --no-git-checks
 
-      - name: Build packages
-        run: |
-          pnpm --filter @web-portfolio/icons build
-          pnpm --filter @web-portfolio/icons-sanity build
+      - name: Bump @web-portfolio/icons-sanity version
+        if: inputs.icons_sanity_version_bump != 'none'
+        run: pnpm --filter @web-portfolio/icons-sanity version ${{ inputs.icons_sanity_version_bump }} --no-git-tag-version --no-git-checks
 
-      - name: Publish to npm
+      - name: Build @web-portfolio/icons
+        if: inputs.icons_version_bump != 'none'
+        run: pnpm --filter @web-portfolio/icons build
+
+      - name: Build @web-portfolio/icons-sanity
+        if: inputs.icons_sanity_version_bump != 'none'
+        run: pnpm --filter @web-portfolio/icons-sanity build
+
+      - name: Publish @web-portfolio/icons to npm
+        if: inputs.icons_version_bump != 'none'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          pnpm --filter @web-portfolio/icons publish --no-git-checks --access public --provenance
-          pnpm --filter @web-portfolio/icons-sanity publish --no-git-checks --access public --provenance
+        run: pnpm --filter @web-portfolio/icons publish --no-git-checks --access public --provenance
+
+      - name: Publish @web-portfolio/icons-sanity to npm
+        if: inputs.icons_sanity_version_bump != 'none'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm --filter @web-portfolio/icons-sanity publish --no-git-checks --access public --provenance
 
       - name: Commit the version bumps
         run: |
