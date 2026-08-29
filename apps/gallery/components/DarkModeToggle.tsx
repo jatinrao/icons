@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { GlassButton } from './GlassButton'
 
 function getCurrentTheme(): 'light' | 'dark' {
   const explicit = document.documentElement.dataset.theme
@@ -23,13 +24,12 @@ export function DarkModeToggle() {
   }
 
   return (
-    <button
-      type="button"
-      className="theme-toggle"
+    <GlassButton
       onClick={toggle}
       aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-pressed={theme === 'dark'}
     >
       {theme === 'dark' ? '☀' : '☾'}
-    </button>
+    </GlassButton>
   )
 }

@@ -50,11 +50,6 @@ export function matchesQuery(icon: Pick<GalleryIcon, 'name' | 'label' | 'tags'>,
   )
 }
 
-/** An empty selection (the sidebar's default, nothing checked) matches every icon. */
-export function matchesCategory(icon: Pick<GalleryIcon, 'category'>, categories: string[]): boolean {
-  return categories.length === 0 || (icon.category !== null && categories.includes(icon.category))
-}
-
 export function getCategories(icons: Pick<GalleryIcon, 'category'>[]): string[] {
   const set = new Set<string>()
   for (const icon of icons) {

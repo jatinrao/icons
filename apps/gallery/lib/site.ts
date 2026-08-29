@@ -8,6 +8,10 @@ export const SITE_URL =
 
 export const SITE_NAME = '@web-portfolio/icons'
 
+export const GITHUB_URL = 'https://github.com/jatinrao/icons'
+export const NPM_URL = 'https://www.npmjs.com/package/@web-portfolio/icons'
+export const REQUEST_ICON_URL = `${GITHUB_URL}/issues/new?title=Icon+request%3A+&labels=icon-request`
+
 // Computed from the live registry rather than hardcoded, so this never goes
 // stale as icons are added.
 export function siteDescription(): string {

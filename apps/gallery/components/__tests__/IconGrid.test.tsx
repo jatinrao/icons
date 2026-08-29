@@ -27,59 +27,26 @@ describe('IconGrid', () => {
     expect(screen.getByText('Docker')).toBeInTheDocument()
   })
 
-  it('shows an empty state with a clear-filters action when nothing matches', () => {
+  it('shows an empty state with a clear-search action when nothing matches', () => {
     render(<IconGrid icons={icons} />)
     fireEvent.change(screen.getByPlaceholderText(SEARCH_PLACEHOLDER), { target: { value: 'nonexistent' } })
 
     expect(screen.getByText('No icons found')).toBeInTheDocument()
-    fireEvent.click(screen.getByText('Clear filters'))
+    fireEvent.click(screen.getByText('Clear search'))
     expect(screen.getByPlaceholderText(SEARCH_PLACEHOLDER)).toHaveValue('')
     expect(screen.getByText('React')).toBeInTheDocument()
   })
 
-  it('lists each distinct category, formatted for display, as a checkbox', () => {
+  it('links to a category page for each distinct category present', () => {
     render(<IconGrid icons={icons} />)
-    expect(screen.getByLabelText('Devicon')).toBeInTheDocument()
-    expect(screen.getByLabelText('Plain')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Devicon' })).toHaveAttribute('href', '/icons/category/original')
+    expect(screen.getByRole('link', { name: 'Plain' })).toHaveAttribute('href', '/icons/category/plain')
   })
 
-  it('filters by one selected category', () => {
-    render(<IconGrid icons={icons} />)
-    fireEvent.click(screen.getByLabelText('Plain'))
-
-    expect(screen.queryByText('React')).not.toBeInTheDocument()
-    expect(screen.getByText('Docker')).toBeInTheDocument()
-    expect(screen.getByText('Python')).toBeInTheDocument()
-  })
-
-  it('matches ANY of several selected categories, not all', () => {
-    render(<IconGrid icons={icons} />)
-    fireEvent.click(screen.getByLabelText('Plain'))
-    fireEvent.click(screen.getByLabelText('Devicon'))
-
-    expect(screen.getByText('React')).toBeInTheDocument()
-    expect(screen.getByText('Docker')).toBeInTheDocument()
-    expect(screen.getByText('Python')).toBeInTheDocument()
-  })
-
-  it('combines the search query and the category filter', () => {
-    render(<IconGrid icons={icons} />)
-    fireEvent.click(screen.getByLabelText('Plain'))
-    fireEvent.change(screen.getByPlaceholderText(SEARCH_PLACEHOLDER), { target: { value: 'react' } })
-
-    expect(screen.getByText('No icons found')).toBeInTheDocument()
-  })
-
-  it('shows a "Clear all" filters link only once a filter is active', () => {
-    render(<IconGrid icons={icons} />)
-    expect(screen.queryByText('Clear all')).not.toBeInTheDocument()
-
-    fireEvent.click(screen.getByLabelText('Plain'))
-    expect(screen.getByText('Clear all')).toBeInTheDocument()
-
-    fireEvent.click(screen.getByText('Clear all'))
-    expect(screen.queryByText('Clear all')).not.toBeInTheDocument()
-    expect(screen.getByLabelText('Plain')).not.toBeChecked()
+  it('hides the category nav when every icon shares one category', () => {
+    const single: GalleryIcon[] = icons.map((icon) => ({ ...icon, category: 'plain' }))
+    render(<IconGrid icons={single} />)
+    expect(screen.queryByRole('navigation', { name: 'Browse icons by category' })).not.toBeInTheDocument()
   })
 
   it('sorts by category when selected, grouping matching icons together', () => {
@@ -91,12 +58,12 @@ describe('IconGrid', () => {
     expect(names).toEqual(['React', 'Docker', 'Python'])
   })
 
-  it('shows a status line with the current and total counts', () => {
+  it('shows a status line with the current range and total counts', () => {
     render(<IconGrid icons={icons} />)
-    expect(screen.getByRole('status')).toHaveTextContent('Showing 3 of 3 icons')
+    expect(screen.getByRole('status')).toHaveTextContent('Showing 1–3 of 3 icons')
 
-    fireEvent.click(screen.getByLabelText('Plain'))
-    expect(screen.getByRole('status')).toHaveTextContent('Showing 2 of 2 icons (filtered from 3 total)')
+    fireEvent.change(screen.getByPlaceholderText(SEARCH_PLACEHOLDER), { target: { value: 'plain-does-not-match' } })
+    expect(screen.getByRole('status')).toHaveTextContent('Showing 0 of 0 icons')
   })
 
   it('pre-filters from an initialQuery, e.g. a shared /?q= link', () => {
@@ -106,8 +73,13 @@ describe('IconGrid', () => {
     expect(screen.getByPlaceholderText(SEARCH_PLACEHOLDER)).toHaveValue('docker')
   })
 
-  it('paginates: shows a "Load more" button when there are more icons than one page', () => {
-    const many: GalleryIcon[] = Array.from({ length: 65 }, (_, i) => ({
+  it('does not show pagination controls when everything fits on one page', () => {
+    render(<IconGrid icons={icons} />)
+    expect(screen.queryByRole('navigation', { name: 'Icon results pages' })).not.toBeInTheDocument()
+  })
+
+  it('paginates: splits results across pages instead of rendering everything at once', () => {
+    const many: GalleryIcon[] = Array.from({ length: 20 }, (_, i) => ({
       name: `icon-${i}`,
       label: `Icon ${i}`,
       svg: '<svg><path/></svg>',
@@ -116,11 +88,38 @@ describe('IconGrid', () => {
     }))
     render(<IconGrid icons={many} />)
 
-    expect(screen.getByRole('status')).toHaveTextContent('Showing 60 of 65 icons')
-    expect(screen.getByText('Load more icons')).toBeInTheDocument()
+    expect(screen.getByRole('status')).toHaveTextContent('Showing 1–16 of 20 icons')
+    expect(screen.getByText('Icon 0')).toBeInTheDocument()
+    expect(screen.queryByText('Icon 16')).not.toBeInTheDocument()
+    expect(screen.getByText('Page 1 of 2')).toBeInTheDocument()
+    expect(screen.getByText('‹ Prev')).toBeDisabled()
 
-    fireEvent.click(screen.getByText('Load more icons'))
-    expect(screen.getByRole('status')).toHaveTextContent('Showing 65 of 65 icons')
-    expect(screen.getByText(/reached the end/)).toBeInTheDocument()
+    fireEvent.click(screen.getByText('Next ›'))
+
+    expect(screen.getByRole('status')).toHaveTextContent('Showing 17–20 of 20 icons')
+    expect(screen.getByText('Icon 16')).toBeInTheDocument()
+    expect(screen.queryByText('Icon 0')).not.toBeInTheDocument()
+    expect(screen.getByText('Page 2 of 2')).toBeInTheDocument()
+    expect(screen.getByText('Next ›')).toBeDisabled()
+
+    fireEvent.click(screen.getByText('‹ Prev'))
+    expect(screen.getByRole('status')).toHaveTextContent('Showing 1–16 of 20 icons')
+  })
+
+  it('resets to page 1 when the search query changes', () => {
+    const many: GalleryIcon[] = Array.from({ length: 20 }, (_, i) => ({
+      name: `icon-${i}`,
+      label: `Icon ${i}`,
+      svg: '<svg><path/></svg>',
+      tags: [],
+      category: 'plain',
+    }))
+    render(<IconGrid icons={many} />)
+
+    fireEvent.click(screen.getByText('Next ›'))
+    expect(screen.getByText('Page 2 of 2')).toBeInTheDocument()
+
+    fireEvent.change(screen.getByPlaceholderText(SEARCH_PLACEHOLDER), { target: { value: 'icon-1' } })
+    expect(screen.queryByText(/Page \d+ of \d+/)).not.toBeInTheDocument()
   })
 })

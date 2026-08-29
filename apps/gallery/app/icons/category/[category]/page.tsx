@@ -1,11 +1,10 @@
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { categorySeoCopy, formatCategoryLabel, getAllIcons, getCategories, getIconsByCategory } from '@/lib/icons'
 import { SITE_NAME, SITE_URL, breadcrumbJsonLd } from '@/lib/site'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { IconGrid } from '@/components/IconGrid'
-import { DarkModeToggle } from '@/components/DarkModeToggle'
+import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 
 export function generateStaticParams() {
@@ -64,28 +63,25 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
   ]
 
   return (
-    <div className="page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <>
+      <Header />
 
-      <div className="topbar">
-        <Link href="/" className="button plain">
-          ‹ {SITE_NAME}
-        </Link>
-        <DarkModeToggle />
+      <div className="page">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
+        <Breadcrumbs
+          items={[{ name: 'Home', href: '/' }, { name: 'Categories', href: '/icons/category' }, { name: label }]}
+        />
+
+        <h1>{label} icons</h1>
+        <p className="category-hub-intro">
+          {icons.length} free {label} SVG icons. {categorySeoCopy(category)}
+        </p>
+
+        <IconGrid icons={icons} />
+
+        <Footer />
       </div>
-
-      <Breadcrumbs
-        items={[{ name: 'Home', href: '/' }, { name: 'Categories', href: '/icons/category' }, { name: label }]}
-      />
-
-      <h1>{label} icons</h1>
-      <p className="category-hub-intro">
-        {icons.length} free {label} SVG icons. {categorySeoCopy(category)}
-      </p>
-
-      <IconGrid icons={icons} />
-
-      <Footer />
-    </div>
+    </>
   )
 }

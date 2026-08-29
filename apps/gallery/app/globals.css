@@ -23,8 +23,29 @@
   --accent-cyan: #00c0e8;
   --accent-brown: #ac7f5e;
 
-  --header-height: 68px;
+  /* Matches jatinrao/portfolio-jatin's Header exactly (HEADER_HEIGHT). */
+  --header-height: 52px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Icon tiles stay a fixed light card in both themes — intentionally not
+     overridden anywhere else. Icon SVGs come from mixed sources (some rely
+     on currentColor, many bake in their own fill), so a theme-flipping
+     background would make some icons vanish in dark mode; a constant light
+     surface is the one background every icon in the set is legible on. */
+  --icon-tile-bg: #ffffff;
+  --icon-tile-border: rgba(0, 0, 0, 0.1);
+  --icon-tile-text: #1c1c1e;
+  --icon-tile-muted: rgba(60, 60, 67, 0.6);
+
+  /* Design tokens carried over verbatim (same names, same values) from
+     jatinrao/portfolio-jatin — used by Header and the other components
+     ported from that repo (GlassButton, FloatingControls), kept separate
+     from this app's own --bg/--surface/--accent tokens above rather than
+     reconciled with them. */
+  --color-heading-ink: #000000;
+  --header-border: rgba(0, 0, 0, 0.1);
+  --transition-fast: 150ms;
+  --ease-standard: cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -36,6 +57,9 @@
     --text: #ffffff;
     --muted: rgba(235, 235, 245, 0.7);
     --accent: #3a9fff;
+
+    --color-heading-ink: #ffffff;
+    --header-border: rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -47,6 +71,9 @@
   --text: #ffffff;
   --muted: rgba(235, 235, 245, 0.7);
   --accent: #3a9fff;
+
+  --color-heading-ink: #ffffff;
+  --header-border: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -78,7 +105,7 @@ button:focus-visible {
 .page {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0 1.5rem 4rem;
+  padding: 1.5rem 1.5rem 4rem;
   position: relative;
 }
 
@@ -103,8 +130,8 @@ button:focus-visible {
   top: 10px;
 }
 
-/* Frosted-glass treatment shared by the sticky header, search section, and
-   detail card. */
+/* Frosted-glass treatment shared by the detail card and the icon-preview
+   modal. */
 .glass {
   background:
     linear-gradient(135deg, color-mix(in srgb, white 20%, transparent), color-mix(in srgb, white 3%, transparent)),
@@ -114,52 +141,192 @@ button:focus-visible {
   box-shadow: inset 0 1px 0 color-mix(in srgb, white 30%, transparent), 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
+/* Header — ported to match jatinrao/portfolio-jatin's Header exactly: a
+   full-bleed bar (rendered outside .page, so no width/margin tricks needed)
+   with a hairline bottom border and a plain backdrop blur, no tint, no
+   shadow, no rounded corners. The centered/max-width column lives on
+   .topbar-inner instead, same split as the source component. */
 .topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 1.25rem;
-  margin: 0 0 1.5rem;
-  border-radius: 16px;
-}
-
-.topbar.glass {
   position: sticky;
   top: 0;
   z-index: 5;
+  width: 100%;
   height: var(--header-height);
-  margin: 0 -1.5rem 1.5rem;
-  border-radius: 0 0 16px 16px;
-  padding: 0 1.5rem;
+  border-bottom: 1px solid var(--header-border);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  transition: background 0.24s cubic-bezier(0.28, 0.11, 0.32, 1);
 }
 
-.topbar h1 {
-  font-size: 1.35rem;
+.topbar-inner {
+  max-width: 1180px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-heading {
   margin: 0;
-  font-weight: 700;
+  min-width: 0;
 }
 
 .topbar .brand {
   display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
+  align-items: center;
+  gap: 8px;
   min-width: 0;
+  text-decoration: none;
+  color: var(--color-heading-ink);
 }
 
-.theme-toggle {
-  width: 40px;
-  height: 40px;
-  flex: none;
+.brand-logo {
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
+  flex: none;
+  object-fit: cover;
+}
+
+.brand-name {
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: 0.231px;
+  line-height: 24px;
+  opacity: 0.85;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: none;
+}
+
+.header-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-link {
+  color: var(--color-heading-ink);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -0.12px;
+  line-height: 22px;
+  opacity: 0.8;
+  transition: color var(--transition-fast) var(--ease-standard), opacity var(--transition-fast) var(--ease-standard);
+}
+
+.header-link:hover {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.button.pill {
+  border-radius: 999px;
+  min-height: 28px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -0.12px;
+}
+
+/* ---------- Floating controls (Liquid Glass) ---------- */
+
+.floating-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 40;
+}
+
+.glass-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+}
+
+.glass-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
   border: none;
-  background: var(--fill-secondary, rgba(120, 120, 128, 0.16));
-  color: var(--text);
-  font-size: 16px;
+  border-radius: 999px;
+  padding: 0;
+  overflow: hidden;
   cursor: pointer;
+  color: var(--color-heading-ink);
+  font-size: 18px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition-fast) var(--ease-standard), box-shadow var(--transition-fast) var(--ease-standard);
+}
+
+.glass-button:active {
+  transform: scale(0.94);
+}
+
+.glass-button-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.glass-button-blur {
+  z-index: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.glass-button-tint {
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+:root[data-theme='dark'] .glass-button-tint {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .glass-button-tint {
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+
+.glass-button-rim {
+  z-index: 2;
+  overflow: hidden;
+  box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5), inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.glass-button-content {
+  position: relative;
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.glass-button-filter-svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .button {
@@ -181,14 +348,6 @@ button:focus-visible {
   border-color: var(--accent);
   color: #ffffff;
   font-weight: 600;
-}
-
-.button.plain {
-  border: none;
-  background: transparent;
-  padding: 0.5rem 0.2rem;
-  font-weight: 600;
-  color: var(--accent);
 }
 
 /* ---------- Search ---------- */
@@ -223,88 +382,9 @@ button:focus-visible {
   font-size: 0.95rem;
 }
 
-/* ---------- Filters sidebar + results ---------- */
-
-.gallery-body {
-  display: flex;
-  gap: 28px;
-  align-items: flex-start;
-}
-
-.filters-sidebar {
-  width: 220px;
-  flex: none;
-  position: sticky;
-  top: calc(var(--header-height) + 16px);
-  padding-right: 20px;
-  border-right: 1px solid var(--border);
-}
-
-.filters-sidebar-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.filters-sidebar-head h3 {
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-.filters-count {
-  margin: 4px 0 0;
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.clear-filters-link {
-  border: none;
-  background: transparent;
-  color: var(--accent);
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 4px;
-}
-
-.filter-group {
-  margin-top: 18px;
-}
-
-.filter-group h4 {
-  margin: 0 0 10px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text);
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
-
-.filter-checkboxes {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.filter-checkboxes label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  color: var(--text);
-  cursor: pointer;
-}
-
-.filter-checkboxes input[type='checkbox'] {
-  width: 18px;
-  height: 18px;
-  flex: none;
-}
+/* ---------- Results ---------- */
 
 .results-main {
-  flex: 1;
-  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -352,12 +432,12 @@ button:focus-visible {
 }
 
 .icon-tile {
-  border: 1px solid var(--border);
+  border: 1px solid var(--icon-tile-border);
   border-radius: 16px;
-  background: var(--surface);
+  background: var(--icon-tile-bg);
   padding: 1rem 0.75rem;
   text-decoration: none;
-  color: var(--text);
+  color: var(--icon-tile-text);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -376,22 +456,20 @@ button:focus-visible {
 .icon-tile .glyph {
   width: 52px;
   height: 52px;
-  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: color-mix(in srgb, var(--tile-accent, var(--accent)) 16%, transparent);
 }
 
 .icon-tile .glyph svg {
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
 }
 
 .icon-tile .name {
   font-size: 0.78rem;
   font-weight: 510;
-  color: var(--text);
+  color: var(--icon-tile-text);
   word-break: break-word;
 }
 
@@ -418,18 +496,24 @@ button:focus-visible {
   margin: 0 0 6px;
 }
 
-.load-more-area {
+.pagination {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 16px;
   padding-bottom: 8px;
 }
 
-.all-loaded-text {
-  margin: 0;
+.pagination-status {
   font-size: 0.85rem;
   color: var(--muted);
+  min-width: 100px;
+  text-align: center;
+}
+
+.pagination .button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 /* ---------- Breadcrumbs ---------- */
@@ -481,7 +565,7 @@ button:focus-visible {
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
-  padding: 0 0 1.5rem;
+  padding: 0.25rem 0 1.75rem;
 }
 
 .category-chip {
@@ -555,12 +639,104 @@ button:focus-visible {
   margin-top: 3rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-credits {
   color: var(--muted);
   font-size: 0.85rem;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ---------- Developer contact card ---------- */
+
+.developer-card {
+  padding: 1.1rem 1.4rem;
+  max-width: 460px;
+  border-radius: 16px;
+  background: var(--icon-tile-bg);
+  border: 1px solid var(--icon-tile-border);
+}
+
+.developer-card-eyebrow {
+  margin: 0 0 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--icon-tile-muted);
+}
+
+.developer-card-name {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--icon-tile-text);
+}
+
+.developer-card-role {
+  margin: 2px 0 14px;
+  font-size: 13px;
+  color: var(--icon-tile-muted);
+}
+
+/* Two columns so a 4th link (GitHub/LinkedIn) grows the card wider, not
+   taller — still 2 rows like the original email+portfolio layout. */
+.developer-card-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 28px;
+}
+
+.developer-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 560;
+  color: var(--icon-tile-text);
+  text-decoration: none;
+}
+
+.developer-card-link:hover {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.developer-card-link-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Icons come from different source sets with very different natural shapes
+   (a delicate multi-path mail/globe glyph vs. solid brand silhouettes for
+   GitHub/LinkedIn) — a fixed-size circular badge is what actually makes them
+   read as "the same" across the row, since the badge is the dominant visual
+   shape and each glyph just sits centered inside it at a shared max size. */
+.developer-card-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--icon-tile-border);
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.developer-card-icon svg {
+  max-width: 16px;
+  max-height: 16px;
+  width: auto;
+  height: auto;
 }
 
 /* ---------- Detail page ---------- */
@@ -814,25 +990,25 @@ button:focus-visible {
   overflow-x: auto;
 }
 
-/* ---------- Responsive: sidebar stacks above results on narrow screens ---------- */
+/* ---------- Responsive ---------- */
 
 @media (max-width: 760px) {
-  .gallery-body {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .filters-sidebar {
-    width: 100%;
-    position: static;
-    padding-right: 0;
-    padding-bottom: 16px;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-
   .icon-grid {
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  }
+
+  /* Keep the brand, CTA, and theme toggle on one line at phone widths —
+     the GitHub/npm links are secondary and drop first. */
+  .header-links {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 0.5rem;
+  }
+
+  .brand-name {
+    max-width: 34vw;
   }
 
   .detail-panel {

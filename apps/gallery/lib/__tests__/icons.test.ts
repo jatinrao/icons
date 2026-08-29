@@ -1,13 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import {
-  categoryAccent,
-  formatCategoryLabel,
-  getAllIcons,
-  getCategories,
-  getIconByName,
-  matchesCategory,
-  matchesQuery,
-} from '../icons'
+import { categoryAccent, formatCategoryLabel, getAllIcons, getCategories, getIconByName, matchesQuery } from '../icons'
 
 const icon = { name: 'react', label: 'React', tags: ['framework', 'frontend'] }
 
@@ -42,20 +34,6 @@ describe('matchesQuery', () => {
   it('matches everything for an empty query', () => {
     expect(matchesQuery(icon, '')).toBe(true)
     expect(matchesQuery(icon, '   ')).toBe(true)
-  })
-})
-
-describe('matchesCategory', () => {
-  it('an empty selection matches every icon, including ones with no category', () => {
-    expect(matchesCategory({ category: 'material' }, [])).toBe(true)
-    expect(matchesCategory({ category: null }, [])).toBe(true)
-  })
-
-  it('matches any of several selected categories', () => {
-    expect(matchesCategory({ category: 'social' }, ['social', 'tools'])).toBe(true)
-    expect(matchesCategory({ category: 'tools' }, ['social', 'tools'])).toBe(true)
-    expect(matchesCategory({ category: 'material' }, ['social', 'tools'])).toBe(false)
-    expect(matchesCategory({ category: null }, ['social'])).toBe(false)
   })
 })
 

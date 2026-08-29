@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { SITE_NAME, SITE_URL, siteDescription } from '@/lib/site'
+import { FloatingControls } from '@/components/FloatingControls'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -61,6 +62,7 @@ export default function RootLayout({
       <body>
         {children}
         {modal}
+        <FloatingControls />
       </body>
     </html>
   )

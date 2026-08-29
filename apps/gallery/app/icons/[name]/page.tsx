@@ -1,10 +1,9 @@
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { formatCategoryLabel, getAllIcons, getIconByName } from '@/lib/icons'
 import { SITE_NAME, SITE_URL, breadcrumbJsonLd } from '@/lib/site'
 import { IconDetailPanel } from '@/components/IconDetailPanel'
-import { DarkModeToggle } from '@/components/DarkModeToggle'
+import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 
@@ -63,29 +62,26 @@ export default async function IconDetailPage({ params }: { params: Promise<{ nam
   ]
 
   return (
-    <div className="page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <>
+      <Header />
 
-      <div className="topbar">
-        <Link href="/" className="button plain">
-          ‹ {SITE_NAME}
-        </Link>
-        <DarkModeToggle />
+      <div className="page">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            ...(icon.category ? [{ name: categoryLabel!, href: `/icons/category/${icon.category}` }] : []),
+            { name: `${icon.label} icon` },
+          ]}
+        />
+
+        <div className="detail-card glass">
+          <IconDetailPanel icon={icon} />
+        </div>
+
+        <Footer />
       </div>
-
-      <Breadcrumbs
-        items={[
-          { name: 'Home', href: '/' },
-          ...(icon.category ? [{ name: categoryLabel!, href: `/icons/category/${icon.category}` }] : []),
-          { name: `${icon.label} icon` },
-        ]}
-      />
-
-      <div className="detail-card glass">
-        <IconDetailPanel icon={icon} />
-      </div>
-
-      <Footer />
-    </div>
+    </>
   )
 }
