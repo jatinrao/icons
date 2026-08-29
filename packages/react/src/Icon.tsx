@@ -26,6 +26,25 @@ export interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'name' | 'color
   title?: string
 }
 
+/**
+ * Codepoints Sanity/Vercel's "stega" content-source-map encoding hides
+ * inside string field values (zero-width joiners, word-joiner, BOM, and a
+ * higher-plane legacy variant) so the Presentation Tool's overlay can map
+ * rendered text back to a document field. Invisible in the DOM, but they
+ * break `===`/object-key equality — a `name` fetched in draft/preview mode
+ * (e.g. through Sanity's Presentation Tool) silently fails the registry
+ * lookup below unless stripped first.
+ */
+const STEGA_CHARS = [
+  8203, 8204, 8205, 8288, 8289, 8290, 8291, 65279, 119155, 119156, 119157, 119158, 119159, 119160,
+  119161, 119162,
+]
+const STEGA_PATTERN = new RegExp(`[${STEGA_CHARS.map((c) => `\\u{${c.toString(16)}}`).join('')}]`, 'gu')
+
+function stripStega(value: string): string {
+  return value.replace(STEGA_PATTERN, '')
+}
+
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, '&amp;')
@@ -64,11 +83,12 @@ export function Icon({
   style,
   ...rest
 }: IconProps) {
-  const entry = registry[name]
+  const cleanName = stripStega(name)
+  const entry = registry[cleanName]
 
   if (!entry) {
     if (process.env.NODE_ENV !== 'production') {
-      console.warn(`[@web-portfolio/icons] Unknown icon name: "${name}"`)
+      console.warn(`[@web-portfolio/icons] Unknown icon name: "${cleanName}"`)
     }
     return null
   }

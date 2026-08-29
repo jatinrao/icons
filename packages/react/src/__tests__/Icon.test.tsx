@@ -53,6 +53,14 @@ describe('Icon', () => {
     expect(svg?.style.opacity).toBe('0.5')
   })
 
+  it('resolves a name carrying Sanity/Vercel stega marker characters, as draft-mode/Presentation Tool fetches inject', () => {
+    const stegaEncoded = `r${String.fromCodePoint(8203)}${String.fromCodePoint(8204)}eact`
+    const { container } = render(<Icon name={stegaEncoded} />)
+    const svg = container.querySelector('svg')
+    expect(svg).not.toBeNull()
+    expect(svg?.getAttribute('viewBox')).toBe('0 0 128 128')
+  })
+
   it('renders nothing and warns for an unknown name', () => {
     const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
     const { container } = render(<Icon name="does-not-exist" />)
