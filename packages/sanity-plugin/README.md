@@ -17,46 +17,20 @@ to see exactly what your editors will be choosing from.
 
 [![Browse icons at icons.getresume.dev](https://raw.githubusercontent.com/jatinrao/icons/main/.github/assets/gallery-grid.png)](https://icons.getresume.dev)
 
-## Recent changes
+## Contents
 
-**v3.0.0 — ESM-only, built with `@sanity/plugin-kit`**
-- The build now uses [`@sanity/plugin-kit`](https://github.com/sanity-io/plugins/tree/main/packages/@sanity/plugin-kit)
-  and [`@sanity/pkg-utils`](https://github.com/sanity-io/pkg-utils) instead
-  of a hand-rolled `tsup` config — the same toolchain Sanity's own plugin
-  ecosystem uses.
-- **Breaking:** the package is now ESM-only. The `require()`/CJS entry point
-  (`main`, `module` fields, and the `require` export condition) has been
-  removed — Sanity Studio v3+ is pure ESM, so this plugin was never actually
-  loaded via `require()` in practice. If you import this package with
-  `require()` directly (outside a Studio config), switch to `import`.
-- No other behavior changed: same `sanityIconPicker()` export, same `iconRef`
-  schema type, same peer dependencies.
-
-**97% smaller package**
-- This plugin no longer bundles its own copy of the 633-icon SVG registry.
-  It now renders icon previews through `@web-portfolio/icons`'s `<Icon>`
-  component (added as a peer dependency, see below) and only carries the
-  lightweight search index — name, label, tags, category, no SVG markup —
-  that the picker's search and filtering actually need.
-- Published size: **1.1 MB → 35.7 KB** (tarball), **1.36 MB → 60.5 KB**
-  (unpacked JS), **577 KB → 15 KB** (gzipped). Since any project using this
-  plugin already installs `@web-portfolio/icons` to render the picked icon
-  on its frontend, that icon data is no longer downloaded twice.
-
-**Security & supply chain**
-- Bumped `vitest` to 3.2.7 and `drizzle-orm` to 0.45.2 across the monorepo,
-  and pinned several transitive dependencies (`esbuild`, `sharp`, `postcss`,
-  `glob`, `js-yaml`, `uuid`, `prismjs`, `adm-zip`, `es-define-property`) to
-  patched versions via pnpm overrides.
-- Install scripts now run only for an explicit allow-list (`esbuild`,
-  `sharp`) instead of the whole dependency tree by default.
-- Current
-  [Socket.dev](https://socket.dev/npm/package/@web-portfolio/icons-sanity)
-  score: **100** Vulnerability, **100** Quality, **100** License, **88**
-  Maintenance, **80** Supply Chain Security. This plugin still ships zero
-  runtime dependencies of its own — the Supply Chain number reflects
-  Socket's scan of the full Sanity Studio peer tree (`sanity`, `@sanity/ui`,
-  ...), not this plugin's code.
+- [Why this plugin](#why-this-plugin)
+- [Installation](#installation)
+- [Setup](#setup)
+- [Usage](#usage)
+  - [What editors see](#what-editors-see)
+  - [Building your own input](#building-your-own-input)
+  - [Social/contact links example](#socialcontact-links-example)
+  - [Rendering the picked icon on your frontend](#rendering-the-picked-icon-on-your-frontend)
+- [What's in the icon set](#whats-in-the-icon-set)
+- [Limitations](#limitations)
+- [Changelog](#changelog)
+- [License](#license)
 
 ## Why this plugin
 
@@ -235,6 +209,66 @@ Not sure exactly what's in there? The
 [gallery](https://icons.getresume.dev) is the fastest way to check — search
 or filter by category to see every icon before you commit to using it in a
 schema.
+
+## Limitations
+
+- **Closed set.** Editors pick from the 633 bundled icons; there's no
+  "upload your own SVG" escape hatch in the picker itself. If you need a
+  one-off brand mark that isn't in the set, it has to be added to the
+  upstream registry and shipped in a new version of this plugin (and
+  `@web-portfolio/icons`) before it shows up here.
+- **Requires `@web-portfolio/icons` at render time.** The field only stores
+  a name — you need the sibling package on your frontend to turn that name
+  back into markup. It's a peer dependency for exactly this reason.
+- **ESM-only as of v3.** There's no CommonJS entry point; if something in
+  your toolchain still calls `require()` on this package directly, it will
+  fail. Sanity Studio v3+ already loads plugins as ESM, so this only bites
+  unusual setups.
+- **Renames need a re-pick.** If an icon's registry name changes upstream,
+  documents that stored the old name show an explicit "not found" state
+  rather than silently rendering nothing — but an editor still has to open
+  the field and choose the replacement; it isn't automatic.
+
+## Changelog
+
+**v3.0.0 — ESM-only, built with `@sanity/plugin-kit`**
+- The build now uses [`@sanity/plugin-kit`](https://github.com/sanity-io/plugins/tree/main/packages/@sanity/plugin-kit)
+  and [`@sanity/pkg-utils`](https://github.com/sanity-io/pkg-utils) instead
+  of a hand-rolled `tsup` config — the same toolchain Sanity's own plugin
+  ecosystem uses.
+- **Breaking:** the package is now ESM-only. The `require()`/CJS entry point
+  (`main`, `module` fields, and the `require` export condition) has been
+  removed — Sanity Studio v3+ is pure ESM, so this plugin was never actually
+  loaded via `require()` in practice. If you import this package with
+  `require()` directly (outside a Studio config), switch to `import`.
+- No other behavior changed: same `sanityIconPicker()` export, same `iconRef`
+  schema type, same peer dependencies.
+
+**97% smaller package**
+- This plugin no longer bundles its own copy of the 633-icon SVG registry.
+  It now renders icon previews through `@web-portfolio/icons`'s `<Icon>`
+  component (added as a peer dependency, see below) and only carries the
+  lightweight search index — name, label, tags, category, no SVG markup —
+  that the picker's search and filtering actually need.
+- Published size: **1.1 MB → 35.7 KB** (tarball), **1.36 MB → 60.5 KB**
+  (unpacked JS), **577 KB → 15 KB** (gzipped). Since any project using this
+  plugin already installs `@web-portfolio/icons` to render the picked icon
+  on its frontend, that icon data is no longer downloaded twice.
+
+**Security & supply chain**
+- Bumped `vitest` to 3.2.7 and `drizzle-orm` to 0.45.2 across the monorepo,
+  and pinned several transitive dependencies (`esbuild`, `sharp`, `postcss`,
+  `glob`, `js-yaml`, `uuid`, `prismjs`, `adm-zip`, `es-define-property`) to
+  patched versions via pnpm overrides.
+- Install scripts now run only for an explicit allow-list (`esbuild`,
+  `sharp`) instead of the whole dependency tree by default.
+- Current
+  [Socket.dev](https://socket.dev/npm/package/@web-portfolio/icons-sanity)
+  score: **100** Vulnerability, **100** Quality, **100** License, **88**
+  Maintenance, **80** Supply Chain Security. This plugin still ships zero
+  runtime dependencies of its own — the Supply Chain number reflects
+  Socket's scan of the full Sanity Studio peer tree (`sanity`, `@sanity/ui`,
+  ...), not this plugin's code.
 
 ## License
 

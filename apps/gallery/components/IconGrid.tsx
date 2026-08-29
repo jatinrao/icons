@@ -89,37 +89,39 @@ export function IconGrid({ icons, initialQuery = '' }: { icons: GalleryIcon[]; i
       </section>
 
       <div className="gallery-body">
-        <aside className="filters-sidebar" aria-label="Filters">
-          <div className="filters-sidebar-head">
-            <h3>Filters</h3>
-            {hasActiveFilters && (
-              <button type="button" className="clear-filters-link" onClick={clearAllFilters}>
-                Clear all
-              </button>
-            )}
-          </div>
-          {categoryFilters.length > 0 && (
-            <p className="filters-count">{categoryFilters.length} filter(s) applied</p>
-          )}
-
-          <div className="filter-group">
-            <h4>Category</h4>
-            <div className="filter-checkboxes">
-              {categories.map((category) => (
-                <label key={category} htmlFor={`cat-${category}`}>
-                  <input
-                    id={`cat-${category}`}
-                    type="checkbox"
-                    checked={categoryFilters.includes(category)}
-                    onChange={() => toggleCategory(category)}
-                    style={{ accentColor: categoryAccent(category) }}
-                  />
-                  {formatCategoryLabel(category)}
-                </label>
-              ))}
+        {categories.length > 1 && (
+          <aside className="filters-sidebar" aria-label="Filters">
+            <div className="filters-sidebar-head">
+              <h3>Filters</h3>
+              {hasActiveFilters && (
+                <button type="button" className="clear-filters-link" onClick={clearAllFilters}>
+                  Clear all
+                </button>
+              )}
             </div>
-          </div>
-        </aside>
+            {categoryFilters.length > 0 && (
+              <p className="filters-count">{categoryFilters.length} filter(s) applied</p>
+            )}
+
+            <div className="filter-group">
+              <h4>Category</h4>
+              <div className="filter-checkboxes">
+                {categories.map((category) => (
+                  <label key={category} htmlFor={`cat-${category}`}>
+                    <input
+                      id={`cat-${category}`}
+                      type="checkbox"
+                      checked={categoryFilters.includes(category)}
+                      onChange={() => toggleCategory(category)}
+                      style={{ accentColor: categoryAccent(category) }}
+                    />
+                    {formatCategoryLabel(category)}
+                  </label>
+                ))}
+              </div>
+            </div>
+          </aside>
+        )}
 
         <main className="results-main">
           <div className="results-toolbar">

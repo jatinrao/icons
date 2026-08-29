@@ -1,4 +1,5 @@
-import { getAllIcons } from '@/lib/icons'
+import Link from 'next/link'
+import { formatCategoryLabel, getAllIcons, getCategories } from '@/lib/icons'
 import { SITE_NAME, SITE_URL, siteDescription } from '@/lib/site'
 import { IconGrid } from '@/components/IconGrid'
 import { DarkModeToggle } from '@/components/DarkModeToggle'
@@ -12,6 +13,7 @@ export default async function HomePage({
   const { q } = await searchParams
   const icons = getAllIcons()
   icons.sort((a, b) => a.name.localeCompare(b.name))
+  const categories = getCategories(icons)
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -40,6 +42,14 @@ export default async function HomePage({
         </div>
         <DarkModeToggle />
       </header>
+
+      <nav className="category-nav" aria-label="Browse icons by category">
+        {categories.map((category) => (
+          <Link key={category} href={`/icons/category/${category}`} className="category-chip">
+            {formatCategoryLabel(category)}
+          </Link>
+        ))}
+      </nav>
 
       <IconGrid icons={icons} initialQuery={q ?? ''} />
       <Footer />

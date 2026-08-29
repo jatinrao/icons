@@ -63,6 +63,28 @@ export function getCategories(icons: Pick<GalleryIcon, 'category'>[]): string[] 
   return Array.from(set).sort()
 }
 
+export function getIconsByCategory(icons: GalleryIcon[], category: string): GalleryIcon[] {
+  return icons.filter((icon) => icon.category === category)
+}
+
+// One SEO-oriented sentence per category, surfaced as visible intro copy on
+// each /icons/category/[category] page — matches the query patterns people
+// actually search (e.g. "material design icons", "social media icons svg")
+// rather than just restating the category's internal slug name.
+const CATEGORY_SEO_COPY: Record<string, string> = {
+  plain: 'Flat, single-color icons for programming languages, frameworks, and dev tools — ideal for tech-stack sections, skill badges, and "built with" lists.',
+  original: "Full-color, brand-accurate logos for programming languages, frameworks, and dev tools, matching each project's official brand colors.",
+  material: "Google's Material Symbols — general-purpose UI icons for navigation, actions, and interface elements in web and app design.",
+  social: 'Brand icons for social platforms and popular web services, from Simple Icons — for footers, share buttons, and contact sections.',
+  tools: 'Icons for developer tools and editors used in everyday software work.',
+  'original-wordmark': 'Full-color wordmark logos — the text-based brand mark for programming languages and frameworks.',
+  'plain-wordmark': 'Flat, single-color wordmark logos for programming languages and frameworks.',
+}
+
+export function categorySeoCopy(category: string): string {
+  return CATEGORY_SEO_COPY[category] ?? `Free SVG icons in the ${formatCategoryLabel(category)} category.`
+}
+
 // "original"/"original-wordmark" are devicon's own internal variant names —
 // meaningless to someone browsing the gallery who doesn't know devicon's
 // authoring conventions. Label them by source instead; every other category

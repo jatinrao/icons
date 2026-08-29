@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { formatCategoryLabel, type GalleryIcon } from '@/lib/icons'
 import {
   MAX_SIZE,
@@ -46,7 +47,11 @@ export function IconDetailPanel({ icon }: { icon: GalleryIcon }) {
           </p>
         </div>
         <div className="detail-tags">
-          {icon.category && <span className="tag tag-category">{formatCategoryLabel(icon.category)}</span>}
+          {icon.category && (
+            <Link href={`/icons/category/${icon.category}`} className="tag tag-category">
+              {formatCategoryLabel(icon.category)}
+            </Link>
+          )}
           {icon.tags.map((tag) => (
             <span key={tag} className="tag">
               {tag}

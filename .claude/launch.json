@@ -4,7 +4,7 @@
     {
       "name": "gallery",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["--filter", "gallery", "dev", "--", "-p", "3450"],
+      "runtimeArgs": ["--filter", "gallery", "exec", "next", "dev", "-p", "3450"],
       "port": 3450
     }
   ]

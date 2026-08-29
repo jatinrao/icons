@@ -9,7 +9,9 @@
     "sanity-io",
     "icon-picker",
     "icons",
-    "cms"
+    "cms",
+    "custom input",
+    "sanity field"
   ],
   "homepage": "https://github.com/jatinrao/icons#readme",
   "bugs": {

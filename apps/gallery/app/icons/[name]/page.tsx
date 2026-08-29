@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { getAllIcons, getIconByName } from '@/lib/icons'
-import { SITE_NAME, SITE_URL } from '@/lib/site'
+import { formatCategoryLabel, getAllIcons, getIconByName } from '@/lib/icons'
+import { SITE_NAME, SITE_URL, breadcrumbJsonLd } from '@/lib/site'
 import { IconDetailPanel } from '@/components/IconDetailPanel'
 import { DarkModeToggle } from '@/components/DarkModeToggle'
 import { Footer } from '@/components/Footer'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 
 export function generateStaticParams() {
   return getAllIcons().map((icon) => ({ name: icon.name }))
@@ -32,21 +33,34 @@ export default async function IconDetailPage({ params }: { params: Promise<{ nam
   const icon = getIconByName(name)
   if (!icon) notFound()
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'ImageObject',
-    name: `${icon.label} icon`,
-    description: `${icon.label} SVG icon, free to use, from ${SITE_NAME}.`,
-    contentUrl: `${SITE_URL}/icons/${icon.name}`,
-    url: `${SITE_URL}/icons/${icon.name}`,
-    encodingFormat: 'image/svg+xml',
-    keywords: icon.tags.join(', '),
-    isPartOf: {
-      '@type': 'Collection',
-      name: SITE_NAME,
-      url: SITE_URL,
+  const categoryLabel = icon.category ? formatCategoryLabel(icon.category) : null
+
+  const breadcrumbItems = [
+    { name: SITE_NAME, url: SITE_URL },
+    ...(icon.category
+      ? [{ name: categoryLabel!, url: `${SITE_URL}/icons/category/${icon.category}` }]
+      : []),
+    { name: `${icon.label} icon`, url: `${SITE_URL}/icons/${icon.name}` },
+  ]
+
+  const jsonLd = [
+    breadcrumbJsonLd(breadcrumbItems),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ImageObject',
+      name: `${icon.label} icon`,
+      description: `${icon.label} SVG icon, free to use, from ${SITE_NAME}.`,
+      contentUrl: `${SITE_URL}/icons/${icon.name}`,
+      url: `${SITE_URL}/icons/${icon.name}`,
+      encodingFormat: 'image/svg+xml',
+      keywords: icon.tags.join(', '),
+      isPartOf: {
+        '@type': 'Collection',
+        name: SITE_NAME,
+        url: SITE_URL,
+      },
     },
-  }
+  ]
 
   return (
     <div className="page">
@@ -58,6 +72,14 @@ export default async function IconDetailPage({ params }: { params: Promise<{ nam
         </Link>
         <DarkModeToggle />
       </div>
+
+      <Breadcrumbs
+        items={[
+          { name: 'Home', href: '/' },
+          ...(icon.category ? [{ name: categoryLabel!, href: `/icons/category/${icon.category}` }] : []),
+          { name: `${icon.label} icon` },
+        ]}
+      />
 
       <div className="detail-card glass">
         <IconDetailPanel icon={icon} />

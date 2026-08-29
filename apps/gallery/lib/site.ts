@@ -14,3 +14,16 @@ export function siteDescription(): string {
   const count = getAllIcons().length
   return `Browse and copy ${count}+ free SVG icons — programming languages, frameworks, dev tools, social platforms, and UI icons. Search, customize colors and stroke, then copy or download as SVG or PNG. Companion gallery for the @web-portfolio/icons React package and @web-portfolio/icons-sanity Sanity Studio plugin.`
 }
+
+export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  }
+}

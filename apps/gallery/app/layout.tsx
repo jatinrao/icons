@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: `${SITE_NAME} — Free SVG icons for React, portfolios & design`,
     description: siteDescription(),
   },
