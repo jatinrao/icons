@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { set, unset, type StringInputProps } from 'sanity'
 import {
   Badge,
@@ -48,10 +48,11 @@ export interface IconEntry {
  * opening the dialog visibly janky in Studio, so results render a page at a
  * time and the rest are one click away.
  */
-const PAGE_SIZE = 96
+const PAGE_SIZE = 48
 
 const PREVIEW_ICON_SIZE = 28
-const GRID_ICON_SIZE = 24
+// 24 * 1.2, rounded to a whole pixel.
+const GRID_ICON_SIZE = 29
 
 /** Roughly five rows of tiles — enough to scan, short enough to leave the
  * search field and the dialog footer visible without scrolling. */
@@ -106,8 +107,12 @@ const IconTile = styled(Card)`
   }
 `
 
+// Sized off the icon itself (plus a little breathing room), not the theme's
+// space scale — that token (space[5], ~19-20px) sat shorter than
+// GRID_ICON_SIZE, so the glyph visually overflowed this row's box and spilled
+// down onto the label text below it instead of stopping at this row's edge.
 const GlyphRow = styled(Flex)`
-  height: ${({ theme }) => rem(theme.sanity.space[5])};
+  height: ${rem(GRID_ICON_SIZE + 8)};
 `
 
 const LabelRow = styled(Box)`
@@ -183,6 +188,7 @@ export function IconPickerInput(props: StringInputProps) {
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('')
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
+  const searchInputRef = useRef<HTMLInputElement>(null)
 
   const names = useMemo(() => Object.keys(metadata).sort(), [])
 
@@ -213,6 +219,17 @@ export function IconPickerInput(props: StringInputProps) {
   useEffect(() => {
     setVisibleCount(PAGE_SIZE)
   }, [query, category])
+
+  // The search field's own `autoFocus` loses a race with Sanity UI's Dialog:
+  // Dialog's mount effect unconditionally focuses the *first* focusable
+  // descendant, which is the header's close button (it sits before the
+  // dialog body in the DOM), not this field. This effect lives in the parent
+  // of <Dialog>, so by React's child-then-parent effect ordering it always
+  // runs after Dialog's own — giving this explicit focus the final say.
+  useEffect(() => {
+    if (!open) return
+    searchInputRef.current?.focus()
+  }, [open])
 
   const visible = filtered.slice(0, visibleCount)
   const remaining = filtered.length - visible.length
@@ -350,6 +367,7 @@ export function IconPickerInput(props: StringInputProps) {
               <Flex gap={2}>
                 <Box flex={1}>
                   <TextInput
+                    ref={searchInputRef}
                     icon={SearchIcon}
                     placeholder="Search by name, label, or tag…"
                     value={query}

@@ -129,6 +129,17 @@ describe('IconPickerInput', () => {
     expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ type: 'set', value: 'docker' }))
   })
 
+  it('focuses the search field when the dialog opens, not the header close button', () => {
+    // Regression test: @sanity/ui's Dialog unconditionally focuses the first
+    // focusable descendant on mount, which is the header's close button (it
+    // sits before the dialog body in the DOM) — that used to win the race
+    // against this field's own `autoFocus`.
+    renderWithTheme(<IconPickerInput {...makeProps()} />)
+    fireEvent.click(screen.getByText('Select icon'))
+
+    expect(screen.getByPlaceholderText(SEARCH_PLACEHOLDER)).toHaveFocus()
+  })
+
   it('narrows results with the category filter', () => {
     renderWithTheme(<IconPickerInput {...makeProps()} />)
     fireEvent.click(screen.getByText('Select icon'))
