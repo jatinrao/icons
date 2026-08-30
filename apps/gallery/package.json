@@ -12,6 +12,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "@web-portfolio/icons-core": "workspace:*",
     "next": "^15.1.0",
     "react": "^18.3.1",

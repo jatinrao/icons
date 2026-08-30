@@ -231,6 +231,21 @@ schema.
 
 ## Changelog
 
+**Icon picker: grid fixes + reliable auto-focus**
+- **Fixed overlap:** grid tiles' icon row was sized off an unrelated Sanity UI
+  theme token, which was shorter than the icon itself — the glyph visually
+  spilled down over its own label. The row now sizes off the actual icon
+  dimension, so this can't happen regardless of icon or theme.
+- **Icons are 20% bigger** in the grid (24px → 29px) for better legibility.
+- **Fewer icons per page** (96 → 48), matching the larger tiles so a page
+  still renders as a comfortable handful of rows.
+- **Search field now reliably auto-focuses** when the dialog opens. Sanity
+  UI's `Dialog` unconditionally focuses its own header close button on mount
+  (it's the first focusable element in the DOM), which was winning a race
+  against the search field's `autoFocus` — the field now explicitly reclaims
+  focus after Dialog's own mount behavior runs, so opening the picker always
+  drops you straight into search.
+
 **v3.0.0 — ESM-only, built with `@sanity/plugin-kit`**
 - The build now uses [`@sanity/plugin-kit`](https://github.com/sanity-io/plugins/tree/main/packages/@sanity/plugin-kit)
   and [`@sanity/pkg-utils`](https://github.com/sanity-io/pkg-utils) instead

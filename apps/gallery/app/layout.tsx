@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/next'
 import { SITE_NAME, SITE_URL, siteDescription } from '@/lib/site'
 import { FloatingControls } from '@/components/FloatingControls'
 import './globals.css'
@@ -63,6 +64,7 @@ export default function RootLayout({
         {children}
         {modal}
         <FloatingControls />
+        <Analytics />
       </body>
     </html>
   )
