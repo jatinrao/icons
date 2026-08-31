@@ -18,14 +18,7 @@ export default defineConfig({
     // render registry, so importing it here instead of re-bundling
     // icons-core's SVG data avoids duplicating ~1.3MB of icon markup across
     // both published packages.
-    neverBundle: [
-      'react',
-      'sanity',
-      '@sanity/ui',
-      '@sanity/icons',
-      'styled-components',
-      '@web-portfolio/icons',
-    ],
+    neverBundle: ['react', 'sanity', '@sanity/ui', 'styled-components', '@web-portfolio/icons'],
     // @web-portfolio/icons-core is an internal, unpublished workspace
     // package — it must be inlined into the published bundle.
     alwaysBundle: ['@web-portfolio/icons-core'],
@@ -41,12 +34,13 @@ export default defineConfig({
     },
   },
   strictOptions: {
-    // pkg-utils' default opinion is that @sanity/ui and @sanity/icons
-    // should be regular deps, not peers. This package deliberately keeps
-    // them as peers instead (matching sanity/react/styled-components):
-    // a duplicate @sanity/ui copy in a Studio bundle breaks theme context
-    // at runtime, so consumers must resolve a single shared instance.
+    // pkg-utils' default opinion is that @sanity/ui should be a regular dep,
+    // not a peer. This package deliberately keeps it as a peer instead
+    // (matching sanity/react/styled-components): a duplicate @sanity/ui copy
+    // in a Studio bundle breaks theme context at runtime, so consumers must
+    // resolve a single shared instance. @sanity/icons isn't a dependency of
+    // any kind anymore — its icons are inlined in src/icons.tsx — so its
+    // matching override is gone too.
     noSanityUiPeerDependency: 'off',
-    noSanityIconsPeerDependency: 'off',
   },
 })

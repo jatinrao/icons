@@ -12,10 +12,9 @@ import {
   Stack,
   Text,
   TextInput,
-  Tooltip,
   rem,
 } from '@sanity/ui'
-import { ImageIcon, SearchIcon, TrashIcon, WarningOutlineIcon } from '@sanity/icons'
+import { ImageIcon, SearchIcon, TrashIcon, WarningOutlineIcon } from './icons'
 // Named import, not the default: styled-components v6 ships CJS with no
 // `exports` map, so under plain Node ESM a default import resolves to the
 // module namespace instead of the factory. Bundlers paper over that with
@@ -80,12 +79,37 @@ const ResultsScroller = styled(Box)`
 `
 
 /**
+ * `Stack`'s `space` prop was deprecated in favor of `gap` in @sanity/ui v3
+ * and removed entirely in v4 — passing `space` there is silently a no-op, so
+ * every stacked block collapses together with no gap. `&&` doubles the
+ * generated class in the selector (matching `IconTile` below) so this gap
+ * always wins on specificity, regardless of whether the installed version
+ * still honors `space`, has moved to `gap`, or supports neither.
+ */
+const VStack = styled(Stack)<{ $space: number }>`
+  && {
+    gap: ${({ theme, $space }) => rem(theme.sanity.space[$space])};
+  }
+`
+
+/**
+ * `Grid`'s `columns` prop was removed in @sanity/ui v4 (replaced by
+ * `gridTemplateColumns`), so a fixed [3, 4, 6] breakpoint array silently does
+ * nothing there. `auto-fill`/`minmax` gets a responsive column count without
+ * depending on either prop, or on which viewport-width breakpoints the
+ * installed version's theme happens to define.
+ */
+const ResultsGrid = styled(Grid)`
+  grid-template-columns: repeat(auto-fill, minmax(${rem(88)}, 1fr));
+`
+
+/**
  * Sanity UI ships a `[data-as='button']` rule on Card that zeroes the border
  * and forces `cursor: default` — it outranks a plain class selector, so these
  * overrides have to match it and then some (`&&` doubles the class) to land.
  */
 /** One line of label text plus its top padding, in the Sanity UI space scale
- * — matches the `space={2}` gap the tile's inner Stack uses. Multi-word names
+ * — matches the `$space={2}` gap the tile's inner VStack uses. Multi-word names
  * ("Amazon Web Services", "Apache Airflow") are long enough to wrap onto a
  * second line if this isn't pinned, and a taller-than-expected cell throws
  * off every grid row after it (rows overlap the ones below). */
@@ -272,7 +296,7 @@ export function IconPickerInput(props: StringInputProps) {
   }
 
   return (
-    <Stack space={3}>
+    <VStack $space={3}>
       <Flex align="center" gap={3}>
         <PreviewFrame
           padding={3}
@@ -291,8 +315,8 @@ export function IconPickerInput(props: StringInputProps) {
           </Flex>
         </PreviewFrame>
 
-        <Stack space={3} flex={1}>
-          <Stack space={2}>
+        <VStack $space={3} flex={1}>
+          <VStack $space={2}>
             <Flex align="center" gap={2}>
               <Text size={1} weight="semibold" textOverflow="ellipsis">
                 {value ? (selectedEntry?.label ?? value) : 'No icon selected'}
@@ -310,7 +334,7 @@ export function IconPickerInput(props: StringInputProps) {
                 <code>{value}</code>
               </Text>
             )}
-          </Stack>
+          </VStack>
 
           <Flex gap={2}>
             <Button
@@ -332,7 +356,7 @@ export function IconPickerInput(props: StringInputProps) {
               />
             )}
           </Flex>
-        </Stack>
+        </VStack>
       </Flex>
 
       {hasUnknownValue && (
@@ -363,7 +387,7 @@ export function IconPickerInput(props: StringInputProps) {
           }
         >
           <Box padding={4}>
-            <Stack space={4}>
+            <VStack $space={4}>
               <Flex gap={2}>
                 <Box flex={1}>
                   <TextInput
@@ -397,69 +421,66 @@ export function IconPickerInput(props: StringInputProps) {
 
               {filtered.length === 0 ? (
                 <Card padding={5} radius={2} tone="transparent">
-                  <Stack space={3}>
+                  <VStack $space={3}>
                     <Text align="center" size={1} weight="semibold">
                       No icons match that search
                     </Text>
                     <Text align="center" size={1} muted>
                       Try a shorter term, or reset the category filter.
                     </Text>
-                  </Stack>
+                  </VStack>
                 </Card>
               ) : (
                 <ResultsScroller>
-                  <Stack space={3}>
-                    <Grid columns={[3, 4, 6]} gap={2}>
+                  <VStack $space={3}>
+                    <ResultsGrid gap={2}>
                       {visible.map((name) => {
                         const entry = metadata[name]
                         const isSelected = name === value
 
                         return (
-                          <Tooltip
+                          <IconTile
                             key={name}
-                            content={
-                              <Box padding={2}>
-                                <Text size={1}>{name}</Text>
-                              </Box>
-                            }
-                            placement="top"
-                            delay={{ open: 400 }}
-                            portal
+                            // `forwardedAs`, not `as`: styled-components
+                            // would consume `as` itself and render a bare
+                            // <button>, throwing away every Card style and
+                            // leaking `border`/`pressed` onto the DOM node.
+                            // This hands it to Card, which knows how to be
+                            // a themed button.
+                            forwardedAs="button"
+                            type="button"
+                            padding={3}
+                            radius={2}
+                            border
+                            tone={isSelected ? 'primary' : 'default'}
+                            pressed={isSelected}
+                            __unstable_focusRing
+                            // A native title, not @sanity/ui's Tooltip: that
+                            // component moved to the `@sanity/ui/tooltip`
+                            // subpath in v4, which doesn't exist in v2/v3 —
+                            // there's no single import that resolves on both.
+                            // The raw name shown on hover is a nicety anyway;
+                            // aria-label below already carries it for
+                            // assistive tech.
+                            title={name}
+                            aria-pressed={isSelected}
+                            aria-label={`${entry.label} (${name})`}
+                            onClick={() => handleSelect(name)}
                           >
-                            <IconTile
-                              // `forwardedAs`, not `as`: styled-components
-                              // would consume `as` itself and render a bare
-                              // <button>, throwing away every Card style and
-                              // leaking `border`/`pressed` onto the DOM node.
-                              // This hands it to Card, which knows how to be
-                              // a themed button.
-                              forwardedAs="button"
-                              type="button"
-                              padding={3}
-                              radius={2}
-                              border
-                              tone={isSelected ? 'primary' : 'default'}
-                              pressed={isSelected}
-                              __unstable_focusRing
-                              aria-pressed={isSelected}
-                              aria-label={`${entry.label} (${name})`}
-                              onClick={() => handleSelect(name)}
-                            >
-                              <Stack space={2}>
-                                <GlyphRow align="center" justify="center">
-                                  <Icon name={name} size={GRID_ICON_SIZE} />
-                                </GlyphRow>
-                                <LabelRow>
-                                  <Text size={0} align="center" muted textOverflow="ellipsis">
-                                    {entry.label}
-                                  </Text>
-                                </LabelRow>
-                              </Stack>
-                            </IconTile>
-                          </Tooltip>
+                            <VStack $space={2}>
+                              <GlyphRow align="center" justify="center">
+                                <Icon name={name} size={GRID_ICON_SIZE} />
+                              </GlyphRow>
+                              <LabelRow>
+                                <Text size={0} align="center" muted textOverflow="ellipsis">
+                                  {entry.label}
+                                </Text>
+                              </LabelRow>
+                            </VStack>
+                          </IconTile>
                         )
                       })}
-                    </Grid>
+                    </ResultsGrid>
 
                     {remaining > 0 && (
                       <Button
@@ -469,13 +490,13 @@ export function IconPickerInput(props: StringInputProps) {
                         onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
                       />
                     )}
-                  </Stack>
+                  </VStack>
                 </ResultsScroller>
               )}
-            </Stack>
+            </VStack>
           </Box>
         </Dialog>
       )}
-    </Stack>
+    </VStack>
   )
 }

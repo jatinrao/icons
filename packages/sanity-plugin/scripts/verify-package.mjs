@@ -39,8 +39,11 @@ for (const banned of bannedStrings) {
 // @web-portfolio/icons belongs in this list for a different reason: it
 // already ships (and inlines) the full render registry, so importing it
 // instead of re-bundling icons-core's SVG data avoids duplicating ~1.3MB of
-// icon markup across both published packages.
-for (const peer of ['sanity', '@sanity/ui', '@sanity/icons', 'styled-components', '@web-portfolio/icons']) {
+// icon markup across both published packages. @sanity/icons isn't a peer at
+// all anymore — its own icons are inlined from src/icons.tsx instead (see
+// the viewBox/innerHTML check below), because @sanity/icons v5 dropped the
+// root barrel import this package used to rely on.
+for (const peer of ['sanity', '@sanity/ui', 'styled-components', '@web-portfolio/icons']) {
   check(
     new RegExp(`from\\s*["']${peer.replace('/', '\\/')}["']`).test(esmSource),
     `dist/index.js imports "${peer}" rather than bundling it`,
@@ -66,15 +69,27 @@ for (const types of ['dist/index.d.ts']) {
   )
 }
 
-// This package renders icons via @web-portfolio/icons's <Icon> (asserted
-// above) rather than reading SVG data out of icons-core directly, so its own
-// bundle should carry zero render markup — only the picker's search metadata
-// (label/tags/category, from icons-core's separate metadata.generated.ts).
-// A `viewBox`/`innerHTML` key showing up here would mean the two packages
-// are back to shipping duplicate copies of the ~1.3MB icon registry.
+// This package renders picked icons via @web-portfolio/icons's <Icon>
+// (asserted above) rather than reading SVG data out of icons-core directly,
+// so its own bundle should carry none of icons-core's render markup — only
+// the picker's search metadata (label/tags/category, from icons-core's
+// separate metadata.generated.ts) plus the handful of UI-chrome icons
+// (search/trash/warning/image) inlined from src/icons.tsx. icons-core's
+// format pairs every icon with an `innerHTML` key (see registry.generated.ts)
+// that src/icons.tsx never uses, so it stays a zero-tolerance signal for that
+// registry sneaking back in.
 check(
-  !/"?viewBox"?:/.test(esmSource) && !/"?innerHTML"?:/.test(esmSource),
-  'dist/index.js does not bundle icon render data (viewBox/innerHTML) — that lives in @web-portfolio/icons',
+  !/"?innerHTML"?:/.test(esmSource),
+  'dist/index.js does not bundle icon render data (innerHTML) — that lives in @web-portfolio/icons',
+)
+// `viewBox` alone is no longer zero — src/icons.tsx's 4 inlined icons each
+// carry one — but the full icons-core registry would push this count into
+// the hundreds, so a low ceiling still catches that regression.
+const MAX_EXPECTED_INLINE_VIEWBOXES = 20
+const viewBoxCount = (esmSource.match(/"?viewBox"?:/g) ?? []).length
+check(
+  viewBoxCount <= MAX_EXPECTED_INLINE_VIEWBOXES,
+  `dist/index.js bundles a plausible number of inlined viewBoxes (${viewBoxCount}, expected <= ${MAX_EXPECTED_INLINE_VIEWBOXES})`,
 )
 
 // The picker's search metadata is a tracked, pre-generated artifact —

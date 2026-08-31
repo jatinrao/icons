@@ -1,6 +1,6 @@
 {
   "name": "@web-portfolio/icons-sanity",
-  "version": "3.0.4",
+  "version": "3.1.0",
   "description": "Sanity Studio icon picker field with 633 bundled SVG icons — search by name, label, or tag, no SVG markup required.",
   "license": "MIT",
   "keywords": [
@@ -55,7 +55,6 @@
     "link-watch": "plugin-kit link-watch"
   },
   "peerDependencies": {
-    "@sanity/icons": ">=3",
     "@sanity/ui": ">=2",
     "@web-portfolio/icons": ">=1.0.1",
     "react": ">=18",
@@ -64,7 +63,6 @@
   },
   "devDependencies": {
     "@sanity/browserslist-config": "^1.0.5",
-    "@sanity/icons": "^3.8.0",
     "@sanity/pkg-utils": "^12.3.2",
     "@sanity/plugin-kit": "^10.0.8",
     "@sanity/ui": "^2.10.0",

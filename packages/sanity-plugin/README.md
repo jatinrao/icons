@@ -56,10 +56,9 @@ you from doing that again:
   alongside its label, category, and the exact string that got stored — so
   editors can confirm at a glance they picked the right one.
 - **Built entirely from Sanity UI.** `Card`, `Dialog`, `Badge`, `Select`,
-  `TextInput`, `Tooltip` and `@sanity/icons`, sized off the Sanity UI space
-  scale. It inherits your Studio's theme and light/dark scheme instead of
-  fighting it, and respects `readOnly` fields and Studio's focus/presence
-  tracking like a built-in input.
+  `TextInput`, sized off the Sanity UI space scale. It inherits your Studio's
+  theme and light/dark scheme instead of fighting it, and respects `readOnly`
+  fields and Studio's focus/presence tracking like a built-in input.
 
 ## Installation
 
@@ -72,10 +71,11 @@ pnpm add @web-portfolio/icons-sanity
 ```
 
 Peer dependencies:
-`sanity >=3`, `@sanity/ui >=2`, `@sanity/icons >=3`, `react >=18`,
-`styled-components >=6` (already present in any standard Sanity Studio v3
-project), plus `@web-portfolio/icons >=1.0.1`, which renders the icons this
-plugin picks — install it if your Studio doesn't already have it.
+`sanity >=3`, `@sanity/ui >=2`, `react >=18`, `styled-components >=6`
+(already present in any standard Sanity Studio project — this plugin is
+tested against every Studio major from v3 through the current v6), plus
+`@web-portfolio/icons >=1.0.1`, which renders the icons this plugin picks —
+install it if your Studio doesn't already have it.
 
 ## Setup
 
@@ -230,6 +230,34 @@ schema.
   the field and choose the replacement; it isn't automatic.
 
 ## Changelog
+
+**v3.1.0 — Sanity Studio v6 compatibility**
+- **`@sanity/icons` is no longer a dependency.** It dropped its root barrel
+  export in v5.0.0 — `import {ImageIcon} from '@sanity/icons'` stopped
+  resolving — and Sanity Studio v6 (the current major) already installs
+  `@sanity/icons` ^5.2 for itself, so this plugin would fail to load in any
+  new v6 Studio. Its four UI-chrome icons (search, trash, warning, the "no
+  icon" placeholder) are now inlined instead — visually identical, zero
+  version dependency.
+- **Fixed layout on `@sanity/ui` v4.** `Stack`'s `space` prop and `Grid`'s
+  `columns` prop were both removed there (in favor of `gap` and
+  `gridTemplateColumns`) — silently, with no error, just missing spacing and
+  a non-responsive icon grid. Both are replaced with plain CSS (`gap` via a
+  specificity override, a `minmax()`-based grid) that doesn't depend on which
+  major is installed.
+- **`Tooltip` is no longer imported from `@sanity/ui`.** It moved to the
+  `@sanity/ui/tooltip` subpath in v4 — a subpath that doesn't exist in v2/v3
+  — so importing it from the root, as this plugin used to, resolves to
+  `undefined` on v4 and crashes the results grid the moment it renders. The
+  per-tile tooltip (showing an icon's raw registry name on hover) is now a
+  native `title` attribute instead; `aria-label` already carried the same
+  information for assistive tech.
+- Verified against real installs of every Studio major still actively
+  maintained — v3, v4, v5, and v6 — not just against the changelogs above.
+  v6 in particular installs `@sanity/ui` 4.0.7 and `sanity` itself pulls in
+  React 19.2 and `@sanity/icons` 5.2, the exact combination the fixes above
+  target; the full test suite passes against that real combination, not just
+  this package's own (older) pinned dev dependencies.
 
 **Icon picker: grid fixes + reliable auto-focus**
 - **Fixed overlap:** grid tiles' icon row was sized off an unrelated Sanity UI

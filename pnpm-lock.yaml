@@ -233,9 +233,6 @@ importers:
       '@sanity/browserslist-config':
         specifier: ^1.0.5
         version: 1.0.5
-      '@sanity/icons':
-        specifier: ^3.8.0
-        version: 3.8.0(react@18.3.1)
       '@sanity/pkg-utils':
         specifier: ^12.3.2
         version: 12.3.2(@babel/runtime@7.29.7)(@types/node@22.20.1)(supports-color@5.5.0)(typescript@5.9.3)(vite@8.2.2(@types/node@22.20.1)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.12)(yaml@2.9.0))
