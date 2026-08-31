@@ -9,12 +9,9 @@ describe('Header', () => {
     expect(brand).toHaveAttribute('href', '/')
   })
 
-  it('wraps the brand in an <h1> only on the homepage', () => {
-    const { rerender } = render(<Header />)
-    expect(screen.queryByRole('heading', { level: 1 })).not.toBeInTheDocument()
-
-    rerender(<Header isHomePage />)
-    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
+  it('never wraps the brand in a heading — each page supplies its own <h1>', () => {
+    render(<Header />)
+    expect(screen.queryByRole('heading')).not.toBeInTheDocument()
   })
 
   it('links to GitHub and npm', () => {

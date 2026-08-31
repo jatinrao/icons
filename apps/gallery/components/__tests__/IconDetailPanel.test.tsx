@@ -25,7 +25,7 @@ beforeEach(() => {
 describe('IconDetailPanel', () => {
   it('renders the name, category badge, and tags', () => {
     render(<IconDetailPanel icon={icon} />)
-    expect(screen.getByRole('heading', { name: 'React' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'React icon' })).toBeInTheDocument()
     expect(screen.getByText('react')).toBeInTheDocument()
     expect(screen.getByText('Devicon')).toBeInTheDocument()
     expect(screen.getByText('framework')).toBeInTheDocument()

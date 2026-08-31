@@ -168,11 +168,6 @@ button:focus-visible {
   justify-content: space-between;
 }
 
-.brand-heading {
-  margin: 0;
-  min-width: 0;
-}
-
 .topbar .brand {
   display: flex;
   align-items: center;

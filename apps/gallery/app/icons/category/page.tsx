@@ -36,7 +36,7 @@ export default function CategoryIndexPage() {
           {icons.length}+ free SVG icons, organized into {categories.length} categories by style and source.
         </p>
 
-        <div className="category-hub-grid">
+        <main className="category-hub-grid">
           {categories.map((category) => {
             const count = icons.filter((icon) => icon.category === category).length
             return (
@@ -52,7 +52,7 @@ export default function CategoryIndexPage() {
               </Link>
             )
           })}
-        </div>
+        </main>
 
         <Footer />
       </div>

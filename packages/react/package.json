@@ -1,7 +1,7 @@
 {
   "name": "@web-portfolio/icons",
   "version": "1.0.4",
-  "description": "Dynamic React icon component backed by a bundled devicon-seeded registry.",
+  "description": "Free React icon component with 633 bundled SVG icons (devicon, Material Symbols, Simple Icons) — zero runtime dependencies.",
   "license": "MIT",
   "keywords": [
     "react",
@@ -11,7 +11,11 @@
     "component",
     "devicon",
     "material-symbols",
-    "simple-icons"
+    "simple-icons",
+    "icon-library",
+    "free-icons",
+    "tech-stack-icons",
+    "typescript"
   ],
   "homepage": "https://github.com/jatinrao/icons#readme",
   "bugs": {

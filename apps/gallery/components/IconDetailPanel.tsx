@@ -37,11 +37,14 @@ export function IconDetailPanel({ icon }: { icon: GalleryIcon }) {
       <div className="detail-panel-meta">
         <div
           className="detail-glyph"
+          role="img"
+          aria-label={`${icon.label} icon`}
           style={{ width: previewPx, height: previewPx }}
           dangerouslySetInnerHTML={{ __html: c.previewSvg }}
         />
         <div>
-          <h2 style={{ margin: '0 0 0.35rem' }}>{icon.label}</h2>
+          {/* Only heading on /icons/[name] — sized to match the old <h2> default. */}
+          <h1 style={{ margin: '0 0 0.35rem', fontSize: '1.5em' }}>{icon.label} icon</h1>
           <p style={{ margin: 0, color: 'var(--muted)', fontFamily: 'ui-monospace, monospace' }}>
             {icon.name}
           </p>
@@ -53,9 +56,9 @@ export function IconDetailPanel({ icon }: { icon: GalleryIcon }) {
             </Link>
           )}
           {icon.tags.map((tag) => (
-            <span key={tag} className="tag">
+            <Link key={tag} href={`/?q=${encodeURIComponent(tag)}`} className="tag">
               {tag}
-            </span>
+            </Link>
           ))}
         </div>
       </div>

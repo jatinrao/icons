@@ -1,18 +1,14 @@
 import Link from 'next/link'
 import { GITHUB_URL, NPM_URL, REQUEST_ICON_URL, SITE_NAME } from '@/lib/site'
 
-export function Header({ isHomePage = false }: { isHomePage?: boolean }) {
-  const brandLink = (
-    <Link href="/" className="brand" aria-label={`${SITE_NAME} home`}>
-      <img src="/icon.png" alt="" width={32} height={32} className="brand-logo" />
-      <span className="brand-name">{SITE_NAME}</span>
-    </Link>
-  )
-
+export function Header() {
   return (
     <header className="topbar">
       <div className="topbar-inner">
-        {isHomePage ? <h1 className="brand-heading">{brandLink}</h1> : brandLink}
+        <Link href="/" className="brand" aria-label={`${SITE_NAME} home`}>
+          <img src="/icon.png" alt="" width={32} height={32} className="brand-logo" />
+          <span className="brand-name">{SITE_NAME}</span>
+        </Link>
 
         <div className="header-actions">
           <nav className="header-links" aria-label="Project links">

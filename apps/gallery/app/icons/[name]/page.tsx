@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { formatCategoryLabel, getAllIcons, getIconByName } from '@/lib/icons'
-import { SITE_NAME, SITE_URL, breadcrumbJsonLd } from '@/lib/site'
+import { SITE_NAME, SITE_URL, breadcrumbJsonLd, faqJsonLd } from '@/lib/site'
 import { IconDetailPanel } from '@/components/IconDetailPanel'
+import { RelatedIcons } from '@/components/RelatedIcons'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
@@ -59,6 +60,20 @@ export default async function IconDetailPage({ params }: { params: Promise<{ nam
         url: SITE_URL,
       },
     },
+    faqJsonLd([
+      {
+        question: `Is the ${icon.label} icon free to use?`,
+        answer: `Yes. The ${icon.label} icon comes from an open-license icon source (devicon, Material Symbols, or Simple Icons) and is free to use, including commercially.`,
+      },
+      {
+        question: `How do I use the ${icon.label} icon in a React app?`,
+        answer: `Install @web-portfolio/icons (npm install @web-portfolio/icons), then render <Icon name="${icon.name}" />.`,
+      },
+      {
+        question: `Can I download the ${icon.label} icon as SVG or PNG?`,
+        answer: `Yes — use the copy or download buttons on this page to get the ${icon.label} icon as an SVG or PNG file, with your chosen color and size already applied.`,
+      },
+    ]),
   ]
 
   return (
@@ -76,9 +91,13 @@ export default async function IconDetailPage({ params }: { params: Promise<{ nam
           ]}
         />
 
-        <div className="detail-card glass">
-          <IconDetailPanel icon={icon} />
-        </div>
+        <main>
+          <div className="detail-card glass">
+            <IconDetailPanel icon={icon} />
+          </div>
+
+          <RelatedIcons icon={icon} />
+        </main>
 
         <Footer />
       </div>

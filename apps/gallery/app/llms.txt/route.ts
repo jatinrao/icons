@@ -44,6 +44,7 @@ ${categoryLines}
 - Browse all icons: ${SITE_URL}/
 - Each icon has its own page at ${SITE_URL}/icons/<name> (e.g. ${SITE_URL}/icons/react)
 - Full list of icon pages: ${SITE_URL}/sitemap.xml
+- Every icon name, grouped by category, with tags: ${SITE_URL}/llms-full.txt
 
 ## Source and license
 
