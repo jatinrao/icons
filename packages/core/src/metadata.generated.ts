@@ -5401,6 +5401,30 @@ export const metadata: Metadata = {
     ],
     "category": "original"
   },
+  "verdict-check": {
+    "label": "Verdict Check",
+    "tags": [
+      "check",
+      "checkmark",
+      "yes",
+      "verdict",
+      "tick",
+      "comparison"
+    ],
+    "category": "original"
+  },
+  "verdict-cross": {
+    "label": "Verdict Cross",
+    "tags": [
+      "cross",
+      "close",
+      "no",
+      "verdict",
+      "x",
+      "comparison"
+    ],
+    "category": "original"
+  },
   "vertx": {
     "label": "Vertx",
     "tags": [
