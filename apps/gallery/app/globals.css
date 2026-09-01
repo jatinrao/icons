@@ -585,6 +585,14 @@ button:focus-visible {
   max-width: 60ch;
 }
 
+.home-hero {
+  text-align: center;
+}
+
+.home-hero .category-hub-intro {
+  margin: 0 auto;
+}
+
 .category-hub-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

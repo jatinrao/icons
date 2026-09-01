@@ -69,8 +69,10 @@ export default async function HomePage({
       <div className="page">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-        <h1>Free SVG icons for React, portfolios &amp; design</h1>
-        <p className="category-hub-intro">{siteDescription()}</p>
+        <div className="home-hero">
+          <h1>Free SVG icons for React, portfolios &amp; design</h1>
+          <p className="category-hub-intro">{siteDescription()}</p>
+        </div>
 
         <IconGrid icons={icons} initialQuery={q ?? ''} />
         <Footer />
