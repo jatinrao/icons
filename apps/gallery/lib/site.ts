@@ -14,10 +14,13 @@ export const NPM_URL_SANITY = 'https://www.npmjs.com/package/@web-portfolio/icon
 export const REQUEST_ICON_URL = `${GITHUB_URL}/issues/new?title=Icon+request%3A+&labels=icon-request`
 
 // Computed from the live registry rather than hardcoded, so this never goes
-// stale as icons are added.
+// stale as icons are added. "Portfolio icons" is front-loaded deliberately —
+// it's the word order that wasn't ranking (unlike "SVG icon...portfolio",
+// covered by the <title> tag), and anything past ~160 chars here gets cut
+// in search snippets, so it needs to land before the truncation point.
 export function siteDescription(): string {
   const count = getAllIcons().length
-  return `Browse and copy ${count}+ free SVG icons — programming languages, frameworks, dev tools, social platforms, and UI icons. Search, customize colors and stroke, then copy or download as SVG or PNG. Companion gallery for the @web-portfolio/icons React package and @web-portfolio/icons-sanity Sanity Studio plugin.`
+  return `Browse and copy ${count}+ free SVG icons — portfolio icons, tech-stack badges, and social icons for React apps and personal sites. Customize colors and stroke, then copy or download as SVG or PNG. Also published as the @web-portfolio/icons React component and @web-portfolio/icons-sanity Sanity plugin.`
 }
 
 export function breadcrumbJsonLd(items: { name: string; url: string }[]) {

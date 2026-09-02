@@ -22,7 +22,7 @@ export async function generateMetadata({
   if (!icon) return {}
   return {
     // The root layout's title.template already appends " — @web-portfolio/icons".
-    title: `${icon.label} icon (free SVG)`,
+    title: `${icon.label} SVG icon`,
     description: `Free ${icon.label} SVG icon for your React app, portfolio, or design. Copy or download as SVG/PNG, or install @web-portfolio/icons and use <Icon name="${icon.name}" />.`,
     alternates: { canonical: `${SITE_URL}/icons/${icon.name}` },
   }

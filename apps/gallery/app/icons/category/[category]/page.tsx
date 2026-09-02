@@ -22,7 +22,7 @@ export async function generateMetadata({
 
   const label = formatCategoryLabel(category)
   return {
-    title: `${label} icons — free SVG`,
+    title: `${label} SVG icons`,
     description: `${icons.length} free ${label} SVG icons. ${categorySeoCopy(category)} Copy or download as SVG/PNG, or use them in React via @web-portfolio/icons.`,
     alternates: { canonical: `${SITE_URL}/icons/category/${category}` },
   }

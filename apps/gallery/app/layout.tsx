@@ -4,10 +4,16 @@ import { SITE_NAME, SITE_URL, siteDescription } from '@/lib/site'
 import { FloatingControls } from '@/components/FloatingControls'
 import './globals.css'
 
+// "Free" already carries the site's meta description (siteDescription()) and
+// the FAQ answers on every icon page — it doesn't need to repeat in every
+// title tag too, which was flattening 630+ pages toward the same phrase
+// instead of each title pulling its own weight.
+const HOME_TITLE = `${SITE_NAME} — SVG icons for React, portfolios & design`
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Free SVG icons for React, portfolios & design`,
+    default: HOME_TITLE,
     template: `%s — ${SITE_NAME}`,
   },
   description: siteDescription(),
@@ -24,13 +30,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: SITE_NAME,
-    title: `${SITE_NAME} — Free SVG icons for React, portfolios & design`,
+    title: HOME_TITLE,
     description: siteDescription(),
     url: SITE_URL,
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${SITE_NAME} — Free SVG icons for React, portfolios & design`,
+    title: HOME_TITLE,
     description: siteDescription(),
   },
 }

@@ -70,7 +70,8 @@ export default async function HomePage({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
         <div className="home-hero">
-          <h1>Free SVG icons for React, portfolios &amp; design</h1>
+          {/* Deliberately differs from <title> — covers "portfolio icon(s)" as its own adjacent phrase. */}
+          <h1>React icons and portfolio icons, ready to copy</h1>
           <p className="category-hub-intro">{siteDescription()}</p>
         </div>
 
